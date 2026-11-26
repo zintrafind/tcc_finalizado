@@ -1,0 +1,42 @@
+/* ============================================================
+   PREFERÊNCIAS GLOBAIS — TEXTO, CONTRASTE E ANIMAÇÕES
+   (o tema claro/escuro continua nos CSS de cada página)
+   Carregar DEPOIS dos CSS da página.
+   ============================================================ */
+
+/* ---------- TEXTO AMPLIADO ---------- */
+html[data-texto="ampliado"] body {
+    font-size: 1.1rem;
+}
+
+html[data-texto="ampliado"] body :where(p, li, label, th, td, input, select, textarea, button, a, small) {
+    font-size: 1.1em;
+}
+
+html[data-texto="ampliado"] body :where(h1) { font-size: 1.15em; }
+html[data-texto="ampliado"] body :where(h2) { font-size: 1.12em; }
+html[data-texto="ampliado"] body :where(h3, h4) { font-size: 1.1em; }
+
+
+/* ---------- ALTO CONTRASTE ----------
+   O filter fica no <html> (e não no <body>) para não quebrar
+   elementos com position: fixed, como a sidebar e os modais. */
+html[data-contraste="true"] {
+    filter: contrast(1.2);
+}
+
+html[data-contraste="true"] :where(button, a, input, select, textarea):focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 2px;
+}
+
+
+/* ---------- REDUZIR ANIMAÇÕES ---------- */
+html[data-movimento="true"] *,
+html[data-movimento="true"] *::before,
+html[data-movimento="true"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}

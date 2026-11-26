@@ -1,0 +1,975 @@
+/* ============================================================
+   PÁGINA RELATÓRIOS
+   ============================================================ */
+
+.relatorios-content {
+    width: 100%;
+    min-height: 100vh;
+
+    padding:
+        108px
+        32px
+        42px;
+
+    background: var(--bg);
+
+    color: var(--text);
+}
+
+
+/* ============================================================
+   BANNER
+   ============================================================ */
+
+.relatorios-banner {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    width: 100%;
+    min-height: 190px;
+
+    margin-bottom: 26px;
+
+    padding:
+        34px
+        38px;
+
+    overflow: hidden;
+
+    border: 1px solid #dcebf5;
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            115deg,
+            #ffffff 0%,
+            #f5fbff 55%,
+            #e3f4ff 100%
+        );
+
+    box-shadow:
+        0 6px 24px
+        rgba(0, 83, 134, 0.06);
+}
+
+
+.relatorios-banner::before {
+    content: "";
+
+    position: absolute;
+
+    top: -120px;
+    right: -60px;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 153, 255, 0.08);
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   CONTEÚDO DO BANNER
+   ============================================================ */
+
+.relatorios-banner-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+}
+
+
+.relatorios-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #0099ff;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+.relatorios-banner h1 {
+    margin: 0;
+
+    color: #005386;
+
+    font-size:
+        clamp(
+            29px,
+            3vw,
+            36px
+        );
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+.relatorios-banner p {
+    max-width: 590px;
+
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   LOGO DO BANNER
+   ============================================================ */
+/* ============================================================
+   LOGO DO BANNER — MESMO PADRÃO DA INICIAL
+   ============================================================ */
+
+.relatorios-banner-logo {
+    position: relative;
+
+    z-index: 2;
+
+    width: 105px;
+    height: 105px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex:
+        0
+        0
+        105px;
+
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.76);
+
+    box-shadow:
+        0 7px 22px
+        rgba(0, 83, 134, 0.08);
+}
+
+
+/* IMPORTANTE:
+   somente a logo correta fica visível */
+
+.relatorios-banner-logo img {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    display: block;
+
+    object-fit: contain;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+}
+
+
+/* CLARO */
+
+.relatorios-logo-clara {
+    width: 94px !important;
+    height: 94px !important;
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* ESCURO ESCONDIDO NO TEMA CLARO */
+
+.relatorios-logo-escura {
+    width: 76px !important;
+    height: 76px !important;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   LOGO DO BANNER — TEMA ESCURO
+   ============================================================ */
+
+html[data-tema="escuro"]
+.relatorios-banner-logo {
+    background:
+        rgba(0, 92, 138, 0.38);
+
+    border:
+        1px solid
+        rgba(112, 196, 255, 0.14);
+
+    box-shadow:
+        0 7px 22px
+        rgba(0, 0, 0, 0.16);
+}
+
+
+html[data-tema="escuro"]
+.relatorios-logo-clara {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+html[data-tema="escuro"]
+.relatorios-logo-escura {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+.relatorios-summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 18px;
+
+    margin-bottom: 26px;
+}
+
+
+.relatorios-summary-card {
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    min-width: 0;
+    min-height: 118px;
+
+    padding:
+        20px
+        20px;
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    background: var(--surface);
+
+    box-shadow: var(--shadow);
+}
+
+
+/* ============================================================
+   ÍCONES DOS CARDS
+   ============================================================ */
+
+.relatorios-summary-icon {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 62px;
+
+    border-radius: 16px;
+
+    background: #eaf6ff;
+
+    color: #005386;
+}
+
+
+/* FORÇA O TAMANHO DO ÍCONE */
+
+.relatorios-summary-icon i {
+    display: block;
+
+    color: inherit;
+
+    font-size: 24px !important;
+
+    line-height: 1;
+}
+
+
+.relatorios-summary-card > div {
+    min-width: 0;
+}
+
+
+.relatorios-summary-card > div > span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    font-weight: 500;
+
+    line-height: 1.45;
+}
+
+
+.relatorios-summary-card > div > strong {
+    display: block;
+
+    color: #005386;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+/* ============================================================
+   PAINEL
+   ============================================================ */
+
+.relatorios-panel {
+    width: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: var(--surface);
+
+    box-shadow: var(--shadow);
+}
+
+
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
+
+.relatorios-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        22px
+        24px;
+}
+
+
+.relatorios-panel-heading h2 {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.relatorios-status {
+    min-height: 45px;
+
+    margin: 0;
+
+    padding:
+        13px
+        24px;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    background: var(--soft);
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   FILTROS
+   ============================================================ */
+
+.relatorios-filtros {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(130px, 1fr)
+        );
+
+    gap: 14px;
+
+    padding:
+        22px
+        24px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.relatorios-field {
+    min-width: 0;
+}
+
+
+.relatorios-field label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+.relatorios-field input,
+.relatorios-field select {
+    width: 100%;
+    height: 43px;
+
+    padding:
+        0
+        12px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    outline: none;
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    font-size: 10px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.relatorios-field input:focus,
+.relatorios-field select:focus {
+    border-color: #0099ff;
+
+    box-shadow:
+        0
+        0
+        0
+        3px
+        rgba(0, 153, 255, 0.10);
+}
+
+
+/* ============================================================
+   BUSCA
+   ============================================================ */
+
+.relatorios-search-field {
+    grid-column: span 3;
+}
+
+
+.relatorios-search-wrap {
+    position: relative;
+}
+
+
+.relatorios-search-wrap i {
+    position: absolute;
+
+    top: 50%;
+    left: 13px;
+
+    transform: translateY(-50%);
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    pointer-events: none;
+}
+
+
+.relatorios-search-wrap input {
+    padding-left: 37px;
+}
+
+
+.relatorios-filter-actions {
+    display: flex;
+    align-items: flex-end;
+}
+
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+
+.relatorios-button {
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding:
+        9px
+        14px;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    font-family: inherit;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.relatorios-button i {
+    font-size: 12px;
+}
+
+
+.relatorios-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+
+.relatorios-button-primary {
+    border-color: #005386;
+
+    background: #005386;
+
+    color: #ffffff;
+}
+
+
+.relatorios-button-primary:hover:not(:disabled) {
+    border-color: #006da9;
+
+    background: #006da9;
+}
+
+
+.relatorios-button-secondary {
+    border-color: var(--border);
+
+    background: var(--surface);
+
+    color: var(--text);
+}
+
+
+.relatorios-button-secondary:hover:not(:disabled) {
+    background: var(--hover);
+}
+
+
+/* ============================================================
+   CABEÇALHO DA TABELA
+   ============================================================ */
+
+.relatorios-table-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        20px
+        24px;
+}
+
+
+.relatorios-table-label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 0.6px;
+
+    text-transform: uppercase;
+}
+
+
+.relatorios-table-heading h3 {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   NOTA PDF
+   ============================================================ */
+
+.relatorios-export-note {
+    margin:
+        0
+        24px
+        18px;
+
+    padding:
+        11px
+        13px;
+
+    border-radius: 9px;
+
+    background: #eef8ff;
+
+    color: #52758c;
+
+    font-size: 9px;
+
+    line-height: 1.6;
+}
+
+
+.relatorios-export-note i {
+    margin-right: 5px;
+
+    color: #0099ff;
+
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   TABELA
+   ============================================================ */
+
+.relatorios-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-top: 1px solid var(--border);
+}
+
+
+.relatorios-table {
+    width: 100%;
+
+    min-width: 780px;
+
+    border-collapse: collapse;
+
+    background: var(--surface);
+}
+
+
+.relatorios-table thead {
+    background: var(--soft);
+}
+
+
+.relatorios-table th {
+    padding:
+        13px
+        15px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--muted);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.4px;
+
+    text-align: left;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+.relatorios-table td {
+    padding:
+        15px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--text);
+
+    font-size: 10px;
+
+    vertical-align: middle;
+}
+
+
+.relatorios-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+
+.relatorios-table tbody tr:hover {
+    background: #f8fbfd;
+}
+
+
+.relatorios-vazio {
+    padding: 40px !important;
+
+    color: var(--muted) !important;
+
+    text-align: center !important;
+}
+
+
+/* ============================================================
+   PAGINAÇÃO
+   ============================================================ */
+
+.relatorios-paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding:
+        19px
+        20px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+.relatorios-paginacao span {
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+/* ============================================================
+   TEMA ESCURO
+   ============================================================ */
+
+html[data-tema="escuro"]
+.relatorios-banner {
+    border-color: #30495e;
+
+    background:
+        linear-gradient(
+            115deg,
+            #192d3e 0%,
+            #1b3245 55%,
+            #203b50 100%
+        );
+}
+
+
+html[data-tema="escuro"]
+.relatorios-banner h1 {
+    color: #e0efff;
+}
+
+
+html[data-tema="escuro"]
+.relatorios-banner p {
+    color: #afc5d8;
+}
+
+
+html[data-tema="escuro"]
+.relatorios-banner-logo {
+    border:
+        1px solid
+        rgba(112, 196, 255, 0.14);
+
+    background:
+        rgba(0, 92, 138, 0.38);
+}
+
+
+html[data-tema="escuro"]
+.relatorios-logo-clara {
+    display: none;
+}
+
+
+html[data-tema="escuro"]
+.relatorios-logo-escura {
+    display: block;
+}
+
+
+html[data-tema="escuro"]
+.relatorios-summary-icon {
+    background: #243f54;
+
+    color: #8bd1ff;
+}
+
+
+html[data-tema="escuro"]
+.relatorios-summary-card > div > strong {
+    color: #e0efff;
+}
+
+
+html[data-tema="escuro"]
+.relatorios-export-note {
+    background: #243f54;
+
+    color: #afc5d8;
+}
+
+
+html[data-tema="escuro"]
+.relatorios-table tbody tr:hover {
+    background: #203a4e;
+}
+
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media (max-width: 1050px) {
+
+    .relatorios-filtros {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .relatorios-search-field {
+        grid-column: span 1;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .relatorios-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .relatorios-content {
+        padding:
+            100px
+            18px
+            30px;
+    }
+
+
+    .relatorios-banner {
+        min-height: auto;
+
+        padding: 27px;
+    }
+
+
+    .relatorios-banner-logo {
+        display: none;
+    }
+
+
+    .relatorios-filtros {
+        grid-template-columns: 1fr;
+    }
+
+
+    .relatorios-search-field {
+        grid-column: auto;
+    }
+
+
+    .relatorios-panel-heading,
+    .relatorios-table-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}

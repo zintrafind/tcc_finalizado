@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Preferências globais (tema, texto, contraste, animações) -->
+    <script src="../assets/preferencias.js"></script>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Peça por Peça | Relatórios</title>
+
+    <link
+        rel="icon"
+        href="src/images/favicon.ico"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    >
+
+    <script>
+
+        (() => {
+
+            const tema =
+                localStorage.getItem("adminTema");
+
+            document.documentElement.dataset.tema =
+                tema === "escuro"
+                    ? "escuro"
+                    : "claro";
+
+        })();
+
+    </script>
+
+    <link
+        rel="stylesheet"
+        href="src/styles/styles.css"
+    >
+
+    <link
+    rel="stylesheet"
+    href="src/styles/notificacoes.css"
+>
+
+    <link rel="stylesheet" href="../assets/preferencias.css">
+</head>
+
+
+<body>
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="logo-details">
+
+            <span class="image">
+
+                <img
+                    src="src/images/logo.png"
+                    alt="Peça por Peça"
+                    class="logo-clara"
+                >
+
+                <img
+                    src="src/images/logo-negativa.png"
+                    alt=""
+                    class="logo-escura"
+                    aria-hidden="true"
+                >
+
+            </span>
+
+
+            <div class="sidebar-brand">
+
+                <strong>
+                    Peça por Peça
+                </strong>
+
+                <span>
+                    Administração
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav
+            class="sidebar-navigation"
+            aria-label="Menu administrativo"
+        >
+
+            <ul class="nav-links">
+
+                <li>
+
+                    <a href="../inicio/index.html">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        <span class="nav-text">
+                            Início
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="../dashboard/index.html">
+
+                        <i class="fa-solid fa-chart-column"></i>
+
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="../usuarios-cadastrados/index.html">
+
+                        <i class="fa-solid fa-users"></i>
+
+                        <span class="nav-text">
+                            Usuários
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="../anuncios-publicados/index.html">
+
+                        <i class="fa-solid fa-box-open"></i>
+
+                        <span class="nav-text">
+                            Anúncios
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="../denuncia/index.html">
+
+                        <i class="fa-solid fa-flag"></i>
+
+                        <span class="nav-text">
+                            Denúncias
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="../historico/index.html">
+
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+
+                        <span class="nav-text">
+                            Histórico
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../relatorio/index.html"
+                        class="pagina-ativa"
+                        aria-current="page"
+                    >
+
+                        <i class="fa-regular fa-file-lines"></i>
+
+                        <span class="nav-text">
+                            Relatórios
+                        </span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../configuracoes/index.html"
+                    class="sidebar-bottom-link"
+                >
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    <span class="nav-text">
+                        Configurações
+                    </span>
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="sidebar-bottom-link sidebar-logout"
+                    id="btn-sair-sidebar"
+                >
+
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                    <span class="nav-text">
+                        Sair
+                    </span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ============================================================
+         ÁREA PRINCIPAL
+         ============================================================ -->
+
+    <section class="home">
+
+        <!-- ========================================================
+             TOPBAR
+             ======================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="topbar-sidebar-toggle"
+                    id="sidebarToggle"
+                    aria-label="Recolher menu lateral"
+                    aria-controls="sidebar"
+                    aria-expanded="true"
+                >
+
+                    <i
+                        class="fa-solid fa-chevron-left"
+                        id="sidebarToggleIcon"
+                    ></i>
+
+                </button>
+
+
+                <span class="topbar-label">
+                    Painel administrativo
+                </span>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <!-- NOTIFICAÇÕES -->
+
+<div id="notificacoes-container">
+
+    <button
+        type="button"
+        class="icon-button"
+        id="btn-notificacoes"
+        aria-label="Notificações"
+        aria-expanded="false"
+        aria-controls="painel-notificacoes"
+        title="Notificações"
+    >
+
+        <i class="fa-regular fa-bell"></i>
+
+        <span
+            id="notificacoes-contador"
+            hidden
+        >
+            0
+        </span>
+
+    </button>
+
+
+    <!-- PAINEL DE NOTIFICAÇÕES -->
+
+    <section
+        id="painel-notificacoes"
+        aria-label="Notificações recebidas"
+        hidden
+    >
+
+        <header class="notificacoes-cabecalho">
+
+            <div>
+                <h2>Notificações</h2>
+                <p>Denúncias recebidas na plataforma</p>
+            </div>
+
+            <button
+                type="button"
+                id="btn-fechar-notificacoes"
+                aria-label="Fechar notificações"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </header>
+
+
+        <p
+            id="notificacoes-status"
+            role="status"
+            aria-live="polite"
+            hidden
+        ></p>
+
+
+        <div id="notificacoes-lista"></div>
+
+
+        <footer class="notificacoes-rodape">
+
+            <span>
+                Atualizações automáticas
+            </span>
+
+            <button
+                type="button"
+                id="btn-atualizar-notificacoes"
+            >
+                <i class="fa-solid fa-rotate"></i>
+                Atualizar
+            </button>
+
+        </footer>
+
+    </section>
+
+</div>
+
+
+                <!-- PERFIL -->
+
+                <div class="profile-menu-container">
+
+                    <button
+                        type="button"
+                        class="profile-details"
+                        id="btn-menu-perfil"
+                        aria-expanded="false"
+                        aria-controls="menu-perfil"
+                    >
+
+                        <span class="profile-avatar">
+
+                            <i class="fa-regular fa-user"></i>
+
+                        </span>
+
+
+                        <span class="profile-user-info">
+
+                            <strong id="nome-admin-topo">
+                                Administrador
+                            </strong>
+
+                            <small>
+                                Administrador
+                            </small>
+
+                        </span>
+
+
+                        <i class="fa-solid fa-angle-down profile-chevron"></i>
+
+                    </button>
+
+
+                    <div
+                        class="profile-dropdown"
+                        id="menu-perfil"
+                        hidden
+                    >
+
+                        <div class="profile-dropdown-header">
+
+                            <span class="profile-dropdown-icon">
+
+                                <i class="fa-regular fa-user"></i>
+
+                            </span>
+
+
+                            <div>
+
+                                <strong>
+                                    Minha conta
+                                </strong>
+
+                                <span>
+Relatórios
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="../perfil/index.html"
+                            class="profile-menu-item"
+                        >
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <span>
+                                Perfil
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="../configuracoes/index.html"
+                            class="profile-menu-item"
+                        >
+
+                            <i class="fa-solid fa-gear"></i>
+
+                            <span>
+                                Configurações
+                            </span>
+
+                        </a>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item"
+                            id="btn-aparencia"
+                            aria-expanded="false"
+                            aria-controls="opcoes-aparencia"
+                        >
+
+                            <i class="fa-regular fa-moon"></i>
+
+                            <span>
+                                Aparência
+                            </span>
+
+                            <i class="fa-solid fa-angle-down menu-seta"></i>
+
+                        </button>
+
+
+                        <div
+                            class="appearance-options"
+                            id="opcoes-aparencia"
+                            hidden
+                        >
+
+                            <label for="tema-admin">
+                                Tema do painel
+                            </label>
+
+
+                            <select id="tema-admin">
+
+                                <option value="claro">
+                                    Claro
+                                </option>
+
+                                <option value="escuro">
+                                    Escuro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="profile-menu-divider"></div>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item profile-menu-logout"
+                            id="btn-sair-perfil"
+                        >
+
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                            <span>
+                                Sair
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================================================
+             CONTEÚDO
+             ======================================================== -->
+
+        <main class="relatorios-content">
+
+            <!-- BANNER -->
+
+            <section class="relatorios-banner">
+
+                <div class="relatorios-banner-content">
+
+                    <span class="relatorios-label">
+                        Gerenciamento
+                    </span>
+
+
+                    <h1>
+                        Relatórios
+                    </h1>
+
+
+                    <p>
+                        Consulte os dados da plataforma,
+                        aplique filtros e prepare relatórios
+                        para salvar em PDF.
+                    </p>
+
+                </div>
+
+
+                <div class="relatorios-banner-logo">
+
+                    <img
+                        src="src/images/logo.png"
+                        alt=""
+                        class="relatorios-logo-clara"
+                    >
+
+                    <img
+                        src="src/images/logo-negativa.png"
+                        alt=""
+                        class="relatorios-logo-escura"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- ====================================================
+                 CARDS
+                 ==================================================== -->
+
+            <section class="relatorios-summary-grid">
+
+                <article class="relatorios-summary-card">
+
+                    <span class="relatorios-summary-icon">
+
+                        <i class="fa-solid fa-users"></i>
+
+                    </span>
+
+
+                    <div>
+
+                        <span>
+                            Usuários carregados
+                        </span>
+
+                        <strong id="rel-total-usuarios">
+                            —
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="relatorios-summary-card">
+
+                    <span class="relatorios-summary-icon">
+
+                        <i class="fa-solid fa-box-open"></i>
+
+                    </span>
+
+
+                    <div>
+
+                        <span>
+                            Anúncios carregados
+                        </span>
+
+                        <strong id="rel-total-anuncios">
+                            —
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="relatorios-summary-card">
+
+                    <span class="relatorios-summary-icon">
+
+                        <i class="fa-solid fa-filter"></i>
+
+                    </span>
+
+
+                    <div>
+
+                        <span>
+                            Registros filtrados
+                        </span>
+
+                        <strong id="rel-total-filtrados">
+                            —
+                        </strong>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ====================================================
+                 PAINEL
+                 ==================================================== -->
+
+            <section class="relatorios-panel">
+
+                <div class="relatorios-panel-heading">
+
+                    <div>
+
+                        <span class="relatorios-label">
+                            Dados da plataforma
+                        </span>
+
+
+                        <h2>
+                            Consultar relatórios
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="relatorios-button relatorios-button-secondary"
+                        id="rel-atualizar"
+                    >
+
+                        <i class="fa-solid fa-rotate"></i>
+
+                        Atualizar
+
+                    </button>
+
+                </div>
+
+
+                <p
+                    class="relatorios-status"
+                    id="rel-mensagem"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+
+                <!-- FILTROS -->
+
+                <form
+                    class="relatorios-filtros"
+                    id="rel-filtros"
+                >
+
+                    <div class="relatorios-field">
+
+                        <label for="rel-tipo">
+                            Tipo de relatório
+                        </label>
+
+
+                        <select id="rel-tipo">
+
+                            <option value="usuarios">
+                                Usuários
+                            </option>
+
+                            <option value="anuncios">
+                                Anúncios
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="relatorios-field">
+
+                        <label for="rel-status">
+                            Status
+                        </label>
+
+                        <select id="rel-status"></select>
+
+                    </div>
+
+
+                    <div class="relatorios-field">
+
+                        <label for="rel-inicio">
+                            Cadastro a partir de
+                        </label>
+
+                        <input
+                            type="date"
+                            id="rel-inicio"
+                        >
+
+                    </div>
+
+
+                    <div class="relatorios-field">
+
+                        <label for="rel-fim">
+                            Cadastro até
+                        </label>
+
+                        <input
+                            type="date"
+                            id="rel-fim"
+                        >
+
+                    </div>
+
+
+                    <div class="relatorios-field relatorios-search-field">
+
+                        <label for="rel-busca">
+                            Pesquisar
+                        </label>
+
+
+                        <div class="relatorios-search-wrap">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                type="search"
+                                id="rel-busca"
+                                placeholder="Busque nos dados do relatório"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="relatorios-filter-actions">
+
+                        <button
+                            type="button"
+                            class="relatorios-button relatorios-button-secondary"
+                            id="rel-limpar"
+                        >
+
+                            <i class="fa-solid fa-eraser"></i>
+
+                            Limpar filtros
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <!-- TABELA CABEÇALHO -->
+
+                <div class="relatorios-table-heading">
+
+                    <div>
+
+                        <span class="relatorios-table-label">
+                            Resultado
+                        </span>
+
+
+                        <h3 id="rel-titulo-tabela">
+                            Relatório de usuários
+                        </h3>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="relatorios-button relatorios-button-primary"
+                        id="rel-exportar"
+                        disabled
+                    >
+
+                        <i class="fa-solid fa-file-pdf"></i>
+
+                        Exportar PDF
+
+                    </button>
+
+                </div>
+
+
+                <p class="relatorios-export-note">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    O relatório exporta todos os registros filtrados.
+                    Na impressão, escolha
+                    <strong>Salvar como PDF</strong>.
+
+                </p>
+
+
+                <div
+                    class="relatorios-table-wrapper"
+                    tabindex="0"
+                >
+
+                    <table class="relatorios-table">
+
+                        <thead>
+
+                            <tr id="rel-colunas"></tr>
+
+                        </thead>
+
+
+                        <tbody id="rel-registros"></tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- PAGINAÇÃO -->
+
+                <div class="relatorios-paginacao">
+
+                    <button
+                        type="button"
+                        class="relatorios-button relatorios-button-secondary"
+                        id="rel-anterior"
+                        disabled
+                    >
+
+                        <i class="fa-solid fa-chevron-left"></i>
+
+                        Anterior
+
+                    </button>
+
+
+                    <span id="rel-pagina">
+                        Página 1 de 1
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="relatorios-button relatorios-button-secondary"
+                        id="rel-proxima"
+                        disabled
+                    >
+
+                        Próxima
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </section>
+
+
+
+<!-- ============================================================
+     MODAL DE DETALHES DA DENÚNCIA
+     ============================================================ -->
+
+<dialog
+    id="modal-denuncia"
+    aria-labelledby="modal-denuncia-titulo"
+>
+
+    <div class="md-cabecalho">
+
+        <h2 id="modal-denuncia-titulo">
+            Detalhes da denúncia
+        </h2>
+
+        <button
+            type="button"
+            id="btn-fechar-denuncia"
+            aria-label="Fechar detalhes"
+        >
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+    </div>
+
+    <p
+        id="modal-denuncia-status"
+        role="status"
+        aria-live="polite"
+    ></p>
+
+    <div
+        id="modal-denuncia-conteudo"
+        hidden
+    >
+
+        <dl class="md-dados">
+
+            <div>
+                <dt>Número da denúncia</dt>
+                <dd id="denuncia-numero"></dd>
+            </div>
+
+            <div>
+                <dt>Usuário denunciado</dt>
+                <dd id="denuncia-usuario"></dd>
+            </div>
+
+            <div>
+                <dt>Data</dt>
+                <dd id="denuncia-data"></dd>
+            </div>
+
+            <div>
+                <dt>Status da denúncia</dt>
+                <dd id="denuncia-status"></dd>
+            </div>
+
+            <div>
+                <dt>Motivo</dt>
+                <dd id="denuncia-motivo"></dd>
+            </div>
+
+        </dl>
+
+        <div class="md-secao">
+            <h3>Descrição do ocorrido</h3>
+            <p id="denuncia-descricao"></p>
+        </div>
+
+        <div class="md-secao">
+            <h3>Imagens anexadas</h3>
+
+            <p
+                id="denuncia-imagens-status"
+                role="status"
+            ></p>
+
+            <div id="denuncia-imagens"></div>
+        </div>
+
+    </div>
+
+    <div class="md-rodape">
+
+        <span id="denuncia-leitura"></span>
+
+        <button
+            type="button"
+            id="btn-denuncia-marcar-lida"
+            hidden
+        >
+            Marcar como lida
+        </button>
+
+    </div>
+
+</dialog>
+
+
+<!-- ============================================================
+     VISUALIZAÇÃO AMPLIADA DA IMAGEM
+     ============================================================ -->
+
+<div
+    id="denuncia-ampliacao"
+    hidden
+>
+
+    <button
+        type="button"
+        id="btn-fechar-ampliacao"
+        aria-label="Fechar imagem"
+    >
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <img
+        id="denuncia-imagem-ampliada"
+        src=""
+        alt="Imagem ampliada da denúncia"
+    >
+
+</div>
+
+
+    <!-- ============================================================
+         MODAL SAIR
+         ============================================================ -->
+
+    <div
+        class="logout-modal"
+        id="logout-modal"
+        hidden
+    >
+
+        <div class="logout-modal-card">
+
+            <button
+                type="button"
+                class="logout-modal-close"
+                id="logout-fechar"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <div class="logout-modal-icon">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </div>
+
+
+            <h2>
+                Deseja sair?
+            </h2>
+
+
+            <p>
+                Você precisará entrar novamente
+                para acessar o painel administrativo.
+            </p>
+
+
+            <p
+                class="logout-modal-status"
+                id="logout-status"
+            ></p>
+
+
+            <div class="logout-modal-actions">
+
+                <button
+                    type="button"
+                    class="logout-modal-button logout-modal-cancel"
+                    id="logout-cancelar"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="logout-modal-button logout-modal-confirm"
+                    id="logout-confirmar"
+                >
+
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                    Sim, sair
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         VLIBRAS
+         ============================================================ -->
+
+    <div
+        vw
+        class="enabled"
+    >
+
+        <div
+            vw-access-button
+            class="active"
+        ></div>
+
+
+        <div vw-plugin-wrapper>
+
+            <div class="vw-plugin-top-wrapper"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+
+    <script>
+
+        if (window.VLibras) {
+
+            new window.VLibras.Widget(
+                "https://vlibras.gov.br/app"
+            );
+
+        }
+
+    </script>
+
+
+    <script src="src/javascript/script.js"></script>
+<script src="src/javascript/profile-menu.js"></script>
+<script src="src/javascript/relatorios.js"></script>
+<script src="src/javascript/notificacoes.js"></script>
+
+</body>
+
+</html>

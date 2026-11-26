@@ -1,0 +1,1160 @@
+
+/* ============================================================
+   PEÇA POR PEÇA — DASHBOARD
+   Identidade visual reformulada
+   Compatível com o novo HTML
+   Sidebar e topbar permanecem inalteradas
+   ============================================================ */
+
+
+/* ============================================================
+   CONFIGURAÇÕES GERAIS
+   ============================================================ */
+
+.dashboard-content {
+    width: 100%;
+    min-height: 100vh;
+    padding: 108px 36px 35px;
+    background: #f4f8fb;
+    color: #163b56;
+    transition:
+        background-color .25s ease,
+        color .25s ease;
+}
+
+.dashboard-content *,
+.dashboard-content *::before,
+.dashboard-content *::after {
+    box-sizing: border-box;
+}
+
+.dashboard-content button {
+    font-family: inherit;
+}
+
+
+/* ============================================================
+   IDENTIDADE VISUAL / TEXTOS AUXILIARES
+   ============================================================ */
+
+.dash-eyebrow {
+    display: inline-block;
+    color: #008bdc;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.dash-section-title {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 19px;
+}
+
+.dash-section-title h2 {
+    margin-top: 7px;
+    color: #163b56;
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: -.45px;
+}
+
+.dash-section-description {
+    color: #8a9ba9;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: right;
+}
+
+
+/* ============================================================
+   APRESENTAÇÃO PRINCIPAL
+   ============================================================ */
+
+.dash-intro {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    min-height: 230px;
+    margin-bottom: 38px;
+    padding: 36px 40px;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            115deg,
+            #ffffff 0%,
+            #f1f9fe 58%,
+            #e1f3ff 100%
+        );
+
+    border: 1px solid #dcebf5;
+    border-radius: 13px 30px 13px 30px;
+
+    box-shadow:
+        0 8px 28px rgba(0, 83, 134, .045);
+}
+
+.dash-intro::before {
+    content: "";
+    position: absolute;
+    top: -155px;
+    right: 120px;
+    width: 330px;
+    height: 330px;
+    border: 1px solid rgba(0, 153, 255, .12);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.dash-intro::after {
+    content: "";
+    position: absolute;
+    right: -80px;
+    bottom: -200px;
+    width: 390px;
+    height: 390px;
+    border: 1px solid rgba(0, 83, 134, .08);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.dash-intro-texto {
+    position: relative;
+    z-index: 1;
+    max-width: 690px;
+}
+
+.dash-intro-texto h1 {
+    margin-top: 13px;
+    color: #005386;
+    font-size: clamp(28px, 3vw, 39px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.dash-intro-texto p {
+    max-width: 590px;
+    margin-top: 15px;
+    color: #71879a;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.9;
+}
+
+.dash-intro-acoes {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+    flex-shrink: 0;
+    min-width: 190px;
+}
+
+.dash-status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #71879a;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.dash-status-indicator span {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #35b779;
+    box-shadow: 0 0 0 4px rgba(53, 183, 121, .12);
+}
+
+#atualizarDashboard {
+    width: 100%;
+    min-height: 43px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 11px 17px;
+
+    border: 1px solid #007fce;
+    border-radius: 8px;
+
+    background: #007fce;
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 13px rgba(0, 127, 206, .17);
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+#atualizarDashboard i {
+    font-size: 11px;
+}
+
+#atualizarDashboard:hover {
+    background: #0069ad;
+    border-color: #0069ad;
+    transform: translateY(-2px);
+    box-shadow:
+        0 7px 17px rgba(0, 127, 206, .23);
+}
+
+#atualizarDashboard:active {
+    transform: translateY(0);
+}
+
+#atualizarDashboard:disabled {
+    opacity: .6;
+    cursor: wait;
+    transform: none;
+}
+
+#dashboardStatus {
+    min-height: 14px;
+    color: #8194a3;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   SEÇÃO DE INDICADORES
+   ============================================================ */
+
+.dash-indicadores {
+    margin-bottom: 39px;
+}
+
+.dash-indicadores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
+
+
+/* ============================================================
+   CARDS DOS INDICADORES
+   ============================================================ */
+
+.dash-indicador {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 150px;
+    padding: 19px 20px;
+    overflow: hidden;
+
+    background: #ffffff;
+    border: 1px solid #e0eaf1;
+    border-radius: 11px;
+
+    box-shadow:
+        0 4px 14px rgba(0, 83, 134, .035);
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.dash-indicador::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--indicador-cor, #0099ff);
+}
+
+.dash-indicador::after {
+    content: "";
+    position: absolute;
+    right: -31px;
+    bottom: -43px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: var(--indicador-fundo, rgba(0, 153, 255, .045));
+    pointer-events: none;
+}
+
+.dash-indicador:hover {
+    transform: translateY(-4px);
+    border-color: #c3deed;
+    box-shadow:
+        0 9px 22px rgba(0, 83, 134, .075);
+}
+
+.dash-indicador-usuarios {
+    --indicador-cor: #0099ff;
+    --indicador-fundo: rgba(0, 153, 255, .07);
+}
+
+.dash-indicador-anuncios {
+    --indicador-cor: #637bd9;
+    --indicador-fundo: rgba(99, 123, 217, .07);
+}
+
+.dash-indicador-ativos {
+    --indicador-cor: #36ad78;
+    --indicador-fundo: rgba(54, 173, 120, .07);
+}
+
+.dash-indicador-disponiveis {
+    --indicador-cor: #e0a33c;
+    --indicador-fundo: rgba(224, 163, 60, .08);
+}
+
+.dash-indicador-topo {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.dash-indicador-topo span {
+    color: #8395a3;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.dash-indicador-topo i {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: var(--indicador-fundo);
+    color: var(--indicador-cor);
+    font-size: 14px;
+}
+
+.dash-indicador > strong {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 15px;
+    color: #005386;
+    font-size: 29px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -.8px;
+}
+
+.dash-indicador > p {
+    position: relative;
+    z-index: 1;
+    margin-top: 6px;
+    color: #8193a1;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   CRESCIMENTO DA COMUNIDADE
+   ============================================================ */
+
+.dash-crescimento {
+    margin-bottom: 39px;
+}
+
+.dash-periodo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 29px;
+    padding: 6px 11px;
+    border: 1px solid #dceaf3;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #71879a;
+    font-size: 9px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   PAINEL DO GRÁFICO PRINCIPAL
+   ============================================================ */
+
+.dash-grafico-principal {
+    min-width: 0;
+    padding: 25px 27px 21px;
+    background: #ffffff;
+    border: 1px solid #e0eaf1;
+    border-radius: 13px;
+    box-shadow:
+        0 4px 16px rgba(0, 83, 134, .035);
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.dash-grafico-principal:hover,
+.dash-grafico-card:hover {
+    border-color: #c8e0ee;
+    box-shadow:
+        0 8px 22px rgba(0, 83, 134, .055);
+}
+
+.dash-grafico-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.dash-grafico-heading > div:first-child {
+    min-width: 0;
+}
+
+.dash-grafico-label {
+    display: block;
+    margin-bottom: 7px;
+    color: #008bdc;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.dash-grafico-heading h3 {
+    color: #163b56;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.45;
+}
+
+.dash-grafico-heading p {
+    margin-top: 5px;
+    color: #8496a5;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.dash-grafico-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid #dceef9;
+    border-radius: 10px;
+    background: #edf8ff;
+    color: #008bdc;
+    font-size: 15px;
+}
+
+.dash-grafico-area {
+    position: relative;
+    width: 100%;
+    height: 235px;
+    min-width: 0;
+}
+
+.dash-grafico-area-grande {
+    height: 300px;
+}
+
+.dash-grafico-area canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100%;
+}
+
+
+/* ============================================================
+   LEGENDA DOS GRÁFICOS
+   ============================================================ */
+
+.dashboard-chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 9px 20px;
+    margin-top: 17px;
+    padding-top: 14px;
+    border-top: 1px solid #edf2f6;
+}
+
+.dashboard-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+}
+
+.dashboard-legend-color {
+    width: 9px;
+    height: 9px;
+    display: inline-block;
+    flex-shrink: 0;
+    border-radius: 3px;
+}
+
+.dashboard-legend-label {
+    overflow: hidden;
+    color: #71879a;
+    font-size: 9px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dashboard-legend-value {
+    color: #163b56;
+    font-size: 9px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   DISTRIBUIÇÃO DOS ANÚNCIOS
+   ============================================================ */
+
+.dash-distribuicao {
+    margin-bottom: 38px;
+}
+
+.dash-graficos-secundarios {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+}
+
+
+/* ============================================================
+   CARDS DOS GRÁFICOS SECUNDÁRIOS
+   ============================================================ */
+
+.dash-grafico-card {
+    min-width: 0;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid #e0eaf1;
+    border-radius: 12px;
+    box-shadow:
+        0 4px 15px rgba(0, 83, 134, .035);
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.dash-grafico-card .dash-grafico-heading {
+    min-height: 65px;
+    margin-bottom: 17px;
+}
+
+.dash-grafico-card .dash-grafico-heading h3 {
+    font-size: 13px;
+}
+
+.dash-grafico-card .dash-grafico-heading p {
+    font-size: 9px;
+}
+
+.dash-grafico-card .dash-grafico-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+}
+
+.dash-grafico-card .dash-grafico-area {
+    height: 230px;
+}
+
+
+/* ============================================================
+   RODAPÉ
+   ============================================================ */
+
+.dash-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    min-height: 55px;
+    padding: 15px 3px 0;
+    border-top: 1px solid #e2ebf1;
+}
+
+.dash-footer-marca {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #005386;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.dash-footer-marca i {
+    color: #0099ff;
+    font-size: 13px;
+}
+
+.dash-footer > p {
+    color: #91a1ad;
+    font-size: 9px;
+    font-weight: 500;
+    text-align: right;
+}
+
+
+/* ============================================================
+   FOCO DE TECLADO
+   ============================================================ */
+
+.dashboard-content button:focus-visible,
+.dashboard-content a:focus-visible {
+    outline: 3px solid rgba(0, 153, 255, .45);
+    outline-offset: 3px;
+}
+
+
+/* ============================================================
+   TEMA ESCURO
+   ============================================================ */
+
+html[data-tema="escuro"] .dashboard-content {
+    background: #101f2c;
+    color: #e0efff;
+}
+
+
+/* APRESENTAÇÃO */
+
+html[data-tema="escuro"] .dash-intro {
+    background:
+        linear-gradient(
+            115deg,
+            #192d3e 0%,
+            #1b3245 58%,
+            #203b50 100%
+        );
+
+    border-color: #30495e;
+    box-shadow: 0 7px 24px rgba(0, 0, 0, .12);
+}
+
+html[data-tema="escuro"] .dash-intro::before,
+html[data-tema="escuro"] .dash-intro::after {
+    border-color: rgba(112, 196, 255, .11);
+}
+
+html[data-tema="escuro"] .dash-intro-texto h1 {
+    color: #e0efff;
+}
+
+html[data-tema="escuro"] .dash-intro-texto p,
+html[data-tema="escuro"] .dash-status-indicator,
+html[data-tema="escuro"] #dashboardStatus {
+    color: #afc5d8;
+}
+
+html[data-tema="escuro"] .dash-eyebrow,
+html[data-tema="escuro"] .dash-grafico-label {
+    color: #70c4ff;
+}
+
+html[data-tema="escuro"] #atualizarDashboard {
+    background: #119dff;
+    border-color: #119dff;
+    color: #ffffff;
+}
+
+html[data-tema="escuro"] #atualizarDashboard:hover {
+    background: #35adff;
+    border-color: #35adff;
+}
+
+
+/* TÍTULOS */
+
+html[data-tema="escuro"] .dash-section-title h2,
+html[data-tema="escuro"] .dash-grafico-heading h3 {
+    color: #e0efff;
+}
+
+html[data-tema="escuro"] .dash-section-description,
+html[data-tema="escuro"] .dash-grafico-heading p {
+    color: #afc5d8;
+}
+
+html[data-tema="escuro"] .dash-periodo {
+    background: #192d3e;
+    border-color: #30495e;
+    color: #afc5d8;
+}
+
+
+/* INDICADORES */
+
+html[data-tema="escuro"] .dash-indicador {
+    background: #192d3e;
+    border-color: #30495e;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .10);
+}
+
+html[data-tema="escuro"] .dash-indicador:hover {
+    background: #1d3447;
+    border-color: #4c718d;
+}
+
+html[data-tema="escuro"] .dash-indicador-topo span,
+html[data-tema="escuro"] .dash-indicador > p {
+    color: #afc5d8;
+}
+
+html[data-tema="escuro"] .dash-indicador > strong {
+    color: #e0efff;
+}
+
+html[data-tema="escuro"] .dash-indicador-usuarios {
+    --indicador-cor: #70c4ff;
+    --indicador-fundo: rgba(112, 196, 255, .12);
+}
+
+html[data-tema="escuro"] .dash-indicador-anuncios {
+    --indicador-cor: #a6b5ff;
+    --indicador-fundo: rgba(166, 181, 255, .12);
+}
+
+html[data-tema="escuro"] .dash-indicador-ativos {
+    --indicador-cor: #7bd6a3;
+    --indicador-fundo: rgba(123, 214, 163, .12);
+}
+
+html[data-tema="escuro"] .dash-indicador-disponiveis {
+    --indicador-cor: #f1c477;
+    --indicador-fundo: rgba(241, 196, 119, .12);
+}
+
+
+/* GRÁFICOS */
+
+html[data-tema="escuro"] .dash-grafico-principal,
+html[data-tema="escuro"] .dash-grafico-card {
+    background: #192d3e;
+    border-color: #30495e;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .10);
+}
+
+html[data-tema="escuro"] .dash-grafico-principal:hover,
+html[data-tema="escuro"] .dash-grafico-card:hover {
+    border-color: #4c718d;
+}
+
+html[data-tema="escuro"] .dash-grafico-icon {
+    background: #243f54;
+    border-color: #34566e;
+    color: #8bd1ff;
+}
+
+html[data-tema="escuro"] .dashboard-chart-legend {
+    border-color: #30495e;
+}
+
+html[data-tema="escuro"] .dashboard-legend-label {
+    color: #afc5d8;
+}
+
+html[data-tema="escuro"] .dashboard-legend-value {
+    color: #e0efff;
+}
+
+
+/* RODAPÉ */
+
+html[data-tema="escuro"] .dash-footer {
+    border-color: #30495e;
+}
+
+html[data-tema="escuro"] .dash-footer-marca {
+    color: #e0efff;
+}
+
+html[data-tema="escuro"] .dash-footer-marca i {
+    color: #70c4ff;
+}
+
+html[data-tema="escuro"] .dash-footer > p {
+    color: #8fa7b9;
+}
+
+
+/* ============================================================
+   PREFERÊNCIA DE TEXTO AMPLIADO
+   ============================================================ */
+
+html[data-texto="ampliado"] .dashboard-content {
+    font-size: 110%;
+}
+
+html[data-texto="ampliado"] .dash-intro-texto p,
+html[data-texto="ampliado"] .dash-section-description,
+html[data-texto="ampliado"] .dash-indicador-topo span,
+html[data-texto="ampliado"] .dash-indicador > p,
+html[data-texto="ampliado"] .dash-grafico-heading p,
+html[data-texto="ampliado"] .dashboard-legend-label,
+html[data-texto="ampliado"] .dashboard-legend-value,
+html[data-texto="ampliado"] .dash-footer > p {
+    font-size: 110%;
+}
+
+
+/* ============================================================
+   ALTO CONTRASTE
+   ============================================================ */
+
+html[data-contraste="true"] .dashboard-content {
+    color: #102b40;
+}
+
+html[data-contraste="true"] .dash-intro,
+html[data-contraste="true"] .dash-indicador,
+html[data-contraste="true"] .dash-grafico-principal,
+html[data-contraste="true"] .dash-grafico-card {
+    border: 2px solid #005386;
+}
+
+html[data-contraste="true"] .dash-intro-texto p,
+html[data-contraste="true"] .dash-section-description,
+html[data-contraste="true"] .dash-indicador-topo span,
+html[data-contraste="true"] .dash-indicador > p,
+html[data-contraste="true"] .dash-grafico-heading p,
+html[data-contraste="true"] .dashboard-legend-label {
+    color: #38566c;
+}
+
+html[data-tema="escuro"][data-contraste="true"] .dashboard-content {
+    color: #ffffff;
+}
+
+html[data-tema="escuro"][data-contraste="true"] .dash-intro,
+html[data-tema="escuro"][data-contraste="true"] .dash-indicador,
+html[data-tema="escuro"][data-contraste="true"] .dash-grafico-principal,
+html[data-tema="escuro"][data-contraste="true"] .dash-grafico-card {
+    border: 2px solid #8bd1ff;
+}
+
+html[data-tema="escuro"][data-contraste="true"] .dash-intro-texto p,
+html[data-tema="escuro"][data-contraste="true"] .dash-section-description,
+html[data-tema="escuro"][data-contraste="true"] .dash-indicador-topo span,
+html[data-tema="escuro"][data-contraste="true"] .dash-indicador > p,
+html[data-tema="escuro"][data-contraste="true"] .dash-grafico-heading p,
+html[data-tema="escuro"][data-contraste="true"] .dashboard-legend-label {
+    color: #e0efff;
+}
+
+
+/* ============================================================
+   MOVIMENTO REDUZIDO
+   ============================================================ */
+
+html[data-movimento="true"] .dashboard-content *,
+html[data-movimento="true"] .dashboard-content *::before,
+html[data-movimento="true"] .dashboard-content *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dashboard-content *,
+    .dashboard-content *::before,
+    .dashboard-content *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE — NOTEBOOKS
+   ============================================================ */
+
+@media (max-width: 1200px) {
+
+    .dashboard-content {
+        padding-right: 26px;
+        padding-left: 26px;
+    }
+
+    .dash-indicadores-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dash-intro {
+        gap: 25px;
+    }
+
+    .dash-intro-texto {
+        max-width: 580px;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE — TABLETS
+   ============================================================ */
+
+@media (max-width: 992px) {
+
+    .dashboard-content {
+        padding: 104px 22px 30px;
+    }
+
+    .dash-intro {
+        min-height: 210px;
+        padding: 30px;
+    }
+
+    .dash-intro-texto h1 {
+        font-size: 31px;
+    }
+
+    .dash-graficos-secundarios {
+        gap: 13px;
+    }
+
+    .dash-grafico-card {
+        padding: 19px;
+    }
+
+    .dash-grafico-area-grande {
+        height: 270px;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE — TABLETS MENORES
+   ============================================================ */
+
+@media (max-width: 760px) {
+
+    .dash-intro {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 25px;
+        padding: 28px;
+    }
+
+    .dash-intro-acoes {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .dash-intro-texto {
+        max-width: 100%;
+    }
+
+    .dash-intro-texto h1 {
+        font-size: 29px;
+    }
+
+    .dash-section-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .dash-section-description {
+        text-align: left;
+    }
+
+    .dash-graficos-secundarios {
+        grid-template-columns: 1fr;
+    }
+
+    .dash-grafico-card .dash-grafico-area {
+        height: 250px;
+    }
+
+    .dash-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .dash-footer > p {
+        text-align: left;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE — CELULARES
+   ============================================================ */
+
+@media (max-width: 620px) {
+
+    .dashboard-content {
+        padding: 94px 17px 25px;
+    }
+
+    .dash-intro {
+        min-height: auto;
+        padding: 25px 22px;
+        border-radius: 11px 23px 11px 23px;
+    }
+
+    .dash-intro-texto h1 {
+        font-size: 26px;
+    }
+
+    .dash-intro-texto p {
+        font-size: 11px;
+    }
+
+    .dash-indicadores-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 11px;
+    }
+
+    .dash-indicador {
+        min-height: 140px;
+        padding: 16px;
+    }
+
+    .dash-indicador > strong {
+        font-size: 25px;
+    }
+
+    .dash-indicador-topo span {
+        font-size: 9px;
+    }
+
+    .dash-indicador-topo i {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .dash-grafico-principal {
+        padding: 20px 17px;
+    }
+
+    .dash-grafico-area-grande {
+        height: 235px;
+    }
+
+    .dash-grafico-card {
+        padding: 18px;
+    }
+
+    .dash-grafico-card .dash-grafico-area {
+        height: 225px;
+    }
+
+    .dashboard-chart-legend {
+        gap: 9px 13px;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE — CELULARES PEQUENOS
+   ============================================================ */
+
+@media (max-width: 420px) {
+
+    .dashboard-content {
+        padding-right: 13px;
+        padding-left: 13px;
+    }
+
+    .dash-intro {
+        padding: 22px 18px;
+    }
+
+    .dash-intro-texto h1 {
+        font-size: 23px;
+    }
+
+    .dash-eyebrow {
+        font-size: 9px;
+    }
+
+    .dash-indicadores-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dash-indicador {
+        min-height: 125px;
+    }
+
+    .dash-section-title h2 {
+        font-size: 18px;
+    }
+
+    .dash-periodo {
+        font-size: 8px;
+    }
+
+    .dash-grafico-heading h3 {
+        font-size: 13px;
+    }
+
+    .dash-grafico-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .dash-grafico-area-grande {
+        height: 210px;
+    }
+
+    .dash-grafico-card .dash-grafico-area {
+        height: 205px;
+    }
+
+    .dash-footer > p {
+        font-size: 8px;
+    }
+
+}

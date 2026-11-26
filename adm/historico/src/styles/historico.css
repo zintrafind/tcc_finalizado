@@ -1,0 +1,776 @@
+/* ============================================================
+   HISTÓRICO
+   ============================================================ */
+
+.historico-conteudo {
+    width: 100%;
+    min-height: 100vh;
+
+    padding:
+        108px
+        32px
+        42px;
+
+    background: var(--fundo);
+
+    color: var(--texto);
+}
+
+
+/* ============================================================
+   BANNER
+   ============================================================ */
+
+.historico-banner {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    min-height: 190px;
+
+    margin-bottom: 30px;
+
+    padding: 34px 38px;
+
+    overflow: hidden;
+
+    border: 1px solid #dcebf5;
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            115deg,
+            #ffffff 0%,
+            #f5fbff 55%,
+            #e3f4ff 100%
+        );
+
+    box-shadow:
+        0 6px 24px rgba(0, 83, 134, 0.06);
+}
+
+
+.historico-banner::before {
+    content: "";
+
+    position: absolute;
+
+    top: -120px;
+    right: -60px;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 153, 255, 0.08);
+}
+
+
+.historico-banner-conteudo {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 700px;
+}
+
+
+.historico-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #0099ff;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+.historico-banner h1 {
+    color: #005386;
+
+    font-size:
+        clamp(
+            28px,
+            3vw,
+            38px
+        );
+
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+
+.historico-banner p {
+    max-width: 650px;
+
+    margin-top: 10px;
+
+    color: var(--texto-suave);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   LOGO
+   ============================================================ */
+
+.historico-banner-logo {
+    position: relative;
+
+    z-index: 2;
+
+    width: 105px;
+    height: 105px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.76);
+}
+
+
+.historico-banner-logo img {
+    object-fit: contain;
+}
+
+
+.historico-logo-clara {
+    display: block;
+
+    width: 94px;
+    height: 94px;
+}
+
+
+.historico-logo-escura {
+    display: none;
+
+    width: 76px;
+    height: 76px;
+}
+
+
+/* ============================================================
+   PAINEL
+   ============================================================ */
+
+.historico-painel {
+    overflow: hidden;
+
+    border: 1px solid var(--borda);
+    border-radius: 18px;
+
+    background: var(--cartao);
+
+    box-shadow:
+        0 4px 18px rgba(0, 83, 134, 0.04);
+}
+
+
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
+
+.historico-painel-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid var(--borda);
+}
+
+
+.historico-painel-cabecalho h2 {
+    color: var(--texto);
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+
+.historico-botao {
+    min-height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border-radius: 10px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.historico-botao:not(:disabled):hover {
+    transform: translateY(-1px);
+}
+
+
+.historico-botao-primary {
+    border: 1px solid #005386;
+
+    background: #005386;
+
+    color: #ffffff;
+}
+
+
+.historico-botao-primary:hover {
+    background: #006ca8;
+}
+
+
+.historico-botao-secundario {
+    border: 1px solid var(--borda);
+
+    background: var(--cartao);
+
+    color: var(--texto);
+}
+
+
+.historico-botao-secundario:hover {
+    background: #f1f8fd;
+}
+
+
+/* ============================================================
+   FILTROS
+   ============================================================ */
+
+.historico-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    gap: 14px;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid var(--borda);
+
+    background: #fbfdff;
+}
+
+
+.historico-campo {
+    display: flex;
+    flex: 1 1 160px;
+    flex-direction: column;
+
+    gap: 7px;
+
+    min-width: 0;
+}
+
+
+.historico-campo-busca {
+    flex: 2 1 260px;
+}
+
+
+.historico-campo label {
+    color: var(--texto-suave);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.historico-campo input,
+.historico-campo select {
+    width: 100%;
+    min-height: 44px;
+
+    padding: 10px 12px;
+
+    border: 1px solid var(--borda);
+    border-radius: 9px;
+
+    outline: none;
+
+    background: var(--cartao);
+
+    color: var(--texto);
+
+    font-size: 11px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.historico-campo input:focus,
+.historico-campo select:focus {
+    border-color: #0099ff;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 153, 255, 0.10);
+}
+
+
+.historico-campo input::placeholder {
+    color: #9aabb8;
+}
+
+
+.historico-acoes {
+    display: flex;
+
+    gap: 8px;
+}
+
+
+/* ============================================================
+   CABEÇALHO DA LISTA
+   ============================================================ */
+
+.historico-lista-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 19px 24px;
+
+    border-bottom: 1px solid var(--borda);
+}
+
+
+.historico-lista-cabecalho h3 {
+    color: var(--texto);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+#historico-total,
+#historico-pagina {
+    color: var(--texto-suave);
+
+    font-size: 10px;
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.historico-status {
+    margin: 0;
+
+    padding: 18px 24px;
+
+    color: var(--texto-suave);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+.historico-status:empty,
+.historico-status[hidden] {
+    display: none;
+}
+
+
+.historico-status[data-erro="true"] {
+    color: #c9564c;
+}
+
+
+/* ============================================================
+   LISTAGEM
+   ============================================================ */
+
+.historico-lista {
+    width: 100%;
+}
+
+
+.historico-item {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding: 19px 24px;
+
+    transition:
+        background-color 0.2s ease;
+}
+
+
+.historico-item + .historico-item {
+    border-top: 1px solid var(--borda);
+}
+
+
+.historico-item:hover {
+    background: #f8fbfd;
+}
+
+
+/* ============================================================
+   ÍCONE
+   ============================================================ */
+
+.historico-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 43px;
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 12px;
+
+    background: #eaf6ff;
+
+    color: #005386;
+
+    font-size: 15px;
+}
+
+
+/* ============================================================
+   CONTEÚDO
+   ============================================================ */
+
+.historico-item-corpo {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.historico-item-topo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.historico-item h3 {
+    color: var(--texto);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.historico-item time {
+    color: var(--texto-suave);
+
+    font-size: 9px;
+
+    white-space: nowrap;
+}
+
+
+.historico-item p {
+    margin-top: 5px;
+
+    color: var(--texto);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+
+.historico-item .historico-descricao {
+    color: var(--texto-suave);
+}
+
+
+/* ============================================================
+   PAGINAÇÃO
+   ============================================================ */
+
+.historico-paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+
+    padding: 19px 20px;
+
+    border-top: 1px solid var(--borda);
+}
+
+
+/* ============================================================
+   TEMA ESCURO
+   ============================================================ */
+
+html[data-tema="escuro"] .historico-conteudo {
+    background: #101f2c;
+}
+
+
+html[data-tema="escuro"] .historico-banner {
+    background:
+        linear-gradient(
+            115deg,
+            #192d3e 0%,
+            #1b3245 55%,
+            #203b50 100%
+        );
+
+    border-color: #30495e;
+}
+
+
+html[data-tema="escuro"] .historico-banner h1,
+html[data-tema="escuro"] .historico-painel-cabecalho h2,
+html[data-tema="escuro"] .historico-lista-cabecalho h3,
+html[data-tema="escuro"] .historico-item h3,
+html[data-tema="escuro"] .historico-item p {
+    color: #e0efff;
+}
+
+
+html[data-tema="escuro"] .historico-label {
+    color: #70c4ff;
+}
+
+
+html[data-tema="escuro"] .historico-banner-logo {
+    background:
+        rgba(0, 92, 138, 0.38);
+
+    border:
+        1px solid rgba(112, 196, 255, 0.14);
+}
+
+
+html[data-tema="escuro"] .historico-logo-clara {
+    display: none;
+}
+
+
+html[data-tema="escuro"] .historico-logo-escura {
+    display: block;
+}
+
+
+html[data-tema="escuro"] .historico-filtros {
+    background: #172a3a;
+
+    border-color: #30495e;
+}
+
+
+html[data-tema="escuro"] .historico-campo input,
+html[data-tema="escuro"] .historico-campo select {
+    background: #142635;
+
+    border-color: #30495e;
+
+    color: #e0efff;
+}
+
+
+html[data-tema="escuro"] .historico-botao-secundario {
+    background: #192d3e;
+
+    border-color: #30495e;
+
+    color: #e0efff;
+}
+
+
+html[data-tema="escuro"] .historico-botao-secundario:hover {
+    background: #243f54;
+}
+
+
+html[data-tema="escuro"] .historico-botao-primary {
+    background: #119dff;
+
+    border-color: #119dff;
+}
+
+
+html[data-tema="escuro"] .historico-botao-primary:hover {
+    background: #35adff;
+
+    border-color: #35adff;
+}
+
+
+html[data-tema="escuro"] .historico-item:hover {
+    background: #203a4e;
+}
+
+
+html[data-tema="escuro"] .historico-icone {
+    background: #243f54;
+
+    color: #8bd1ff;
+}
+
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+    .historico-acoes {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .historico-conteudo {
+        padding:
+            100px
+            18px
+            30px;
+    }
+
+
+    .historico-banner {
+        min-height: auto;
+
+        padding: 27px;
+    }
+
+
+    .historico-banner-logo {
+        display: none;
+    }
+
+
+    .historico-painel-cabecalho {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .historico-filtros {
+        padding: 18px;
+    }
+
+
+    .historico-campo {
+        flex-basis: 100%;
+    }
+
+
+    .historico-acoes {
+        flex-direction: column;
+    }
+
+
+    .historico-acoes .historico-botao {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .historico-conteudo {
+        padding:
+            90px
+            14px
+            24px;
+    }
+
+
+    .historico-banner {
+        padding: 23px 20px;
+
+        border-radius: 16px;
+    }
+
+
+    .historico-banner h1 {
+        font-size: 27px;
+    }
+
+
+    .historico-item,
+    .historico-lista-cabecalho {
+        padding:
+            17px
+            16px;
+    }
+
+
+    .historico-paginacao {
+        gap: 8px;
+
+        padding:
+            16px
+            8px;
+    }
+
+
+    .historico-paginacao .historico-botao {
+        padding:
+            9px
+            11px;
+    }
+
+}

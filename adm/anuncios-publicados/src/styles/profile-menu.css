@@ -1,0 +1,1170 @@
+/* ============================================================
+   PERFIL — PADRÃO GERAL DO ADMINISTRADOR
+   Compatível com:
+   - profile-menu-container / profile-details
+   - profile-container / profile-button
+   ============================================================ */
+
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+
+.profile-menu-container,
+.profile-container {
+    position: relative;
+    flex-shrink: 0;
+}
+
+
+/* ============================================================
+   BOTÃO PRINCIPAL
+   ============================================================ */
+
+.profile-details,
+.profile-button {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    min-height: 46px;
+
+    padding:
+        5px
+        11px
+        5px
+        6px;
+
+    border: 1px solid #dfe9f1;
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    color: #163b56;
+
+    font-family: "Poppins", sans-serif;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 2px 8px
+        rgba(0, 83, 134, 0.025);
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.profile-details:hover,
+.profile-button:hover {
+    background: #f7fbfe;
+
+    border-color: #c8dfef;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0, 83, 134, 0.07);
+}
+
+
+/* ============================================================
+   AVATAR
+   ============================================================ */
+
+.profile-avatar {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #e4f8ff;
+
+    color: #005386;
+}
+
+
+.profile-avatar i {
+    font-size: 15px;
+}
+
+
+.profile-avatar img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ============================================================
+   INFORMAÇÕES
+   ============================================================ */
+
+.profile-user-info,
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+
+    line-height: 1.25;
+}
+
+
+.profile-user-info strong,
+.profile-info strong {
+    max-width: 140px;
+
+    overflow: hidden;
+
+    color: #163b56;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.profile-user-info small,
+.profile-info small {
+    margin-top: 2px;
+
+    color: #8495a4;
+
+    font-size: 8px;
+    font-weight: 500;
+}
+
+
+/* ============================================================
+   SETA
+   ============================================================ */
+
+.profile-chevron {
+    color: #8396a6;
+
+    font-size: 10px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.profile-details[aria-expanded="true"]
+.profile-chevron,
+
+.profile-button[aria-expanded="true"]
+.profile-chevron {
+    transform: rotate(180deg);
+}
+
+
+/* ============================================================
+   DROPDOWN
+   ============================================================ */
+
+.profile-dropdown[hidden],
+.profile-menu[hidden] {
+    display: none !important;
+}
+
+
+.profile-dropdown,
+.profile-menu {
+    position: absolute;
+
+    top: calc(100% + 10px);
+    right: 0;
+
+    width: 250px;
+
+    max-width:
+        calc(100vw - 30px);
+
+    padding: 8px;
+
+    border: 1px solid #e0eaf2;
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 14px 38px
+        rgba(0, 53, 86, 0.14);
+
+    z-index: 1200;
+}
+
+
+/* ============================================================
+   CABEÇALHO NOVO
+   ============================================================ */
+
+.profile-dropdown-header {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px;
+
+    margin-bottom: 5px;
+
+    border-bottom:
+        1px solid
+        #edf2f7;
+}
+
+
+.profile-dropdown-icon {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: #e4f8ff;
+
+    color: #005386;
+}
+
+
+.profile-dropdown-icon i {
+    font-size: 14px;
+}
+
+
+.profile-dropdown-header > div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.profile-dropdown-header strong {
+    color: #163b56;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.profile-dropdown-header span {
+    margin-top: 2px;
+
+    color: #7d91a1;
+
+    font-size: 8px;
+}
+
+
+/* ============================================================
+   CABEÇALHO ANTIGO
+   Anúncios / Denúncias
+   ============================================================ */
+
+.profile-heading {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+
+    padding:
+        10px
+        10px
+        12px;
+
+    margin-bottom: 5px;
+
+    border-bottom:
+        1px solid
+        #edf2f7;
+}
+
+
+.profile-heading strong {
+    color: #163b56;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.profile-heading small {
+    color: #7d91a1;
+
+    font-size: 8px;
+}
+
+
+/* ============================================================
+   ITENS — PADRÃO NOVO
+   ============================================================ */
+
+.profile-menu-item {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    width: 100%;
+    min-height: 42px;
+
+    padding: 10px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #496579;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-align: left;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.profile-menu-item:hover,
+.profile-menu-item.active {
+    background: #f1f8fd;
+
+    color: #005386;
+}
+
+
+.profile-menu-item > i {
+    width: 20px;
+
+    color: #71899a;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+.profile-menu-item:hover > i,
+.profile-menu-item.active > i {
+    color: #0099ff;
+}
+
+
+/* ============================================================
+   ITENS — HTML ANTIGO
+   ============================================================ */
+
+.profile-menu > a,
+.profile-menu > button {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    width: 100%;
+    min-height: 42px;
+
+    padding: 10px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #496579;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-align: left;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.profile-menu > a:hover,
+.profile-menu > button:hover {
+    background: #f1f8fd;
+
+    color: #005386;
+}
+
+
+.profile-menu > a > i,
+.profile-menu > button > i {
+    width: 20px;
+
+    color: #71899a;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+.profile-menu > a:hover > i,
+.profile-menu > button:hover > i {
+    color: #0099ff;
+}
+
+
+/* ============================================================
+   SETA APARÊNCIA
+   ============================================================ */
+
+.menu-seta {
+    margin-left: auto;
+
+    color: #8495a4;
+
+    font-size: 9px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+#btn-aparencia[aria-expanded="true"]
+.menu-seta {
+    transform: rotate(180deg);
+}
+
+
+/* ============================================================
+   APARÊNCIA — PADRÃO NOVO
+   ============================================================ */
+
+.appearance-options {
+    margin:
+        3px
+        0
+        6px;
+
+    padding:
+        10px;
+
+    border-radius: 9px;
+
+    background: #f7fafc;
+}
+
+
+.appearance-options label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #7c8f9f;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+.appearance-options select {
+    width: 100%;
+    height: 38px;
+
+    padding:
+        0
+        10px;
+
+    border: 1px solid #d5e3ed;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #163b56;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+
+.appearance-options select:focus {
+    border-color: #0099ff;
+
+    box-shadow:
+        0
+        0
+        0
+        3px
+        rgba(0, 153, 255, 0.10);
+}
+
+
+/* ============================================================
+   APARÊNCIA — PADRÃO ANTIGO
+   Anúncios / Denúncias
+   ============================================================ */
+
+.theme-label {
+    display: block;
+
+    margin:
+        5px
+        10px
+        6px;
+
+    color: #7c8f9f;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+.profile-menu > select {
+    width:
+        calc(100% - 20px);
+
+    height: 38px;
+
+    margin:
+        0
+        10px
+        7px;
+
+    padding:
+        0
+        10px;
+
+    border: 1px solid #d5e3ed;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #f7fafc;
+
+    color: #163b56;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+
+.profile-menu > select:hover {
+    border-color: #b9d9ed;
+}
+
+
+.profile-menu > select:focus {
+    border-color: #0099ff;
+
+    box-shadow:
+        0
+        0
+        0
+        3px
+        rgba(0, 153, 255, 0.10);
+}
+
+
+/* ============================================================
+   DIVISÓRIA
+   ============================================================ */
+
+.profile-menu-divider {
+    height: 1px;
+
+    margin:
+        6px
+        4px;
+
+    background: #edf2f7;
+}
+
+
+/* ============================================================
+   SAIR
+   ============================================================ */
+
+.profile-menu-logout,
+.profile-menu .logout-link {
+    color: #b4473e;
+}
+
+
+.profile-menu-logout > i,
+.profile-menu .logout-link > i {
+    color: #c9564c;
+}
+
+
+.profile-menu-logout:hover,
+.profile-menu .logout-link:hover {
+    background: #fff1ef !important;
+
+    color: #a23a33 !important;
+}
+
+
+/* ============================================================
+   MODAL DE LOGOUT — USUÁRIOS
+   ============================================================ */
+
+.logout-modal[hidden] {
+    display: none !important;
+}
+
+
+.logout-modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(7, 22, 33, 0.58);
+
+    backdrop-filter:
+        blur(3px);
+
+    z-index: 9999;
+}
+
+
+.logout-modal-card {
+    position: relative;
+
+    width:
+        min(
+            420px,
+            100%
+        );
+
+    padding:
+        31px
+        28px
+        28px;
+
+    border:
+        1px solid
+        #e0eaf2;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    text-align: center;
+
+    box-shadow:
+        0
+        25px
+        70px
+        rgba(0, 30, 48, 0.28);
+}
+
+
+.logout-modal-close {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #8295a4;
+
+    cursor: pointer;
+}
+
+
+.logout-modal-close:hover {
+    background: #f1f6fa;
+
+    color: #163b56;
+}
+
+
+.logout-modal-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        0
+        auto
+        18px;
+
+    border-radius: 18px;
+
+    background: #fff1ef;
+
+    color: #c9564c;
+
+    font-size: 23px;
+}
+
+
+.logout-modal-card h2 {
+    margin: 0;
+
+    color: #163b56;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.logout-modal-card > p {
+    max-width: 320px;
+
+    margin:
+        10px
+        auto
+        0;
+
+    color: #71879a;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+.logout-modal-status {
+    min-height: 18px;
+}
+
+
+/* ============================================================
+   AÇÕES MODAL
+   ============================================================ */
+
+.logout-modal-actions {
+    display: flex;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+
+.logout-modal-button {
+    min-width: 120px;
+    min-height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding:
+        10px
+        16px;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.logout-modal-cancel {
+    border: 1px solid #dce7ef;
+
+    background: #ffffff;
+
+    color: #526b7f;
+}
+
+
+.logout-modal-cancel:hover {
+    background: #f3f8fb;
+}
+
+
+.logout-modal-confirm {
+    border: 1px solid #c9564c;
+
+    background: #c9564c;
+
+    color: #ffffff;
+}
+
+
+.logout-modal-confirm:hover {
+    border-color: #ad4038;
+
+    background: #ad4038;
+}
+
+
+/* ============================================================
+   TEMA ESCURO — PERFIL
+   ============================================================ */
+
+html[data-tema="escuro"]
+.profile-details,
+
+html[data-tema="escuro"]
+.profile-button,
+
+html[data-tema="escuro"]
+.profile-dropdown,
+
+html[data-tema="escuro"]
+.profile-menu {
+    background: #192d3e;
+
+    border-color: #30495e;
+}
+
+
+html[data-tema="escuro"]
+.profile-details:hover,
+
+html[data-tema="escuro"]
+.profile-button:hover {
+    background: #203a4e;
+
+    border-color: #45657d;
+}
+
+
+html[data-tema="escuro"]
+.profile-avatar,
+
+html[data-tema="escuro"]
+.profile-dropdown-icon {
+    background: #243f54;
+
+    color: #8bd1ff;
+}
+
+
+html[data-tema="escuro"]
+.profile-user-info strong,
+
+html[data-tema="escuro"]
+.profile-info strong,
+
+html[data-tema="escuro"]
+.profile-dropdown-header strong,
+
+html[data-tema="escuro"]
+.profile-heading strong {
+    color: #e0efff;
+}
+
+
+html[data-tema="escuro"]
+.profile-user-info small,
+
+html[data-tema="escuro"]
+.profile-info small,
+
+html[data-tema="escuro"]
+.profile-chevron,
+
+html[data-tema="escuro"]
+.profile-dropdown-header span,
+
+html[data-tema="escuro"]
+.profile-heading small {
+    color: #9fb4c4;
+}
+
+
+html[data-tema="escuro"]
+.profile-dropdown-header,
+
+html[data-tema="escuro"]
+.profile-heading {
+    border-bottom-color: #30495e;
+}
+
+
+/* ============================================================
+   TEMA ESCURO — ITENS
+   ============================================================ */
+
+html[data-tema="escuro"]
+.profile-menu-item,
+
+html[data-tema="escuro"]
+.profile-menu > a,
+
+html[data-tema="escuro"]
+.profile-menu > button {
+    color: #bfd1df;
+}
+
+
+html[data-tema="escuro"]
+.profile-menu-item > i,
+
+html[data-tema="escuro"]
+.profile-menu > a > i,
+
+html[data-tema="escuro"]
+.profile-menu > button > i {
+    color: #9eb4c5;
+}
+
+
+html[data-tema="escuro"]
+.profile-menu-item:hover,
+
+html[data-tema="escuro"]
+.profile-menu-item.active,
+
+html[data-tema="escuro"]
+.profile-menu > a:hover,
+
+html[data-tema="escuro"]
+.profile-menu > button:hover {
+    background: #243f54;
+
+    color: #ffffff;
+}
+
+
+html[data-tema="escuro"]
+.profile-menu-item:hover > i,
+
+html[data-tema="escuro"]
+.profile-menu-item.active > i,
+
+html[data-tema="escuro"]
+.profile-menu > a:hover > i,
+
+html[data-tema="escuro"]
+.profile-menu > button:hover > i {
+    color: #8bd1ff;
+}
+
+
+/* ============================================================
+   TEMA ESCURO — APARÊNCIA
+   ============================================================ */
+
+html[data-tema="escuro"]
+.appearance-options {
+    background: #142635;
+
+    border:
+        1px solid
+        #30495e;
+}
+
+
+html[data-tema="escuro"]
+.appearance-options label,
+
+html[data-tema="escuro"]
+.theme-label {
+    color: #9fb4c4;
+}
+
+
+html[data-tema="escuro"]
+.appearance-options select,
+
+html[data-tema="escuro"]
+.profile-menu > select {
+    background: #142635;
+
+    border-color: #3a566d;
+
+    color: #e0efff;
+}
+
+
+html[data-tema="escuro"]
+.profile-menu-divider {
+    background: #30495e;
+}
+
+
+/* ============================================================
+   TEMA ESCURO — LOGOUT
+   ============================================================ */
+
+html[data-tema="escuro"]
+.profile-menu-logout,
+
+html[data-tema="escuro"]
+.profile-menu .logout-link {
+    color: #f1aaa3;
+}
+
+
+html[data-tema="escuro"]
+.profile-menu-logout > i,
+
+html[data-tema="escuro"]
+.profile-menu .logout-link > i {
+    color: #f1aaa3;
+}
+
+
+html[data-tema="escuro"]
+.profile-menu-logout:hover,
+
+html[data-tema="escuro"]
+.profile-menu .logout-link:hover {
+    background:
+        rgba(222, 91, 82, 0.12) !important;
+
+    color: #f1aaa3 !important;
+}
+
+
+/* ============================================================
+   TEMA ESCURO — MODAL
+   ============================================================ */
+
+html[data-tema="escuro"]
+.logout-modal {
+    background:
+        rgba(3, 13, 21, 0.74);
+}
+
+
+html[data-tema="escuro"]
+.logout-modal-card {
+    background: #192d3e;
+
+    border-color: #30495e;
+}
+
+
+html[data-tema="escuro"]
+.logout-modal-card h2 {
+    color: #e0efff;
+}
+
+
+html[data-tema="escuro"]
+.logout-modal-card > p {
+    color: #afc5d8;
+}
+
+
+html[data-tema="escuro"]
+.logout-modal-icon {
+    background:
+        rgba(201, 86, 76, 0.14);
+
+    color: #ffaaa0;
+}
+
+
+html[data-tema="escuro"]
+.logout-modal-cancel {
+    background: #192d3e;
+
+    border-color: #405d73;
+
+    color: #d8e8f4;
+}
+
+
+html[data-tema="escuro"]
+.logout-modal-cancel:hover {
+    background: #243f54;
+}
+
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+    .profile-user-info,
+    .profile-info {
+        display: none;
+    }
+
+
+    .profile-dropdown,
+    .profile-menu {
+        position: fixed;
+
+        top: 76px;
+        right: 14px;
+
+        width:
+            min(
+                250px,
+                calc(100vw - 28px)
+            );
+    }
+
+}

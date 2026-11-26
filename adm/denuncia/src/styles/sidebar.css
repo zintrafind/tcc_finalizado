@@ -1,0 +1,465 @@
+
+/* ============================================================
+   SIDEBAR PADRONIZADA — PEÇA POR PEÇA
+   Compatível com as classes active e collapsed
+   ============================================================ */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 220px;
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+    border-right: 1px solid #e3edf5;
+    box-shadow: 4px 0 20px rgba(0, 83, 134, 0.04);
+
+    z-index: 1000;
+
+    transition:
+        width 0.35s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+/* Sidebar recolhida */
+.sidebar.active,
+.sidebar.collapsed {
+    width: 60px;
+}
+
+/* ============================================================
+   LOGO E IDENTIDADE
+   ============================================================ */
+
+.sidebar .logo-details {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 112px;
+    flex-shrink: 0;
+
+    padding: 8px 0;
+    overflow: hidden;
+
+    border-bottom: 1px solid #edf3f8;
+}
+
+.sidebar .logo-details .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 92px;
+    width: 92px;
+    min-width: 92px;
+    height: 92px;
+
+    padding: 2px;
+}
+
+.sidebar .logo-details .image img {
+    display: block;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.sidebar .logo-details .image .logo-clara {
+    display: block;
+    width: 88px;
+    height: 88px;
+}
+
+.sidebar .logo-details .image .logo-escura {
+    display: none;
+    width: 66px;
+    height: 66px;
+}
+
+.sidebar .sidebar-brand {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    white-space: nowrap;
+
+    opacity: 1;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.25s ease;
+}
+
+.sidebar .sidebar-brand strong {
+    color: #005386;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.sidebar .sidebar-brand span {
+    margin-top: 4px;
+
+    color: #8195a5;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   NAVEGAÇÃO
+   ============================================================ */
+
+.sidebar .sidebar-navigation {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.sidebar .nav-links {
+    flex: 1;
+    width: 100%;
+
+    margin: 0;
+    padding: 24px 10px 15px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    list-style: none;
+}
+
+.sidebar .nav-links::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar .nav-links::-webkit-scrollbar-thumb {
+    background: #d8e6ef;
+    border-radius: 20px;
+}
+
+.sidebar .nav-links li {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 5px;
+    list-style: none;
+}
+
+.sidebar .nav-links li a {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+
+    overflow: hidden;
+    border-radius: 11px;
+
+    color: #526b7f;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.sidebar .nav-links li a > i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 42px;
+    width: 42px;
+    min-width: 42px;
+
+    color: #607a8e;
+    font-size: 17px;
+}
+
+.sidebar .nav-links .nav-text {
+    margin-left: 5px;
+
+    color: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    white-space: nowrap;
+    opacity: 1;
+
+    transition: opacity 0.2s ease;
+}
+
+.sidebar .nav-links li a:hover {
+    background: #f1f8fd;
+    color: #005386;
+}
+
+.sidebar .nav-links li a:hover > i {
+    color: #0099ff;
+}
+
+/* Página selecionada */
+.sidebar .nav-links li a.pagina-ativa,
+.sidebar .nav-links li a[aria-current="page"] {
+    background: #e4f8ff;
+    color: #005386;
+    box-shadow: inset 3px 0 0 #0099ff;
+}
+
+.sidebar .nav-links li a.pagina-ativa > i,
+.sidebar .nav-links li a[aria-current="page"] > i {
+    color: #0099ff;
+}
+
+.sidebar .nav-links li a.pagina-ativa .nav-text,
+.sidebar .nav-links li a[aria-current="page"] .nav-text {
+    color: #005386;
+    font-weight: 700;
+}
+
+/* ============================================================
+   PARTE INFERIOR
+   ============================================================ */
+
+.sidebar .sidebar-bottom {
+    flex-shrink: 0;
+    width: 100%;
+
+    padding: 12px 10px 18px;
+
+    background: #ffffff;
+    border-top: 1px solid #edf3f8;
+}
+
+.sidebar .sidebar-bottom-link {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+
+    margin-bottom: 5px;
+    padding: 0;
+
+    overflow: hidden;
+
+    border: none;
+    border-radius: 11px;
+
+    background: transparent;
+    color: #526b7f;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.sidebar .sidebar-bottom-link:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar .sidebar-bottom-link > i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 42px;
+    width: 42px;
+    min-width: 42px;
+
+    color: #607a8e;
+    font-size: 17px;
+}
+
+.sidebar .sidebar-bottom-link:hover {
+    background: #f1f8fd;
+    color: #005386;
+}
+
+.sidebar .sidebar-bottom-link:hover > i {
+    color: #0099ff;
+}
+
+.sidebar .sidebar-logout,
+.sidebar .sidebar-logout > i {
+    color: #c9564c;
+}
+
+.sidebar .sidebar-logout:hover {
+    background: #fff1ef;
+    color: #a23a33;
+}
+
+/* ============================================================
+   RECOLHIDA — FUNCIONA COM AS DUAS CLASSES
+   ============================================================ */
+
+.sidebar.active .sidebar-brand,
+.sidebar.collapsed .sidebar-brand {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-10px);
+}
+
+.sidebar.active .logo-details .image,
+.sidebar.collapsed .logo-details .image {
+    flex: 0 0 60px;
+    width: 60px;
+    min-width: 60px;
+}
+
+.sidebar.active .logo-details .image .logo-clara,
+.sidebar.collapsed .logo-details .image .logo-clara {
+    width: 54px;
+    height: 54px;
+}
+
+.sidebar.active .logo-details .image .logo-escura,
+.sidebar.collapsed .logo-details .image .logo-escura {
+    width: 46px;
+    height: 46px;
+}
+
+.sidebar.active .nav-links li a,
+.sidebar.active .sidebar-bottom-link,
+.sidebar.collapsed .nav-links li a,
+.sidebar.collapsed .sidebar-bottom-link {
+    justify-content: center;
+}
+
+.sidebar.active .nav-text,
+.sidebar.collapsed .nav-text {
+    width: 0;
+    margin: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.active .nav-links li a.pagina-ativa,
+.sidebar.active .nav-links li a[aria-current="page"],
+.sidebar.collapsed .nav-links li a.pagina-ativa,
+.sidebar.collapsed .nav-links li a[aria-current="page"] {
+    background: transparent;
+    box-shadow: none;
+}
+
+/* ============================================================
+   TEMA ESCURO
+   ============================================================ */
+
+html[data-tema="escuro"] .sidebar {
+    background: #005c8a;
+    border-right-color: #0c719f;
+    box-shadow: 4px 0 22px rgba(0, 0, 0, 0.20);
+}
+
+html[data-tema="escuro"] .sidebar .logo-details {
+    border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+
+html[data-tema="escuro"] .sidebar .logo-details .image .logo-clara {
+    display: none;
+}
+
+html[data-tema="escuro"] .sidebar .logo-details .image .logo-escura {
+    display: block;
+    width: 66px;
+    height: 66px;
+}
+
+html[data-tema="escuro"] .sidebar .sidebar-brand strong {
+    color: #ffffff;
+}
+
+html[data-tema="escuro"] .sidebar .sidebar-brand span {
+    color: #d5efff;
+}
+
+html[data-tema="escuro"] .sidebar .nav-links li a,
+html[data-tema="escuro"] .sidebar .sidebar-bottom-link {
+    color: #ffffff;
+}
+
+html[data-tema="escuro"] .sidebar .nav-links li a > i,
+html[data-tema="escuro"] .sidebar .sidebar-bottom-link > i {
+    color: #ffffff;
+}
+
+html[data-tema="escuro"] .sidebar .nav-links li a:hover,
+html[data-tema="escuro"] .sidebar .sidebar-bottom-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+html[data-tema="escuro"] .sidebar .nav-links li a.pagina-ativa,
+html[data-tema="escuro"] .sidebar .nav-links li a[aria-current="page"] {
+    background: #119dff;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+html[data-tema="escuro"] .sidebar.active .nav-links li a.pagina-ativa,
+html[data-tema="escuro"] .sidebar.active .nav-links li a[aria-current="page"],
+html[data-tema="escuro"] .sidebar.collapsed .nav-links li a.pagina-ativa,
+html[data-tema="escuro"] .sidebar.collapsed .nav-links li a[aria-current="page"] {
+    background: transparent;
+}
+
+html[data-tema="escuro"] .sidebar.active .nav-links li a.pagina-ativa > i,
+html[data-tema="escuro"] .sidebar.active .nav-links li a[aria-current="page"] > i,
+html[data-tema="escuro"] .sidebar.collapsed .nav-links li a.pagina-ativa > i,
+html[data-tema="escuro"] .sidebar.collapsed .nav-links li a[aria-current="page"] > i {
+    color: #7ed2ff;
+}
+
+html[data-tema="escuro"] .sidebar .sidebar-bottom {
+    background: #005c8a;
+    border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+html[data-tema="escuro"] .sidebar .sidebar-logout,
+html[data-tema="escuro"] .sidebar .sidebar-logout > i {
+    color: #ffffff;
+}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media (max-width: 992px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar .sidebar-brand,
+    .sidebar .nav-text {
+        display: none;
+    }
+
+    .sidebar .logo-details .image {
+        flex: 0 0 60px;
+        width: 60px;
+        min-width: 60px;
+    }
+
+    .sidebar .logo-details .image .logo-clara {
+        width: 54px;
+        height: 54px;
+    }
+
+    .sidebar .logo-details .image .logo-escura {
+        width: 46px;
+        height: 46px;
+    }
+}

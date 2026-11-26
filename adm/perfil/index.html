@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Preferências globais (tema, texto, contraste, animações) -->
+    <script src="../assets/preferencias.js"></script>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Peça por Peça | Perfil</title>
+
+    <link
+        rel="icon"
+        type="image/x-icon"
+        href="src/images/favicon.ico"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    >
+
+
+    <!-- TEMA SALVO -->
+
+    <script>
+
+        (() => {
+
+            const tema =
+                localStorage.getItem(
+                    "adminTema"
+                );
+
+            document.documentElement.dataset.tema =
+                tema === "escuro"
+                    ? "escuro"
+                    : "claro";
+
+        })();
+
+    </script>
+
+
+    <!-- CSS PRINCIPAL -->
+
+    <link
+        rel="stylesheet"
+        href="src/styles/styles.css"
+    >
+
+    <link rel="stylesheet" href="../assets/preferencias.css">
+</head>
+
+
+<body>
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <!-- LOGO -->
+
+        <div class="logo-details">
+
+            <span class="image">
+
+                <img
+                    src="src/images/logo.png"
+                    alt="Peça por Peça"
+                    class="logo-clara"
+                >
+
+                <img
+                    src="src/images/logo-negativa.png"
+                    alt=""
+                    class="logo-escura"
+                    aria-hidden="true"
+                >
+
+            </span>
+
+
+            <div class="sidebar-brand">
+
+                <strong>
+                    Peça por Peça
+                </strong>
+
+                <span>
+                    Administração
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVEGAÇÃO -->
+
+        <nav
+            class="sidebar-navigation"
+            aria-label="Menu administrativo"
+        >
+
+            <ul class="nav-links">
+
+                <li>
+
+                    <a
+                        href="../inicio/index.html"
+                        aria-label="Início"
+                    >
+
+                        <i class="fa-solid fa-house"></i>
+
+                        <span class="nav-text">
+                            Início
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../dashboard/index.html"
+                        aria-label="Dashboard"
+                    >
+
+                        <i class="fa-solid fa-chart-column"></i>
+
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../usuarios-cadastrados/index.html"
+                        aria-label="Usuários"
+                    >
+
+                        <i class="fa-solid fa-users"></i>
+
+                        <span class="nav-text">
+                            Usuários
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../anuncios-publicados/index.html"
+                        aria-label="Anúncios"
+                    >
+
+                        <i class="fa-solid fa-box-open"></i>
+
+                        <span class="nav-text">
+                            Anúncios
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../denuncia/index.html"
+                        aria-label="Denúncias"
+                    >
+
+                        <i class="fa-solid fa-flag"></i>
+
+                        <span class="nav-text">
+                            Denúncias
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../historico/index.html"
+                        aria-label="Histórico"
+                    >
+
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+
+                        <span class="nav-text">
+                            Histórico
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../relatorio/index.html"
+                        aria-label="Relatórios"
+                    >
+
+                        <i class="fa-regular fa-file-lines"></i>
+
+                        <span class="nav-text">
+                            Relatórios
+                        </span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <!-- PARTE INFERIOR -->
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../configuracoes/index.html"
+                    class="sidebar-bottom-link"
+                    aria-label="Configurações"
+                >
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    <span class="nav-text">
+                        Configurações
+                    </span>
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="sidebar-bottom-link sidebar-logout"
+                    id="btn-sair-sidebar"
+                    aria-label="Sair"
+                >
+
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                    <span class="nav-text">
+                        Sair
+                    </span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ============================================================
+         ÁREA PRINCIPAL
+         ============================================================ -->
+
+    <section class="home">
+
+        <!-- ========================================================
+             TOPBAR
+             ======================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="topbar-sidebar-toggle"
+                    id="sidebarToggle"
+                    aria-label="Recolher menu lateral"
+                    aria-controls="sidebar"
+                    aria-expanded="true"
+                >
+
+                    <i
+                        class="fa-solid fa-chevron-left"
+                        id="sidebarToggleIcon"
+                        aria-hidden="true"
+                    ></i>
+
+                </button>
+
+
+                <span class="topbar-label">
+                    Perfil
+                </span>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <!-- DENÚNCIAS -->
+
+                <a
+                    class="icon-button"
+                    href="../denuncia/index.html"
+                    aria-label="Ver denúncias"
+                    title="Ver denúncias"
+                >
+
+                    <i
+                        class="fa-regular fa-bell"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+
+                <!-- =================================================
+                     MENU DO PERFIL
+                     ================================================= -->
+
+                <div class="profile-menu-container">
+
+                    <button
+                        type="button"
+                        class="profile-details"
+                        id="btn-menu-perfil"
+                        aria-expanded="false"
+                        aria-controls="menu-perfil"
+                    >
+
+                        <span class="profile-avatar">
+
+                            <img
+                                src="src/images/avatar1.png"
+                                alt=""
+                                id="avatar-admin-topo"
+                            >
+
+                        </span>
+
+
+                        <span class="profile-user-info">
+
+                            <strong
+                                id="nome-admin-topo"
+                                class="admin-name"
+                            >
+                                Administrador
+                            </strong>
+
+                            <small>
+                                Administrador
+                            </small>
+
+                        </span>
+
+
+                        <i
+                            class="fa-solid fa-angle-down profile-chevron"
+                            aria-hidden="true"
+                        ></i>
+
+                    </button>
+
+
+                    <div
+                        class="profile-dropdown"
+                        id="menu-perfil"
+                        hidden
+                    >
+
+                        <div class="profile-dropdown-header">
+
+                            <span class="profile-dropdown-icon">
+
+                                <i
+                                    class="fa-regular fa-user"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </span>
+
+
+                            <div>
+
+                                <strong>
+                                    Minha conta
+                                </strong>
+
+                                <span>
+                                    Painel administrativo
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="../perfil/index.html"
+                            class="profile-menu-item active"
+                            aria-current="page"
+                        >
+
+                            <i
+                                class="fa-regular fa-user"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>
+                                Perfil
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="../configuracoes/index.html"
+                            class="profile-menu-item"
+                        >
+
+                            <i
+                                class="fa-solid fa-gear"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>
+                                Configurações
+                            </span>
+
+                        </a>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item"
+                            id="btn-aparencia"
+                            aria-expanded="false"
+                            aria-controls="opcoes-aparencia"
+                        >
+
+                            <i
+                                class="fa-regular fa-moon"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>
+                                Aparência
+                            </span>
+
+                            <i
+                                class="fa-solid fa-angle-down menu-seta"
+                                aria-hidden="true"
+                            ></i>
+
+                        </button>
+
+
+                        <div
+                            id="opcoes-aparencia"
+                            class="appearance-options"
+                            hidden
+                        >
+
+                            <label for="tema-admin">
+                                Tema do painel
+                            </label>
+
+
+                            <select id="tema-admin">
+
+                                <option value="claro">
+                                    Claro
+                                </option>
+
+                                <option value="escuro">
+                                    Escuro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="profile-menu-divider"></div>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item profile-menu-logout"
+                            id="btn-sair-perfil"
+                        >
+
+                            <i
+                                class="fa-solid fa-arrow-right-from-bracket"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>
+                                Sair
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================================================
+             CONTEÚDO DO PERFIL
+             ======================================================== -->
+
+        <main class="perfil-page">
+
+            <div class="perfil-container">
+
+                <!-- =================================================
+                     CABEÇALHO
+                     ================================================= -->
+
+                <header class="perfil-heading">
+
+                    <span class="perfil-label">
+                        Minha conta
+                    </span>
+
+
+                    <h1>
+                        Perfil do administrador
+                    </h1>
+
+
+                    <p>
+                        Visualize e altere os dados utilizados
+                        no painel administrativo.
+                    </p>
+
+                </header>
+
+
+                <!-- =================================================
+                     GRID PRINCIPAL
+                     ================================================= -->
+
+                <div class="perfil-grid">
+
+                    <!-- =================================================
+                         RESUMO DO PERFIL
+                         ================================================= -->
+
+                    <aside class="perfil-resumo-card">
+
+                        <!-- BANNER -->
+
+                        <div class="perfil-banner-resumo">
+
+                            <img
+                                id="perfil-banner-preview-resumo"
+                                alt="Banner do administrador"
+                                hidden
+                            >
+
+
+                            <div
+                                class="perfil-banner-placeholder"
+                                id="perfil-banner-placeholder"
+                                aria-hidden="true"
+                            >
+
+                                <i class="fa-regular fa-image"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FOTO -->
+
+                        <div class="perfil-avatar-grande">
+
+                            <img
+                                src="src/images/avatar1.png"
+                                alt="Foto do administrador"
+                                id="perfil-avatar"
+                            >
+
+                        </div>
+
+
+                        <!-- NOME -->
+
+                        <h2 id="perfil-nome-resumo">
+                            Administrador
+                        </h2>
+
+
+                        <!-- EMAIL -->
+
+                        <p id="perfil-email-resumo">
+                            Carregando...
+                        </p>
+
+
+                        <!-- TIPO -->
+
+                        <span class="perfil-badge">
+
+                            <i
+                                class="fa-solid fa-shield-halved"
+                                aria-hidden="true"
+                            ></i>
+
+                            Administrador
+
+                        </span>
+
+
+                        <!-- INFORMAÇÕES -->
+
+                        <div class="perfil-resumo-info">
+
+                            <div>
+
+                                <span>
+                                    ID da conta
+                                </span>
+
+                                <strong id="perfil-id">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Status
+                                </span>
+
+                                <strong id="perfil-status-conta">
+                                    -
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+
+                    <!-- =================================================
+                         FORMULÁRIO
+                         ================================================= -->
+
+                    <section class="perfil-form-card">
+
+                        <!-- CABEÇALHO -->
+
+                        <div class="perfil-card-heading">
+
+                            <div class="perfil-card-icon">
+
+                                <i
+                                    class="fa-regular fa-user"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <h2>
+                                    Informações pessoais
+                                </h2>
+
+
+                                <p>
+                                    Edite os dados e as imagens
+                                    do administrador.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FORMULÁRIO -->
+
+                        <form
+                            id="perfil-form"
+                            novalidate
+                        >
+
+                            <div class="perfil-form-grid">
+
+                                <!-- =====================================
+                                     IMAGENS
+                                     ===================================== -->
+
+                                <div class="perfil-field perfil-field-full">
+
+                                    <label>
+                                        Imagens do perfil
+                                    </label>
+
+
+                                    <div class="perfil-upload-grid">
+
+                                        <!-- FOTO -->
+
+                                        <div class="perfil-upload-card">
+
+                                            <div
+                                                class="perfil-upload-preview perfil-upload-preview-foto"
+                                            >
+
+                                                <img
+                                                    src="src/images/avatar1.png"
+                                                    alt="Pré-visualização da foto de perfil"
+                                                    id="perfil-foto-preview"
+                                                >
+
+                                            </div>
+
+
+                                            <div class="perfil-upload-conteudo">
+
+                                                <div>
+
+                                                    <strong>
+                                                        Foto de perfil
+                                                    </strong>
+
+
+                                                    <p>
+                                                        Escolha uma imagem para representar
+                                                        o administrador.
+                                                    </p>
+
+                                                </div>
+
+
+                                                <span
+                                                    class="perfil-arquivo-nome"
+                                                    id="perfil-foto-nome"
+                                                >
+                                                    Nenhuma nova imagem selecionada
+                                                </span>
+
+
+                                                <div class="perfil-upload-acoes">
+
+                                                    <label
+                                                        for="perfil-foto-input"
+                                                        class="perfil-upload-button"
+                                                    >
+
+                                                        <i class="fa-regular fa-image"></i>
+
+                                                        Escolher foto
+
+                                                    </label>
+
+
+                                                    <button
+                                                        type="button"
+                                                        class="perfil-upload-remover"
+                                                        id="perfil-remover-foto"
+                                                    >
+
+                                                        <i class="fa-solid fa-trash-can"></i>
+
+                                                        Remover
+
+                                                    </button>
+
+                                                </div>
+
+
+                                                <input
+                                                    type="file"
+                                                    id="perfil-foto-input"
+                                                    class="perfil-file-input"
+                                                    accept="image/png,image/jpeg,image/webp"
+                                                >
+
+
+                                                <small>
+                                                    PNG, JPG ou WEBP.
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <!-- BANNER -->
+
+                                        <div class="perfil-upload-card">
+
+                                            <div
+                                                class="perfil-upload-preview perfil-upload-preview-banner"
+                                            >
+
+                                                <img
+                                                    alt="Pré-visualização do banner"
+                                                    id="perfil-banner-preview"
+                                                    hidden
+                                                >
+
+
+                                                <div
+                                                    class="perfil-upload-placeholder"
+                                                    id="perfil-banner-upload-placeholder"
+                                                >
+
+                                                    <i class="fa-regular fa-image"></i>
+
+                                                    <span>
+                                                        Banner
+                                                    </span>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="perfil-upload-conteudo">
+
+                                                <div>
+
+                                                    <strong>
+                                                        Banner
+                                                    </strong>
+
+
+                                                    <p>
+                                                        Adicione uma imagem de capa
+                                                        para o perfil.
+                                                    </p>
+
+                                                </div>
+
+
+                                                <span
+                                                    class="perfil-arquivo-nome"
+                                                    id="perfil-banner-nome"
+                                                >
+                                                    Nenhuma nova imagem selecionada
+                                                </span>
+
+
+                                                <div class="perfil-upload-acoes">
+
+                                                    <label
+                                                        for="perfil-banner-input"
+                                                        class="perfil-upload-button"
+                                                    >
+
+                                                        <i class="fa-regular fa-image"></i>
+
+                                                        Escolher banner
+
+                                                    </label>
+
+
+                                                    <button
+                                                        type="button"
+                                                        class="perfil-upload-remover"
+                                                        id="perfil-remover-banner"
+                                                    >
+
+                                                        <i class="fa-solid fa-trash-can"></i>
+
+                                                        Remover
+
+                                                    </button>
+
+                                                </div>
+
+
+                                                <input
+                                                    type="file"
+                                                    id="perfil-banner-input"
+                                                    class="perfil-file-input"
+                                                    accept="image/png,image/jpeg,image/webp"
+                                                >
+
+
+                                                <small>
+                                                    Recomendado: imagem horizontal.
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- =====================================
+                                     NOME
+                                     ===================================== -->
+
+                                <div class="perfil-field perfil-field-full">
+
+                                    <label for="perfil-nome">
+                                        Nome
+                                    </label>
+
+
+                                    <div class="perfil-input-wrap">
+
+                                        <i
+                                            class="fa-regular fa-user"
+                                            aria-hidden="true"
+                                        ></i>
+
+
+                                        <input
+                                            type="text"
+                                            id="perfil-nome"
+                                            name="nome"
+                                            maxlength="120"
+                                            autocomplete="name"
+                                            placeholder="Nome do administrador"
+                                            required
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- =====================================
+                                     E-MAIL
+                                     ===================================== -->
+
+                                <div class="perfil-field perfil-field-full">
+
+                                    <label for="perfil-email">
+                                        E-mail
+                                    </label>
+
+
+                                    <div class="perfil-input-wrap">
+
+                                        <i
+                                            class="fa-regular fa-envelope"
+                                            aria-hidden="true"
+                                        ></i>
+
+
+                                        <input
+                                            type="email"
+                                            id="perfil-email"
+                                            name="email"
+                                            maxlength="160"
+                                            autocomplete="email"
+                                            placeholder="email@exemplo.com"
+                                            required
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- =====================================
+                                     TIPO
+                                     ===================================== -->
+
+                                <div class="perfil-field">
+
+                                    <label for="perfil-tipo">
+                                        Tipo de conta
+                                    </label>
+
+
+                                    <div class="perfil-input-wrap perfil-readonly">
+
+                                        <i
+                                            class="fa-solid fa-shield-halved"
+                                            aria-hidden="true"
+                                        ></i>
+
+
+                                        <input
+                                            type="text"
+                                            id="perfil-tipo"
+                                            value="Administrador"
+                                            readonly
+                                            aria-readonly="true"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- =====================================
+                                     STATUS
+                                     ===================================== -->
+
+                                <div class="perfil-field">
+
+                                    <label for="perfil-status">
+                                        Status da conta
+                                    </label>
+
+
+                                    <div class="perfil-input-wrap perfil-readonly">
+
+                                        <i
+                                            class="fa-regular fa-circle-check"
+                                            aria-hidden="true"
+                                        ></i>
+
+
+                                        <input
+                                            type="text"
+                                            id="perfil-status"
+                                            value="-"
+                                            readonly
+                                            aria-readonly="true"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- =====================================
+                                     DESCRIÇÃO
+                                     ===================================== -->
+
+                                <div class="perfil-field perfil-field-full">
+
+                                    <label for="perfil-descricao">
+                                        Descrição
+                                    </label>
+
+
+                                    <textarea
+                                        id="perfil-descricao"
+                                        name="descricao"
+                                        rows="5"
+                                        maxlength="500"
+                                        placeholder="Adicione uma breve descrição sobre o administrador."
+                                    ></textarea>
+
+
+                                    <div class="perfil-textarea-footer">
+
+                                        <small>
+                                            Campo opcional.
+                                        </small>
+
+
+                                        <small id="perfil-contador">
+                                            0/500
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- =========================================
+                                 RODAPÉ
+                                 ========================================= -->
+
+                            <div class="perfil-footer">
+
+                                <p
+                                    class="perfil-status"
+                                    id="perfil-mensagem"
+                                    role="status"
+                                    aria-live="polite"
+                                ></p>
+
+
+                                <div class="perfil-actions">
+
+                                    <button
+                                        type="button"
+                                        class="perfil-btn perfil-btn-secondary"
+                                        id="perfil-cancelar"
+                                    >
+                                        Cancelar alterações
+                                    </button>
+
+
+                                    <button
+                                        type="submit"
+                                        class="perfil-btn perfil-btn-primary"
+                                        id="perfil-salvar"
+                                    >
+
+                                        <i
+                                            class="fa-regular fa-floppy-disk"
+                                            aria-hidden="true"
+                                        ></i>
+
+                                        Salvar alterações
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- ============================================================
+         MODAL DE SAÍDA
+         ============================================================ -->
+
+    <div
+        class="logout-modal"
+        id="logout-modal"
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="logout-title"
+    >
+
+        <div class="logout-modal-card">
+
+            <button
+                type="button"
+                class="logout-modal-close"
+                id="logout-fechar"
+                aria-label="Fechar"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <div class="logout-modal-icon">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </div>
+
+
+            <h2 id="logout-title">
+                Deseja sair?
+            </h2>
+
+
+            <p>
+                Você precisará entrar novamente para acessar
+                o painel administrativo.
+            </p>
+
+
+            <p
+                class="logout-modal-status"
+                id="logout-status"
+                role="status"
+                aria-live="polite"
+            ></p>
+
+
+            <div class="logout-modal-actions">
+
+                <button
+                    type="button"
+                    class="logout-modal-button logout-modal-cancel"
+                    id="logout-cancelar"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="logout-modal-button logout-modal-confirm"
+                    id="logout-confirmar"
+                >
+
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                    Sim, sair
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         VLIBRAS
+         ============================================================ -->
+
+    <div
+        vw
+        class="enabled"
+    >
+
+        <div
+            vw-access-button
+            class="active"
+        ></div>
+
+
+        <div vw-plugin-wrapper>
+
+            <div class="vw-plugin-top-wrapper"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+
+    <script>
+
+        if (
+            window.VLibras
+        ) {
+
+            new window.VLibras.Widget(
+                "https://vlibras.gov.br/app"
+            );
+
+        }
+
+    </script>
+
+
+    <!-- ============================================================
+         JAVASCRIPT
+         ============================================================ -->
+
+    <script src="src/javascript/script.js"></script>
+
+    <script src="src/javascript/profile-menu.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Preferências globais (tema, texto, contraste, animações) -->
+    <script src="../assets/preferencias.js"></script>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Peça por Peça | Anúncios publicados</title>
+
+    <link
+        rel="icon"
+        href="src/images/favicon.ico"
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    >
+
+
+    <!-- TEMA -->
+
+    <script>
+        (() => {
+            document.documentElement.dataset.tema =
+                localStorage.getItem("adminTema") === "escuro"
+                    ? "escuro"
+                    : "claro";
+        })();
+    </script>
+
+
+    <!-- CSS GERAL DA PÁGINA -->
+
+    <link
+        rel="stylesheet"
+        href="src/styles/styles.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="src/styles/sidebar.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="src/styles/home.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="src/styles/profile-menu.css"
+    >
+
+    <link
+    rel="stylesheet"
+    href="src/styles/notificacoes.css"
+>
+
+    <link rel="stylesheet" href="../assets/preferencias.css">
+</head>
+
+
+<body>
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="logo-details">
+
+            <span class="image">
+
+                <img
+                    src="src/images/logo.png"
+                    alt="Peça por Peça"
+                    class="logo-clara"
+                >
+
+                <img
+                    src="src/images/Logo-negativa.png"
+                    alt=""
+                    class="logo-escura"
+                    aria-hidden="true"
+                >
+
+            </span>
+
+
+            <div class="sidebar-brand">
+
+                <strong>
+                    Peça por Peça
+                </strong>
+
+                <span>
+                    Administração
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav
+            class="sidebar-navigation"
+            aria-label="Menu administrativo"
+        >
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="../inicio/index.html">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="nav-text">Início</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../dashboard/index.html">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../usuarios-cadastrados/index.html">
+                        <i class="fa-solid fa-users"></i>
+                        <span class="nav-text">Usuários</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="../anuncios-publicados/index.html"
+                        class="pagina-ativa"
+                        aria-current="page"
+                    >
+                        <i class="fa-solid fa-box-open"></i>
+                        <span class="nav-text">Anúncios</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../denuncia/index.html">
+                        <i class="fa-solid fa-flag"></i>
+                        <span class="nav-text">Denúncias</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../historico/index.html">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span class="nav-text">Histórico</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../relatorio/index.html">
+                        <i class="fa-regular fa-file-lines"></i>
+                        <span class="nav-text">Relatórios</span>
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../configuracoes/index.html"
+                    class="sidebar-bottom-link"
+                >
+                    <i class="fa-solid fa-gear"></i>
+                    <span class="nav-text">Configurações</span>
+                </a>
+
+
+                <button
+                    type="button"
+                    class="sidebar-bottom-link sidebar-logout"
+                    data-logout
+                >
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="nav-text">Sair</span>
+                </button>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ============================================================
+         PRINCIPAL
+         ============================================================ -->
+
+    <section class="home">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="topbar-sidebar-toggle sidebar-toggle"
+                    id="sidebarToggle"
+                    aria-label="Recolher menu lateral"
+                    aria-controls="sidebar"
+                    aria-expanded="true"
+                >
+
+                    <i
+                        class="fa-solid fa-chevron-left"
+                        id="sidebarToggleIcon"
+                    ></i>
+
+                </button>
+
+
+                <span class="topbar-label">
+                    Painel administrativo
+                </span>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+              <!-- NOTIFICAÇÕES -->
+
+<div id="notificacoes-container" class="notificacoes-container">
+
+    <button
+        type="button"
+        class="icon-button notificacoes-botao"
+        id="btn-notificacoes"
+        aria-label="Notificações"
+        aria-expanded="false"
+        aria-controls="painel-notificacoes"
+        title="Notificações"
+    >
+        <i class="fa-regular fa-bell"></i>
+        <span
+            id="notificacoes-contador"
+            class="notificacoes-contador"
+            hidden
+        >0</span>
+    </button>
+
+    <section
+        id="painel-notificacoes"
+        class="notificacoes-painel"
+        aria-label="Notificações recebidas"
+        hidden
+    >
+
+        <header class="notificacoes-cabecalho">
+
+            <div>
+                <h2>Notificações</h2>
+                <p>Denúncias recebidas na plataforma</p>
+            </div>
+
+            <button
+                type="button"
+                class="notificacoes-fechar"
+                id="btn-fechar-notificacoes"
+                aria-label="Fechar notificações"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </header>
+
+        <p
+            class="notificacoes-status"
+            id="notificacoes-status"
+            role="status"
+            aria-live="polite"
+            hidden
+        ></p>
+
+        <div
+            class="notificacoes-lista"
+            id="notificacoes-lista"
+        ></div>
+
+        <footer class="notificacoes-rodape">
+
+            <span>Atualizações automáticas</span>
+
+            <button
+                type="button"
+                id="btn-atualizar-notificacoes"
+            >
+                <i class="fa-solid fa-rotate"></i>
+                Atualizar
+            </button>
+
+        </footer>
+
+    </section>
+
+</div>
+
+
+                <!-- PERFIL -->
+
+                <div
+                    class="profile-menu-container profile-container"
+                    id="profileContainer"
+                >
+
+                    <button
+                        type="button"
+                        class="profile-details profile-button"
+                        id="profileButton"
+                        aria-expanded="false"
+                        aria-controls="profileMenu"
+                    >
+
+                        <span class="profile-avatar">
+                            <i class="fa-regular fa-user"></i>
+                        </span>
+
+
+                        <span class="profile-user-info profile-info">
+
+                            <strong
+                                id="adminName"
+                                class="admin-name"
+                            >
+                                Administrador
+                            </strong>
+
+                            <small>
+                                Administrador
+                            </small>
+
+                        </span>
+
+
+                        <i
+                            class="fa-solid fa-angle-down profile-chevron"
+                        ></i>
+
+                    </button>
+
+
+                    <div
+                        class="profile-dropdown profile-menu"
+                        id="profileMenu"
+                        hidden
+                    >
+
+                        <div class="profile-dropdown-header">
+
+                            <span class="profile-dropdown-icon">
+                                <i class="fa-regular fa-user"></i>
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Minha conta
+                                </strong>
+
+                                <span>
+                                    Painel administrativo
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="../perfil/index.html"
+                            class="profile-menu-item"
+                        >
+                            <i class="fa-regular fa-user"></i>
+                            <span>Perfil</span>
+                        </a>
+
+
+                        <a
+                            href="../configuracoes/index.html"
+                            class="profile-menu-item"
+                        >
+                            <i class="fa-solid fa-gear"></i>
+                            <span>Configurações</span>
+                        </a>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item"
+                            id="btn-aparencia"
+                            aria-expanded="false"
+                            aria-controls="opcoes-aparencia"
+                        >
+
+                            <i class="fa-regular fa-moon"></i>
+
+                            <span>
+                                Aparência
+                            </span>
+
+                            <i
+                                class="fa-solid fa-angle-down menu-seta"
+                            ></i>
+
+                        </button>
+
+
+                        <div
+                            class="appearance-options"
+                            id="opcoes-aparencia"
+                            hidden
+                        >
+
+                            <label for="themeSelect">
+                                Tema do painel
+                            </label>
+
+                            <select id="themeSelect">
+
+                                <option value="claro">
+                                    Claro
+                                </option>
+
+                                <option value="escuro">
+                                    Escuro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="profile-menu-divider"></div>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item profile-menu-logout"
+                            data-logout
+                        >
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>Sair</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================================================
+             CONTEÚDO
+             ======================================================== -->
+
+        <main class="page-content">
+
+            <!-- BANNER -->
+
+            <section class="welcome-banner">
+
+                <div class="banner-content">
+
+                    <span class="eyebrow">
+                        Gerenciamento
+                    </span>
+
+
+                    <h1>
+                        Anúncios publicados
+                    </h1>
+
+
+                    <p>
+                        Acompanhe os anúncios da plataforma,
+                        consulte os detalhes e gerencie sua disponibilidade.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="banner-logo"
+                    aria-hidden="true"
+                >
+
+                    <img
+                        src="src/images/logo.png"
+                        alt=""
+                        class="logo-clara"
+                    >
+
+                    <img
+                        src="src/images/Logo-negativa.png"
+                        alt=""
+                        class="logo-escura"
+                    >
+
+                </div>
+
+            </section>
+
+            <!-- ============================================================
+     MODAL DE DETALHES DA DENÚNCIA
+     ============================================================ -->
+
+<dialog
+    class="modal-denuncia"
+    id="modal-denuncia"
+    aria-labelledby="modal-denuncia-titulo"
+>
+
+    <header class="modal-denuncia-cabecalho">
+
+        <h2 id="modal-denuncia-titulo">
+            Detalhes da denúncia
+        </h2>
+
+        <button
+            type="button"
+            class="modal-denuncia-fechar"
+            id="btn-fechar-denuncia"
+            aria-label="Fechar detalhes"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+    </header>
+
+    <p
+        class="modal-denuncia-status"
+        id="modal-denuncia-status"
+        role="status"
+        aria-live="polite"
+    ></p>
+
+    <div
+        class="modal-denuncia-conteudo"
+        id="modal-denuncia-conteudo"
+        hidden
+    >
+
+        <dl
+            class="modal-denuncia-dados"
+            id="detailsData"
+        >
+
+            <div>
+                <dt>Número da denúncia</dt>
+                <dd id="denuncia-numero"></dd>
+            </div>
+
+            <div>
+                <dt>Usuário denunciado</dt>
+                <dd id="denuncia-usuario"></dd>
+            </div>
+
+            <div>
+                <dt>Data</dt>
+                <dd id="denuncia-data"></dd>
+            </div>
+
+            <div>
+                <dt>Status</dt>
+                <dd id="denuncia-status"></dd>
+            </div>
+
+            <div>
+                <dt>Motivo</dt>
+                <dd id="denuncia-motivo"></dd>
+            </div>
+
+        </dl>
+
+        <section class="modal-denuncia-secao">
+
+            <h3>Descrição</h3>
+
+            <p
+                class="modal-denuncia-descricao"
+                id="denuncia-descricao"
+            ></p>
+
+        </section>
+
+        <section class="modal-denuncia-secao">
+
+            <h3>Imagens anexadas</h3>
+
+            <p
+                id="denuncia-imagens-status"
+                role="status"
+                aria-live="polite"
+            >
+                Carregando imagens...
+            </p>
+
+            <div
+                class="modal-denuncia-imagens"
+                id="denuncia-imagens"
+            ></div>
+
+        </section>
+
+        <footer class="modal-denuncia-rodape">
+
+            <span id="denuncia-leitura"></span>
+
+            <button
+                type="button"
+                id="btn-denuncia-marcar-lida"
+            >
+                Marcar como lida
+            </button>
+
+        </footer>
+
+    </div>
+
+</dialog>
+
+
+<!-- AMPLIAÇÃO DAS IMAGENS -->
+
+<div
+    class="modal-denuncia-ampliacao"
+    id="denuncia-ampliacao"
+    hidden
+>
+
+    <button
+        type="button"
+        class="modal-denuncia-fechar-ampliacao"
+        id="btn-fechar-ampliacao"
+        aria-label="Fechar imagem"
+    >
+        <i class="fa-solid fa-xmark"></i>
+        Fechar
+    </button>
+
+    <img
+        id="denuncia-imagem-ampliada"
+        src=""
+        alt="Imagem ampliada da denúncia"
+    >
+
+</div>
+
+
+            <!-- GERENCIAMENTO -->
+
+            <section aria-labelledby="productsTitle">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            Anúncios da plataforma
+                        </span>
+
+
+                        <h2 id="productsTitle">
+                            Gerenciar anúncios
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="button button-secondary"
+                        id="refreshButton"
+                    >
+
+                        <i class="fa-solid fa-rotate"></i>
+
+                        Atualizar
+
+                    </button>
+
+                </div>
+
+
+                <!-- PESQUISA -->
+
+                <form
+                    class="search-form"
+                    id="searchForm"
+                    role="search"
+                >
+
+                    <label for="searchInput">
+                        Pesquisar anúncios
+                    </label>
+
+
+                    <div class="search-box">
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Busque por peça, anunciante, categoria ou status"
+                        >
+
+
+                        <button
+                            type="submit"
+                            aria-label="Pesquisar"
+                        >
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <p
+                    class="page-status"
+                    id="pageStatus"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+
+                <div
+                    class="products-grid"
+                    id="productsList"
+                    aria-busy="true"
+                ></div>
+
+            </section>
+
+        </main>
+
+    </section>
+
+
+    <!-- ============================================================
+         DETALHES
+         ============================================================ -->
+
+    <dialog
+        class="user-dialog"
+        id="detailsDialog"
+        aria-labelledby="detailsTitle"
+    >
+
+        <div class="dialog-header">
+
+            <h2 id="detailsTitle">
+                Detalhes do anúncio
+            </h2>
+
+
+            <button
+                type="button"
+                class="close-button"
+                data-close="detailsDialog"
+                aria-label="Fechar detalhes"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <div class="dialog-body">
+
+            <div class="product-image details-image">
+
+                <img
+                    id="detailsPhoto"
+                    alt="Imagem do anúncio"
+                    hidden
+                >
+
+
+                <span class="image-placeholder">
+
+                    <i class="fa-solid fa-box-open"></i>
+
+                    Sem imagem
+
+                </span>
+
+            </div>
+
+
+            <div
+                class="details-gallery"
+                id="detailsGallery"
+            ></div>
+
+
+            <dl
+                class="details-grid"
+                id="detailsData"
+            ></dl>
+
+        </div>
+
+
+        <div class="dialog-footer">
+
+            <button
+                type="button"
+                class="button button-primary"
+                data-close="detailsDialog"
+            >
+                Fechar
+            </button>
+
+        </div>
+
+    </dialog>
+
+
+    <!-- ============================================================
+         CONFIRMAÇÃO
+         ============================================================ -->
+
+    <dialog
+        class="confirm-dialog"
+        id="confirmDialog"
+        aria-labelledby="confirmTitle"
+        aria-describedby="confirmText"
+    >
+
+        <div class="confirm-content">
+
+            <div class="confirm-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+
+            <h2 id="confirmTitle">
+                Confirmar ação
+            </h2>
+
+
+            <p id="confirmText"></p>
+
+
+            <div class="confirm-actions">
+
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    id="confirmCancel"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="button button-danger"
+                    id="confirmAccept"
+                >
+                    Confirmar
+                </button>
+
+            </div>
+
+        </div>
+
+    </dialog>
+
+
+    <!-- ============================================================
+         LOGOUT
+         ============================================================ -->
+
+    <dialog
+        class="confirm-dialog"
+        id="logoutDialog"
+        aria-labelledby="logoutTitle"
+    >
+
+        <div class="confirm-content">
+
+            <div class="confirm-icon">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </div>
+
+
+            <h2 id="logoutTitle">
+                Deseja sair?
+            </h2>
+
+
+            <p>
+                Você precisará entrar novamente para acessar
+                o painel administrativo.
+            </p>
+
+
+            <p
+                class="form-status"
+                id="logoutStatus"
+                role="status"
+            ></p>
+
+
+            <div class="confirm-actions">
+
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    data-close="logoutDialog"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="button button-danger"
+                    id="logoutConfirm"
+                >
+                    Sair
+                </button>
+
+            </div>
+
+        </div>
+
+    </dialog>
+
+
+    <!-- ============================================================
+         VLIBRAS
+         ============================================================ -->
+
+    <div vw class="enabled">
+
+        <div
+            vw-access-button
+            class="active"
+        ></div>
+
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+
+    </div>
+
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <script>
+        if (window.VLibras) {
+            new window.VLibras.Widget(
+                "https://vlibras.gov.br/app"
+            );
+        }
+    </script>
+
+
+    <!-- SCRIPT PRINCIPAL -->
+
+    <script src="src/javascript/script.js"></script>
+
+    <script src="src/javascript/notificacoes.js"></script>
+
+
+    <!-- APARÊNCIA -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const btn =
+                document.getElementById("btn-aparencia");
+
+            const options =
+                document.getElementById("opcoes-aparencia");
+
+            if (btn && options) {
+
+                btn.addEventListener("click", event => {
+
+                    event.stopPropagation();
+
+                    const open = options.hidden;
+
+                    options.hidden = !open;
+
+                    btn.setAttribute(
+                        "aria-expanded",
+                        String(open)
+                    );
+
+                });
+
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>

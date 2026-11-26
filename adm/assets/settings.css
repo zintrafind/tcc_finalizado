@@ -1,0 +1,36 @@
+/* Tema */
+:root[data-tema="escuro"] {
+  --bg: #0b1a2b;
+  --card: #162a40;
+  --texto: #e6eef7;
+  --borda: #2a4560;
+}
+:root[data-tema="claro"] {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --texto: #12263a;
+  --borda: #c9d6e3;
+}
+
+/* Tamanho do texto */
+:root[data-texto="padrao"]   { font-size: 16px; }
+:root[data-texto="ampliado"] { font-size: 19px; }
+
+/* Alto contraste */
+:root[data-contraste="alto"] {
+  --texto: #ffffff;
+  --borda: #ffffff;
+}
+:root[data-tema="claro"][data-contraste="alto"] {
+  --texto: #000000;
+  --borda: #000000;
+}
+
+/* Reduzir animações */
+:root[data-animacoes="reduzidas"] *,
+:root[data-animacoes="reduzidas"] *::before,
+:root[data-animacoes="reduzidas"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}

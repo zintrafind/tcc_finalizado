@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Preferências globais (tema, texto, contraste, animações) -->
+    <script src="../assets/preferencias.js"></script>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Peça por Peça | Configurações</title>
+
+    <link
+        rel="icon"
+        type="image/x-icon"
+        href="src/images/favicon.ico"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    >
+
+    <link
+        rel="stylesheet"
+        href="src/styles/styles.css"
+    >
+
+    <script>
+        (() => {
+            const tema = localStorage.getItem("adminTema");
+
+            if (tema === "escuro") {
+                document.documentElement.dataset.tema = "escuro";
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../assets/preferencias.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="logo-details">
+
+            <span class="image">
+
+                <img
+                    src="src/images/logo.png"
+                    alt="Peça por Peça"
+                    class="logo-clara"
+                >
+
+                <img
+                    src="src/images/Logo-negativa.png"
+                    alt=""
+                    class="logo-escura"
+                    aria-hidden="true"
+                >
+
+            </span>
+
+
+            <div class="sidebar-brand">
+
+                <strong>
+                    Peça por Peça
+                </strong>
+
+                <span>
+                    Administração
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav
+            class="sidebar-navigation"
+            aria-label="Menu administrativo"
+        >
+
+            <ul class="nav-links">
+
+                <li>
+
+                    <a
+                        href="../inicio/index.html"
+                        aria-label="Início"
+                    >
+
+                        <i class="fa-solid fa-house"></i>
+
+                        <span class="nav-text">
+                            Início
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../dashboard/index.html"
+                        aria-label="Dashboard"
+                    >
+
+                        <i class="fa-solid fa-chart-column"></i>
+
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../usuarios-cadastrados/index.html"
+                        aria-label="Usuários"
+                    >
+
+                        <i class="fa-solid fa-users"></i>
+
+                        <span class="nav-text">
+                            Usuários
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../anuncios-publicados/index.html"
+                        aria-label="Anúncios"
+                    >
+
+                        <i class="fa-solid fa-box-open"></i>
+
+                        <span class="nav-text">
+                            Anúncios
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../denuncia/index.html"
+                        aria-label="Denúncias"
+                    >
+
+                        <i class="fa-solid fa-flag"></i>
+
+                        <span class="nav-text">
+                            Denúncias
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../historico/index.html"
+                        aria-label="Histórico"
+                    >
+
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+
+                        <span class="nav-text">
+                            Histórico
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../relatorio/index.html"
+                        aria-label="Relatórios"
+                    >
+
+                        <i class="fa-regular fa-file-lines"></i>
+
+                        <span class="nav-text">
+                            Relatórios
+                        </span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../configuracoes/index.html"
+                    class="sidebar-bottom-link pagina-ativa"
+                    aria-current="page"
+                    aria-label="Configurações"
+                >
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    <span class="nav-text">
+                        Configurações
+                    </span>
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="sidebar-bottom-link sidebar-logout"
+                    id="btn-sair-sidebar"
+                    aria-label="Sair"
+                >
+
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                    <span class="nav-text">
+                        Sair
+                    </span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ============================================================
+         ÁREA PRINCIPAL
+         ============================================================ -->
+
+    <section class="home">
+
+        <!-- ========================================================
+             TOPBAR
+             ======================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="topbar-sidebar-toggle"
+                    id="sidebarToggle"
+                    aria-label="Recolher menu lateral"
+                    aria-expanded="true"
+                >
+
+                    <i
+                        class="fa-solid fa-chevron-left"
+                        id="sidebarToggleIcon"
+                    ></i>
+
+                </button>
+
+
+                <span class="topbar-label">
+                    Painel administrativo
+                </span>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <a
+                    class="icon-button"
+                    href="../denuncia/index.html"
+                    aria-label="Ver denúncias"
+                    title="Ver denúncias"
+                >
+
+                    <i class="fa-regular fa-bell"></i>
+
+                </a>
+
+
+                <div class="profile-menu-container">
+
+                    <button
+                        type="button"
+                        class="profile-details"
+                        id="btn-menu-perfil"
+                        aria-expanded="false"
+                        aria-controls="menu-perfil"
+                    >
+
+                        <span class="profile-avatar">
+
+                            <i class="fa-regular fa-user"></i>
+
+                        </span>
+
+
+                        <span class="profile-user-info">
+
+                            <strong
+                                id="nome-admin-topo"
+                                class="admin-name"
+                            >
+                                Administrador
+                            </strong>
+
+                            <small>
+                                Administrador
+                            </small>
+
+                        </span>
+
+
+                        <i
+                            class="fa-solid fa-angle-down profile-chevron"
+                        ></i>
+
+                    </button>
+
+
+                    <div
+                        class="profile-dropdown"
+                        id="menu-perfil"
+                        hidden
+                    >
+
+                        <div class="profile-dropdown-header">
+
+                            <span class="profile-dropdown-icon">
+
+                                <i class="fa-regular fa-user"></i>
+
+                            </span>
+
+
+                            <div>
+
+                                <strong>
+                                    Minha conta
+                                </strong>
+
+                                <span>
+                                    Painel administrativo
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="../perfil/index.html"
+                            class="profile-menu-item"
+                        >
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <span>
+                                Perfil
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="../configuracoes/index.html"
+                            class="profile-menu-item active"
+                            aria-current="page"
+                        >
+
+                            <i class="fa-solid fa-gear"></i>
+
+                            <span>
+                                Configurações
+                            </span>
+
+                        </a>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item"
+                            id="btn-aparencia"
+                            aria-expanded="false"
+                            aria-controls="opcoes-aparencia"
+                        >
+
+                            <i class="fa-regular fa-moon"></i>
+
+                            <span>
+                                Aparência
+                            </span>
+
+                            <i
+                                class="fa-solid fa-angle-down menu-seta"
+                            ></i>
+
+                        </button>
+
+
+                        <div
+                            id="opcoes-aparencia"
+                            class="appearance-options"
+                            hidden
+                        >
+
+                            <label for="tema-admin">
+                                Tema do painel
+                            </label>
+
+                            <select id="tema-admin">
+
+                                <option value="claro">
+                                    Claro
+                                </option>
+
+                                <option value="escuro">
+                                    Escuro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="profile-menu-divider"></div>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item profile-menu-logout"
+                            id="btn-sair-perfil"
+                        >
+
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                            <span>
+                                Sair
+                            </span>
+
+                        </button>
+
+
+                        <p
+                            id="perfil-menu-status"
+                            role="status"
+                        ></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================================================
+             CONFIGURAÇÕES
+             ======================================================== -->
+
+        <main
+            class="config-page"
+            id="config-page"
+        >
+
+            <div class="config-container">
+
+                <header class="config-heading">
+
+                    <h1>
+                        Configurações
+                    </h1>
+
+                    <p>
+                        Gerencie sua conta e personalize o painel administrativo.
+                    </p>
+
+                </header>
+
+
+                <form id="config-form">
+
+                    <div class="config-grid">
+
+                        <!-- CONTA -->
+
+                        <section
+                            class="config-card"
+                            aria-labelledby="config-conta-title"
+                        >
+
+                            <h2 id="config-conta-title">
+                                Conta
+                            </h2>
+
+                            <p class="config-description">
+                                Acesse seu perfil para consultar e atualizar seus dados.
+                            </p>
+
+
+                            <div class="config-account">
+
+                                <span class="config-account-icon">
+
+                                    <i
+                                        class="fa-regular fa-user"
+                                        aria-hidden="true"
+                                    ></i>
+
+                                </span>
+
+
+                                <div>
+
+                                    <strong>
+                                        Minha conta
+                                    </strong>
+
+                                    <span>
+                                        Painel administrativo do Peça por Peça
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="../perfil/index.html"
+                                class="config-btn config-btn-soft config-btn-wide"
+                            >
+
+                                <i
+                                    class="fa-solid fa-user-pen"
+                                    aria-hidden="true"
+                                ></i>
+
+                                Editar dados da conta
+
+                            </a>
+
+                        </section>
+
+
+                        <!-- APARÊNCIA -->
+
+                        <section
+                            class="config-card"
+                            id="aparencia"
+                            aria-labelledby="config-aparencia-title"
+                        >
+
+                            <h2 id="config-aparencia-title">
+                                Aparência
+                            </h2>
+
+                            <p class="config-description">
+                                Personalize a visualização do painel.
+                            </p>
+
+
+                            <fieldset class="config-field">
+
+                                <legend>
+                                    Tema
+                                </legend>
+
+
+                                <div class="config-options">
+
+                                    <label class="config-option">
+
+                                        <input
+                                            type="radio"
+                                            name="config-tema"
+                                            value="claro"
+                                            checked
+                                        >
+
+                                        <span>
+
+                                            <i
+                                                class="fa-solid fa-sun"
+                                                aria-hidden="true"
+                                            ></i>
+
+                                            Claro
+
+                                        </span>
+
+                                    </label>
+
+
+                                    <label class="config-option">
+
+                                        <input
+                                            type="radio"
+                                            name="config-tema"
+                                            value="escuro"
+                                        >
+
+                                        <span>
+
+                                            <i
+                                                class="fa-solid fa-moon"
+                                                aria-hidden="true"
+                                            ></i>
+
+                                            Escuro
+
+                                        </span>
+
+                                    </label>
+
+                                </div>
+
+                            </fieldset>
+
+
+                            <fieldset class="config-field">
+
+                                <legend>
+                                    Tamanho do texto
+                                </legend>
+
+
+                                <div class="config-options">
+
+                                    <label class="config-option">
+
+                                        <input
+                                            type="radio"
+                                            name="config-texto"
+                                            value="padrao"
+                                            checked
+                                        >
+
+                                        <span>
+
+                                            <b
+                                                class="config-letter"
+                                                aria-hidden="true"
+                                            >A</b>
+
+                                            Padrão
+
+                                        </span>
+
+                                    </label>
+
+
+                                    <label class="config-option">
+
+                                        <input
+                                            type="radio"
+                                            name="config-texto"
+                                            value="ampliado"
+                                        >
+
+                                        <span>
+
+                                            <b
+                                                class="config-letter config-letter-large"
+                                                aria-hidden="true"
+                                            >A</b>
+
+                                            Ampliado
+
+                                        </span>
+
+                                    </label>
+
+                                </div>
+
+                            </fieldset>
+
+                        </section>
+
+
+                        <!-- ACESSIBILIDADE -->
+
+                        <section
+                            class="config-card"
+                            aria-labelledby="config-acessibilidade-title"
+                        >
+
+                            <h2 id="config-acessibilidade-title">
+                                Acessibilidade
+                            </h2>
+
+                            <p class="config-description">
+                                Ajuste o painel às suas necessidades.
+                            </p>
+
+
+                            <div class="config-switch-row">
+
+                                <label for="config-contraste">
+
+                                    Aumentar contraste
+
+                                    <small>
+                                        Reforce o contraste dos textos e das bordas.
+                                    </small>
+
+                                </label>
+
+
+                                <input
+                                    id="config-contraste"
+                                    class="config-switch"
+                                    type="checkbox"
+                                    role="switch"
+                                >
+
+                            </div>
+
+
+                            <div class="config-switch-row">
+
+                                <label for="config-movimento">
+
+                                    Reduzir animações
+
+                                    <small>
+                                        Desative os efeitos de movimento deste conteúdo.
+                                    </small>
+
+                                </label>
+
+
+                                <input
+                                    id="config-movimento"
+                                    class="config-switch"
+                                    type="checkbox"
+                                    role="switch"
+                                >
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- SESSÃO -->
+
+                        <section
+                            class="config-card"
+                            aria-labelledby="config-sessao-title"
+                        >
+
+                            <h2 id="config-sessao-title">
+                                Sessão
+                            </h2>
+
+                            <p class="config-description">
+                                Encerre seu acesso ao painel neste navegador.
+                                Para entrar novamente, será necessário fazer login.
+                            </p>
+
+
+                            <button
+                                class="config-btn config-btn-danger config-btn-wide"
+                                id="config-sair"
+                                type="button"
+                            >
+
+                                <i
+                                    class="fa-solid fa-arrow-right-from-bracket"
+                                    aria-hidden="true"
+                                ></i>
+
+                                Sair da conta
+
+                            </button>
+
+                        </section>
+
+                    </div>
+
+
+                    <footer class="config-footer">
+
+                        <p
+                            class="config-status"
+                            id="config-status"
+                            role="status"
+                            aria-live="polite"
+                        ></p>
+
+
+                        <div class="config-actions">
+
+                            <button
+                                class="config-btn"
+                                id="config-cancelar"
+                                type="button"
+                            >
+                                Cancelar
+                            </button>
+
+
+                            <button
+                                class="config-btn config-btn-primary"
+                                type="submit"
+                            >
+                                Salvar alterações
+                            </button>
+
+                        </div>
+
+                    </footer>
+
+                </form>
+
+
+                <!-- MODAL DE SAÍDA -->
+
+                <dialog
+                    class="config-dialog"
+                    id="config-logout-dialog"
+                    aria-labelledby="config-logout-title"
+                >
+
+                    <h2 id="config-logout-title">
+                        Sair da conta?
+                    </h2>
+
+                    <p>
+                        Você precisará fazer login para acessar o painel novamente.
+                    </p>
+
+
+                    <p
+                        class="config-status"
+                        id="config-logout-status"
+                        role="status"
+                    ></p>
+
+
+                    <div class="config-actions">
+
+                        <button
+                            class="config-btn"
+                            id="config-logout-cancelar"
+                            type="button"
+                        >
+                            Cancelar
+                        </button>
+
+
+                        <button
+                            class="config-btn config-btn-primary"
+                            id="config-logout-confirmar"
+                            type="button"
+                        >
+                            Sim, sair
+                        </button>
+
+                    </div>
+
+                </dialog>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- ============================================================
+         VLIBRAS
+         ============================================================ -->
+
+    <div
+        vw
+        class="enabled"
+    >
+
+        <div
+            vw-access-button
+            class="active"
+        ></div>
+
+        <div vw-plugin-wrapper>
+
+            <div class="vw-plugin-top-wrapper"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <script>
+        if (window.VLibras) {
+            new window.VLibras.Widget(
+                "https://vlibras.gov.br/app"
+            );
+        }
+    </script>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="src/javascript/script.js"></script>
+    <script src="src/javascript/profile-menu.js"></script>
+    <script src="src/javascript/config.js"></script>
+    
+</body>
+
+</html>

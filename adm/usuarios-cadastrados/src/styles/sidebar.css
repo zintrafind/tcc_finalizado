@@ -1,0 +1,382 @@
+/* ============================================================
+   SIDEBAR — PADRÃO ÚNICO
+   Compatível com .active e .collapsed
+   ============================================================ */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-right: 1px solid #e3edf5;
+    box-shadow: 4px 0 20px rgba(0, 83, 134, 0.04);
+    z-index: 1000;
+    transition:
+        width 0.35s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.sidebar:is(.active, .collapsed) {
+    width: 60px;
+}
+
+/* ============================================================
+   LOGO
+   ============================================================ */
+
+.logo-details {
+    width: 100%;
+    height: 112px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #edf3f8;
+    overflow: hidden;
+}
+
+.logo-details .image {
+    position: relative;
+    width: 92px;
+    min-width: 92px;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 92px;
+    padding: 2px;
+    overflow: hidden;
+}
+
+.logo-details .image img {
+    display: none;
+    width: 88px;
+    height: 88px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+/* Tema claro: mostrar somente a logo azul */
+html:not([data-tema="escuro"])
+.logo-details .image .logo-clara {
+    display: block;
+}
+
+/* Tema escuro: mostrar somente a logo branca */
+html[data-tema="escuro"]
+.logo-details .image .logo-escura {
+    display: block;
+}
+
+/* ============================================================
+   NOME DA MARCA
+   ============================================================ */
+
+.sidebar-brand {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    white-space: nowrap;
+    transition:
+        opacity 0.2s ease,
+        transform 0.25s ease;
+}
+
+.sidebar-brand strong {
+    color: #005386;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.sidebar-brand span {
+    margin-top: 4px;
+    color: #8195a5;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   NAVEGAÇÃO
+   ============================================================ */
+
+.sidebar-navigation {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.nav-links {
+    flex: 1;
+    width: 100%;
+    margin: 0;
+    padding: 24px 10px 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    list-style: none;
+}
+
+.nav-links li {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 5px;
+    list-style: none;
+}
+
+.nav-links li a {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: 11px;
+    color: #526b7f;
+    overflow: hidden;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.nav-links li a > i {
+    width: 42px;
+    min-width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+    color: #607a8e;
+    font-size: 17px;
+}
+
+.nav-text {
+    margin-left: 5px;
+    color: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   HOVER
+   ============================================================ */
+
+.nav-links li a:hover {
+    background: #f1f8fd;
+    color: #005386;
+    transform: translateX(2px);
+}
+
+.nav-links li a:hover > i {
+    color: #0099ff;
+}
+
+/* ============================================================
+   ITEM ATIVO
+   ============================================================ */
+
+.nav-links li a.pagina-ativa,
+.nav-links li a[aria-current="page"] {
+    background: #e4f8ff;
+    color: #005386;
+    box-shadow: inset 3px 0 0 #0099ff;
+}
+
+.nav-links li a.pagina-ativa > i,
+.nav-links li a[aria-current="page"] > i {
+    color: #0099ff;
+}
+
+/* ============================================================
+   PARTE INFERIOR
+   ============================================================ */
+
+.sidebar-bottom {
+    width: 100%;
+    flex-shrink: 0;
+    padding: 12px 10px 18px;
+    border-top: 1px solid #edf3f8;
+    background: #ffffff;
+}
+
+.sidebar-bottom-link {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 0;
+    border: none;
+    border-radius: 11px;
+    background: transparent;
+    color: #526b7f;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+}
+
+.sidebar-bottom-link > i {
+    width: 42px;
+    min-width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+    color: #607a8e;
+    font-size: 17px;
+}
+
+.sidebar-bottom-link:hover {
+    background: #f1f8fd;
+    color: #005386;
+}
+
+.sidebar-logout,
+.sidebar-logout > i {
+    color: #c9564c;
+}
+
+.sidebar-logout:hover {
+    background: #fff1ef;
+    color: #a23a33;
+}
+
+/* ============================================================
+   SIDEBAR RECOLHIDA
+   ============================================================ */
+
+.sidebar:is(.active, .collapsed) .sidebar-brand {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-10px);
+}
+
+.sidebar:is(.active, .collapsed) .logo-details .image {
+    width: 60px;
+    min-width: 60px;
+    flex-basis: 60px;
+}
+
+.sidebar:is(.active, .collapsed) .logo-details .image img {
+    width: 54px;
+    height: 54px;
+}
+
+.sidebar:is(.active, .collapsed) .nav-text {
+    width: 0;
+    margin: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.sidebar:is(.active, .collapsed) .nav-links li a,
+.sidebar:is(.active, .collapsed) .sidebar-bottom-link {
+    justify-content: center;
+}
+
+.sidebar:is(.active, .collapsed) .nav-links li a.pagina-ativa,
+.sidebar:is(.active, .collapsed) .nav-links li a[aria-current="page"] {
+    background: transparent;
+    box-shadow: none;
+}
+
+/* ============================================================
+   TEMA ESCURO
+   ============================================================ */
+
+html[data-tema="escuro"] .sidebar {
+    background: #005c8a;
+    border-right-color: #0c719f;
+}
+
+html[data-tema="escuro"] .logo-details {
+    border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+
+html[data-tema="escuro"] .sidebar-brand strong {
+    color: #ffffff;
+}
+
+html[data-tema="escuro"] .sidebar-brand span {
+    color: #d5efff;
+}
+
+html[data-tema="escuro"] .nav-links li a,
+html[data-tema="escuro"] .sidebar-bottom-link {
+    color: #ffffff;
+}
+
+html[data-tema="escuro"] .nav-links li a > i,
+html[data-tema="escuro"] .sidebar-bottom-link > i {
+    color: #ffffff;
+}
+
+html[data-tema="escuro"] .nav-links li a:hover,
+html[data-tema="escuro"] .sidebar-bottom-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+html[data-tema="escuro"] .nav-links li a.pagina-ativa,
+html[data-tema="escuro"] .nav-links li a[aria-current="page"] {
+    background: #119dff;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+html[data-tema="escuro"] .nav-links li a.pagina-ativa > i,
+html[data-tema="escuro"] .nav-links li a[aria-current="page"] > i {
+    color: #ffffff;
+}
+
+html[data-tema="escuro"] .sidebar-bottom {
+    background: #005c8a;
+    border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+html[data-tema="escuro"] .sidebar:is(.active, .collapsed)
+.nav-links li a.pagina-ativa,
+html[data-tema="escuro"] .sidebar:is(.active, .collapsed)
+.nav-links li a[aria-current="page"] {
+    background: transparent;
+}
+
+html[data-tema="escuro"] .sidebar:is(.active, .collapsed)
+.nav-links li a.pagina-ativa > i,
+html[data-tema="escuro"] .sidebar:is(.active, .collapsed)
+.nav-links li a[aria-current="page"] > i {
+    color: #7ed2ff;
+}
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+
+@media (max-width: 992px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar-brand,
+    .sidebar .nav-text {
+        display: none;
+    }
+
+    .logo-details .image {
+        width: 60px;
+        min-width: 60px;
+        flex-basis: 60px;
+    }
+
+    .logo-details .image img {
+        width: 54px;
+        height: 54px;
+    }
+}

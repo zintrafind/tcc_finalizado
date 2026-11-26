@@ -1,0 +1,159 @@
+@import url(
+    'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'
+);
+
+@import url('sidebar.css');
+@import url('home.css');
+@import url('profile-menu.css');
+@import url('perfil.css');
+
+
+/* ============================================================
+   VARIÁVEIS
+   ============================================================ */
+
+:root {
+    --azul-principal: #0099ff;
+    --azul-escuro: #005386;
+
+    --fundo: #f6f9fc;
+    --cartao: #ffffff;
+
+    --texto: #163b56;
+    --texto-suave: #71879a;
+
+    --borda: #e3edf5;
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    background: var(--fundo);
+
+    color: var(--texto);
+}
+
+
+button,
+input,
+select,
+textarea {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+button {
+    font: inherit;
+
+    cursor: pointer;
+}
+
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+a {
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+p {
+    color: var(--texto-suave);
+}
+
+
+img {
+    max-width: 100%;
+}
+
+
+[hidden] {
+    display: none !important;
+}
+
+
+button:disabled,
+input:disabled,
+textarea:disabled {
+    opacity: 0.65;
+
+    cursor: wait;
+}
+
+
+/* ============================================================
+   FOCO
+   ============================================================ */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline:
+        3px solid
+        rgba(0, 153, 255, 0.25);
+
+    outline-offset: 2px;
+}
+
+
+/* ============================================================
+   TEMA ESCURO
+   ============================================================ */
+
+html[data-tema="escuro"] {
+    --azul-principal: #70c4ff;
+    --azul-escuro: #e0efff;
+
+    --fundo: #101f2c;
+    --cartao: #192d3e;
+
+    --texto: #e0efff;
+    --texto-suave: #afc5d8;
+
+    --borda: #30495e;
+
+    color-scheme: dark;
+}
+
+
+html[data-tema="escuro"] body {
+    background: var(--fundo);
+
+    color: var(--texto);
+}
+
+
+body.modal-open {
+    overflow: hidden;
+}

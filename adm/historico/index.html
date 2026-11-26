@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Preferências globais (tema, texto, contraste, animações) -->
+    <script src="../assets/preferencias.js"></script>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Peça por Peça | Histórico</title>
+
+    <link
+        rel="icon"
+        href="src/images/favicon.ico"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    >
+
+    <script>
+
+        (() => {
+
+            const tema =
+                localStorage.getItem(
+                    "adminTema"
+                );
+
+            document.documentElement.dataset.tema =
+                tema === "escuro"
+                    ? "escuro"
+                    : "claro";
+
+        })();
+
+    </script>
+
+    <link
+        rel="stylesheet"
+        href="src/styles/styles.css"
+    >
+
+    <link
+    rel="stylesheet"
+    href="src/styles/notificacoes.css"
+>
+
+    <link rel="stylesheet" href="../assets/preferencias.css">
+</head>
+
+
+<body>
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <!-- LOGO -->
+
+        <div class="logo-details">
+
+            <span class="image">
+
+                <img
+                    src="src/images/logo.png"
+                    alt="Peça por Peça"
+                    class="logo-clara"
+                >
+
+                <img
+                    src="src/images/logo-negativa.png"
+                    alt=""
+                    class="logo-escura"
+                    aria-hidden="true"
+                >
+
+            </span>
+
+
+            <div class="sidebar-brand">
+
+                <strong>
+                    Peça por Peça
+                </strong>
+
+                <span>
+                    Administração
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVEGAÇÃO -->
+
+        <nav
+            class="sidebar-navigation"
+            aria-label="Menu administrativo"
+        >
+
+            <ul class="nav-links">
+
+                <li>
+
+                    <a
+                        href="../inicio/index.html"
+                        aria-label="Início"
+                    >
+
+                        <i class="fa-solid fa-house"></i>
+
+                        <span class="nav-text">
+                            Início
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../dashboard/index.html"
+                        aria-label="Dashboard"
+                    >
+
+                        <i class="fa-solid fa-chart-column"></i>
+
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../usuarios-cadastrados/index.html"
+                        aria-label="Usuários"
+                    >
+
+                        <i class="fa-solid fa-users"></i>
+
+                        <span class="nav-text">
+                            Usuários
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../anuncios-publicados/index.html"
+                        aria-label="Anúncios"
+                    >
+
+                        <i class="fa-solid fa-box-open"></i>
+
+                        <span class="nav-text">
+                            Anúncios
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../denuncia/index.html"
+                        aria-label="Denúncias"
+                    >
+
+                        <i class="fa-solid fa-flag"></i>
+
+                        <span class="nav-text">
+                            Denúncias
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../historico/index.html"
+                        class="pagina-ativa"
+                        aria-current="page"
+                        aria-label="Histórico"
+                    >
+
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+
+                        <span class="nav-text">
+                            Histórico
+                        </span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="../relatorio/index.html"
+                        aria-label="Relatórios"
+                    >
+
+                        <i class="fa-regular fa-file-lines"></i>
+
+                        <span class="nav-text">
+                            Relatórios
+                        </span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <!-- PARTE INFERIOR -->
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../configuracoes/index.html"
+                    class="sidebar-bottom-link"
+                    aria-label="Configurações"
+                >
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    <span class="nav-text">
+                        Configurações
+                    </span>
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="sidebar-bottom-link sidebar-logout"
+                    id="btn-sair-sidebar"
+                    aria-label="Sair"
+                >
+
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                    <span class="nav-text">
+                        Sair
+                    </span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ============================================================
+         ÁREA PRINCIPAL
+         ============================================================ -->
+
+    <section class="home">
+
+        <!-- ========================================================
+             TOPBAR
+             ======================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="topbar-sidebar-toggle"
+                    id="sidebarToggle"
+                    aria-label="Recolher menu lateral"
+                    aria-controls="sidebar"
+                    aria-expanded="true"
+                >
+
+                    <i
+                        class="fa-solid fa-chevron-left"
+                        id="sidebarToggleIcon"
+                    ></i>
+
+                </button>
+
+
+                <span class="topbar-label">
+                    Painel administrativo
+                </span>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <!-- DENÚNCIAS -->
+
+                <!-- NOTIFICAÇÕES -->
+
+<div id="notificacoes-container">
+
+    <button
+        type="button"
+        class="icon-button"
+        id="btn-notificacoes"
+        aria-label="Notificações"
+        aria-expanded="false"
+        aria-controls="painel-notificacoes"
+        title="Notificações"
+    >
+
+        <i class="fa-regular fa-bell"></i>
+
+        <span
+            id="notificacoes-contador"
+            hidden
+        >
+            0
+        </span>
+
+    </button>
+
+
+    <!-- PAINEL DE NOTIFICAÇÕES -->
+
+    <section
+        id="painel-notificacoes"
+        aria-label="Notificações recebidas"
+        hidden
+    >
+
+        <header class="notificacoes-cabecalho">
+
+            <div>
+
+                <h2>
+                    Notificações
+                </h2>
+
+                <p>
+                    Denúncias recebidas na plataforma
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="btn-fechar-notificacoes"
+                aria-label="Fechar notificações"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </header>
+
+
+        <p
+            id="notificacoes-status"
+            role="status"
+            aria-live="polite"
+            hidden
+        ></p>
+
+
+        <div id="notificacoes-lista"></div>
+
+
+        <footer class="notificacoes-rodape">
+
+            <span>
+                Atualizações automáticas
+            </span>
+
+
+            <button
+                type="button"
+                id="btn-atualizar-notificacoes"
+            >
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Atualizar
+
+            </button>
+
+        </footer>
+
+    </section>
+
+</div>
+
+
+                <!-- PERFIL -->
+
+                <div class="profile-menu-container">
+
+                    <button
+                        type="button"
+                        class="profile-details"
+                        id="btn-menu-perfil"
+                        aria-expanded="false"
+                        aria-controls="menu-perfil"
+                    >
+
+                        <span class="profile-avatar">
+
+                            <i class="fa-regular fa-user"></i>
+
+                        </span>
+
+
+                        <span class="profile-user-info">
+
+                            <strong
+                                id="nome-admin-topo"
+                                class="admin-name"
+                            >
+                                Administrador
+                            </strong>
+
+                            <small>
+                                Administrador
+                            </small>
+
+                        </span>
+
+
+                        <i
+                            class="fa-solid fa-angle-down profile-chevron"
+                        ></i>
+
+                    </button>
+
+
+                    <!-- DROPDOWN -->
+
+                    <div
+                        class="profile-dropdown"
+                        id="menu-perfil"
+                        hidden
+                    >
+
+                        <div class="profile-dropdown-header">
+
+                            <span class="profile-dropdown-icon">
+
+                                <i class="fa-regular fa-user"></i>
+
+                            </span>
+
+
+                            <div>
+
+                                <strong>
+                                    Minha conta
+                                </strong>
+
+                                <span>
+                                    Painel administrativo
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="../perfil/index.html"
+                            class="profile-menu-item"
+                        >
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <span>
+                                Perfil
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="../configuracoes/index.html"
+                            class="profile-menu-item"
+                        >
+
+                            <i class="fa-solid fa-gear"></i>
+
+                            <span>
+                                Configurações
+                            </span>
+
+                        </a>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item"
+                            id="btn-aparencia"
+                            aria-expanded="false"
+                            aria-controls="opcoes-aparencia"
+                        >
+
+                            <i class="fa-regular fa-moon"></i>
+
+                            <span>
+                                Aparência
+                            </span>
+
+                            <i
+                                class="fa-solid fa-angle-down menu-seta"
+                            ></i>
+
+                        </button>
+
+
+                        <div
+                            id="opcoes-aparencia"
+                            class="appearance-options"
+                            hidden
+                        >
+
+                            <label for="tema-admin">
+                                Tema do painel
+                            </label>
+
+                            <select id="tema-admin">
+
+                                <option value="claro">
+                                    Claro
+                                </option>
+
+                                <option value="escuro">
+                                    Escuro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="profile-menu-divider"></div>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item profile-menu-logout"
+                            id="btn-sair-perfil"
+                        >
+
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                            <span>
+                                Sair
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================================================
+             HISTÓRICO
+             ======================================================== -->
+
+        <main class="historico-conteudo">
+
+            <!-- BANNER -->
+
+            <section class="historico-banner">
+
+                <div class="historico-banner-conteudo">
+
+                    <span class="historico-label">
+                        Gerenciamento
+                    </span>
+
+
+                    <h1>
+                        Histórico de interações
+                    </h1>
+
+
+                    <p>
+                        Acompanhe as atividades registradas na plataforma
+                        e consulte os eventos por tipo e período.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="historico-banner-logo"
+                    aria-hidden="true"
+                >
+
+                    <img
+                        src="src/images/logo.png"
+                        alt=""
+                        class="historico-logo-clara"
+                    >
+
+                    <img
+                        src="src/images/logo-negativa.png"
+                        alt=""
+                        class="historico-logo-escura"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- PAINEL -->
+
+            <section
+                class="historico-painel"
+                aria-labelledby="historicoTitulo"
+            >
+
+                <div class="historico-painel-cabecalho">
+
+                    <div>
+
+                        <span class="historico-label">
+                            Atividades da plataforma
+                        </span>
+
+                        <h2 id="historicoTitulo">
+                            Histórico de atividades
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="historico-botao historico-botao-secundario"
+                        id="historico-atualizar"
+                    >
+
+                        <i class="fa-solid fa-rotate"></i>
+
+                        Atualizar
+
+                    </button>
+
+                </div>
+
+
+                <!-- FILTROS -->
+
+                <form
+                    id="historico-filtros"
+                    class="historico-filtros"
+                >
+
+                    <div class="historico-campo historico-campo-busca">
+
+                        <label for="historico-busca">
+                            Pesquisar
+                        </label>
+
+
+                        <input
+                            type="search"
+                            id="historico-busca"
+                            placeholder="Busque por usuário ou atividade"
+                        >
+
+                    </div>
+
+
+                    <div class="historico-campo">
+
+                        <label for="historico-tipo">
+                            Tipo de atividade
+                        </label>
+
+
+                        <select id="historico-tipo">
+
+                            <option value="">
+                                Todos os tipos
+                            </option>
+
+                            <option value="usuario">
+                                Usuários
+                            </option>
+
+                            <option value="anuncio">
+                                Anúncios
+                            </option>
+
+                            <option value="troca">
+                                Solicitações de troca
+                            </option>
+
+                            <option value="interacao">
+                                Interações
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="historico-campo">
+
+                        <label for="historico-inicio">
+                            Data inicial
+                        </label>
+
+
+                        <input
+                            type="date"
+                            id="historico-inicio"
+                        >
+
+                    </div>
+
+
+                    <div class="historico-campo">
+
+                        <label for="historico-fim">
+                            Data final
+                        </label>
+
+
+                        <input
+                            type="date"
+                            id="historico-fim"
+                        >
+
+                    </div>
+
+
+                    <div class="historico-acoes">
+
+                        <button
+                            type="submit"
+                            class="historico-botao historico-botao-primary"
+                        >
+
+                            <i class="fa-solid fa-filter"></i>
+
+                            Filtrar
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="historico-botao historico-botao-secundario"
+                            id="historico-limpar"
+                        >
+
+                            Limpar filtros
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <!-- LISTAGEM -->
+
+                <div class="historico-lista-cabecalho">
+
+                    <h3>
+                        Atividades registradas
+                    </h3>
+
+
+                    <span id="historico-total"></span>
+
+                </div>
+
+
+                <p
+                    id="historico-status"
+                    class="historico-status"
+                    role="status"
+                    aria-live="polite"
+                >
+                    Carregando histórico...
+                </p>
+
+
+                <div
+                    class="historico-lista"
+                    id="historico-lista"
+                    aria-busy="true"
+                ></div>
+
+
+                <!-- PAGINAÇÃO -->
+
+                <div class="historico-paginacao">
+
+                    <button
+                        type="button"
+                        class="historico-botao historico-botao-secundario"
+                        id="historico-anterior"
+                        disabled
+                    >
+
+                        <i class="fa-solid fa-chevron-left"></i>
+
+                        Anterior
+
+                    </button>
+
+
+                    <span id="historico-pagina">
+                        Página 1
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="historico-botao historico-botao-secundario"
+                        id="historico-proxima"
+                        disabled
+                    >
+
+                        Próxima
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </section>
+
+
+    <!-- ============================================================
+     MODAL DE DETALHES DA DENÚNCIA
+     ============================================================ -->
+
+<dialog
+    id="modal-denuncia"
+    aria-labelledby="modal-denuncia-titulo"
+>
+
+    <div class="md-cabecalho">
+
+        <h2 id="modal-denuncia-titulo">
+            Detalhes da denúncia
+        </h2>
+
+        <button
+            type="button"
+            id="btn-fechar-denuncia"
+            aria-label="Fechar detalhes"
+        >
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+    </div>
+
+    <p
+        id="modal-denuncia-status"
+        role="status"
+        aria-live="polite"
+    ></p>
+
+    <div
+        id="modal-denuncia-conteudo"
+        hidden
+    >
+
+        <dl class="md-dados">
+
+            <div>
+                <dt>Número da denúncia</dt>
+                <dd id="denuncia-numero"></dd>
+            </div>
+
+            <div>
+                <dt>Usuário denunciado</dt>
+                <dd id="denuncia-usuario"></dd>
+            </div>
+
+            <div>
+                <dt>Data</dt>
+                <dd id="denuncia-data"></dd>
+            </div>
+
+            <div>
+                <dt>Status da denúncia</dt>
+                <dd id="denuncia-status"></dd>
+            </div>
+
+            <div>
+                <dt>Motivo</dt>
+                <dd id="denuncia-motivo"></dd>
+            </div>
+
+        </dl>
+
+        <div class="md-secao">
+            <h3>Descrição do ocorrido</h3>
+            <p id="denuncia-descricao"></p>
+        </div>
+
+        <div class="md-secao">
+            <h3>Imagens anexadas</h3>
+
+            <p
+                id="denuncia-imagens-status"
+                role="status"
+            ></p>
+
+            <div id="denuncia-imagens"></div>
+        </div>
+
+    </div>
+
+    <div class="md-rodape">
+
+        <span id="denuncia-leitura"></span>
+
+        <button
+            type="button"
+            id="btn-denuncia-marcar-lida"
+            hidden
+        >
+            Marcar como lida
+        </button>
+
+    </div>
+
+</dialog>
+
+<!-- ============================================================
+     AMPLIAÇÃO DAS IMAGENS
+     ============================================================ -->
+
+<div
+    id="denuncia-ampliacao"
+    hidden
+>
+
+    <button
+        type="button"
+        id="btn-fechar-ampliacao"
+        aria-label="Fechar imagem"
+    >
+
+        <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+
+    <img
+        id="denuncia-imagem-ampliada"
+        src=""
+        alt="Imagem ampliada da denúncia"
+    >
+
+</div>
+
+    <!-- ============================================================
+         MODAL DE SAÍDA
+         ============================================================ -->
+
+    <div
+        class="logout-modal"
+        id="logout-modal"
+        hidden
+    >
+
+        <div class="logout-modal-card">
+
+            <button
+                type="button"
+                class="logout-modal-close"
+                id="logout-fechar"
+                aria-label="Fechar"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <div class="logout-modal-icon">
+
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            </div>
+
+
+            <h2>
+                Deseja sair?
+            </h2>
+
+
+            <p>
+                Você precisará entrar novamente para acessar
+                o painel administrativo.
+            </p>
+
+
+            <p
+                class="logout-modal-status"
+                id="logout-status"
+                role="status"
+            ></p>
+
+
+            <div class="logout-modal-actions">
+
+                <button
+                    type="button"
+                    class="logout-modal-button logout-modal-cancel"
+                    id="logout-cancelar"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="logout-modal-button logout-modal-confirm"
+                    id="logout-confirmar"
+                >
+
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                    Sim, sair
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         VLIBRAS
+         ============================================================ -->
+
+    <div
+        vw
+        class="enabled"
+    >
+
+        <div
+            vw-access-button
+            class="active"
+        ></div>
+
+
+        <div vw-plugin-wrapper>
+
+            <div class="vw-plugin-top-wrapper"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+
+    <script>
+
+        if (window.VLibras) {
+
+            new window.VLibras.Widget(
+                "https://vlibras.gov.br/app"
+            );
+
+        }
+
+    </script>
+
+
+    <!-- ============================================================
+         JAVASCRIPT
+         ============================================================ -->
+
+   <script src="src/javascript/script.js"></script>
+
+<script src="src/javascript/profile-menu.js"></script>
+
+<script src="src/javascript/historico.js"></script>
+
+<script src="src/javascript/notificacoes.js"></script>
+
+</body>
+
+</html>

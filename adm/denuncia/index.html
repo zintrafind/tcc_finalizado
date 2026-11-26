@@ -1,0 +1,988 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <script src="../assets/preferencias.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Peça por Peça | Denúncias</title>
+
+    <link rel="icon" href="src/images/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    >
+
+    <!-- TEMA -->
+    <script>
+        (() => {
+            document.documentElement.dataset.tema =
+                localStorage.getItem("adminTema") === "escuro"
+                    ? "escuro"
+                    : "claro";
+        })();
+    </script>
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="src/styles/styles.css">
+    <link rel="stylesheet" href="src/styles/notificacoes.css">
+    <link rel="stylesheet" href="src/styles/denuncias.css">
+    <link rel="stylesheet" href="../assets/preferencias.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo-details">
+
+            <span class="image">
+                <img
+                    src="src/images/logo.png"
+                    alt="Peça por Peça"
+                    class="logo-clara"
+                >
+
+                <img
+                    src="src/images/logo-negativa.png"
+                    alt=""
+                    class="logo-escura"
+                    aria-hidden="true"
+                >
+            </span>
+
+            <div class="sidebar-brand">
+                <strong>Peça por Peça</strong>
+                <span>Administração</span>
+            </div>
+
+        </div>
+
+        <nav class="sidebar-navigation" aria-label="Menu administrativo">
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="../inicio/index.html">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="nav-text">Início</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../dashboard/index.html">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../usuarios-cadastrados/index.html">
+                        <i class="fa-solid fa-users"></i>
+                        <span class="nav-text">Usuários</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../anuncios-publicados/index.html">
+                        <i class="fa-solid fa-box-open"></i>
+                        <span class="nav-text">Anúncios</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="../denuncia/index.html"
+                        class="pagina-ativa"
+                        aria-current="page"
+                    >
+                        <i class="fa-solid fa-flag"></i>
+                        <span class="nav-text">Denúncias</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../historico/index.html">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span class="nav-text">Histórico</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../relatorio/index.html">
+                        <i class="fa-regular fa-file-lines"></i>
+                        <span class="nav-text">Relatórios</span>
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../configuracoes/index.html"
+                    class="sidebar-bottom-link"
+                >
+                    <i class="fa-solid fa-gear"></i>
+                    <span class="nav-text">Configurações</span>
+                </a>
+
+                <button
+                    type="button"
+                    class="sidebar-bottom-link sidebar-logout"
+                    data-logout
+                >
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="nav-text">Sair</span>
+                </button>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ============================================================
+         ÁREA PRINCIPAL
+         ============================================================ -->
+
+    <section class="home">
+
+        <!-- ========================================================
+             TOPBAR
+             ======================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="topbar-sidebar-toggle"
+                    id="sidebarToggle"
+                    aria-label="Recolher menu lateral"
+                    aria-controls="sidebar"
+                    aria-expanded="true"
+                >
+                    <i
+                        class="fa-solid fa-chevron-left"
+                        id="sidebarToggleIcon"
+                    ></i>
+                </button>
+
+                <span class="topbar-label">
+                    MODERAÇÃO DE OCORRÊNCIAS
+                </span>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <!-- NOTIFICAÇÕES -->
+
+                <div
+                    class="notificacoes-container"
+                    id="notificacoes-container"
+                >
+
+                    <button
+                        class="icon-button notificacoes-botao"
+                        type="button"
+                        id="btn-notificacoes"
+                        aria-label="Notificações"
+                        aria-expanded="false"
+                        aria-controls="painel-notificacoes"
+                    >
+                        <i
+                            class="fa-regular fa-bell"
+                            aria-hidden="true"
+                        ></i>
+
+                        <span
+                            class="notificacoes-contador"
+                            id="notificacoes-contador"
+                            aria-hidden="true"
+                            hidden
+                        >0</span>
+                    </button>
+
+
+                    <div
+                        class="notificacoes-painel"
+                        id="painel-notificacoes"
+                        role="region"
+                        aria-labelledby="notificacoes-titulo"
+                        hidden
+                    >
+
+                        <div class="notificacoes-cabecalho">
+
+                            <div>
+                                <h2 id="notificacoes-titulo">
+                                    Notificações
+                                </h2>
+
+                                <p>Denúncias de usuários</p>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="notificacoes-fechar"
+                                id="btn-fechar-notificacoes"
+                                aria-label="Fechar notificações"
+                            >
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+
+                        </div>
+
+
+                        <p
+                            class="notificacoes-status"
+                            id="notificacoes-status"
+                            role="status"
+                        >
+                            Carregando notificações...
+                        </p>
+
+
+                        <div
+                            class="notificacoes-lista"
+                            id="notificacoes-lista"
+                            aria-busy="false"
+                        ></div>
+
+
+                        <div class="notificacoes-rodape">
+
+                            <span>
+                                Até 20 notificações, com as não lidas primeiro.
+                            </span>
+
+                            <button
+                                type="button"
+                                id="btn-atualizar-notificacoes"
+                            >
+                                Atualizar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PERFIL -->
+
+                <div
+                    class="profile-menu-container profile-container"
+                    id="profileContainer"
+                >
+
+                    <button
+                        type="button"
+                        class="profile-details profile-button"
+                        id="profileButton"
+                        aria-expanded="false"
+                        aria-controls="profileMenu"
+                    >
+
+                        <span class="profile-avatar">
+                            <i class="fa-regular fa-user"></i>
+                        </span>
+
+                        <span class="profile-user-info profile-info">
+
+                            <strong
+                                id="adminName"
+                                class="admin-name"
+                            >
+                                Administrador
+                            </strong>
+
+                            <small>Administrador</small>
+
+                        </span>
+
+                        <i class="fa-solid fa-angle-down profile-chevron"></i>
+
+                    </button>
+
+
+                    <div
+                        class="profile-dropdown profile-menu"
+                        id="profileMenu"
+                        hidden
+                    >
+
+                        <div class="profile-dropdown-header">
+
+                            <span class="profile-dropdown-icon">
+                                <i class="fa-regular fa-user"></i>
+                            </span>
+
+                            <div>
+                                <strong>Minha conta</strong>
+                                <span>Painel administrativo</span>
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="../perfil/index.html"
+                            class="profile-menu-item"
+                        >
+                            <i class="fa-regular fa-user"></i>
+                            <span>Perfil</span>
+                        </a>
+
+
+                        <a
+                            href="../configuracoes/index.html"
+                            class="profile-menu-item"
+                        >
+                            <i class="fa-solid fa-gear"></i>
+                            <span>Configurações</span>
+                        </a>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item"
+                            id="btn-aparencia"
+                            aria-expanded="false"
+                            aria-controls="opcoes-aparencia"
+                        >
+                            <i class="fa-regular fa-moon"></i>
+                            <span>Aparência</span>
+                            <i class="fa-solid fa-angle-down menu-seta"></i>
+                        </button>
+
+
+                        <div
+                            class="appearance-options"
+                            id="opcoes-aparencia"
+                            hidden
+                        >
+
+                            <label for="themeSelect">
+                                Tema do painel
+                            </label>
+
+                            <select id="themeSelect">
+                                <option value="claro">Claro</option>
+                                <option value="escuro">Escuro</option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="profile-menu-divider"></div>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item profile-menu-logout"
+                            data-logout
+                        >
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>Sair</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================================================
+             CONTEÚDO DE DENÚNCIAS
+             ======================================================== -->
+
+        <main class="page-content denuncias-content">
+
+            <!-- CABEÇALHO DA PÁGINA -->
+
+            <section class="denuncias-intro">
+
+                <div class="denuncias-intro-texto">
+
+
+
+                    <h1>Central de ocorrências</h1>
+
+                    <p>
+                        Acompanhe os relatos enviados pela comunidade,
+                        confira as evidências e mantenha o ambiente
+                        Peça por Peça mais seguro.
+                    </p>
+
+                </div>
+
+
+
+
+
+
+                </div>
+
+            </section>
+
+
+            <!-- ====================================================
+                 INDICADORES
+                 ==================================================== -->
+
+            <section class="denuncias-resumo">
+
+                <div class="denuncias-resumo-heading">
+
+                    <div>
+                        <span class="denuncias-section-kicker">
+                            VISÃO GERAL
+                        </span>
+
+                        <h2>Panorama das ocorrências</h2>
+                    </div>
+
+
+                </div>
+
+
+                <div class="denuncias-indicadores">
+
+                    <article class="denuncia-indicador indicador-total">
+
+                        <div class="indicador-topo">
+                            <span class="indicador-icone">
+                                <i class="fa-solid fa-flag"></i>
+                            </span>
+
+                            <span class="indicador-identificacao">
+                                TOTAL
+                            </span>
+                        </div>
+
+                        <div class="indicador-dados">
+                            <strong id="countTotal">—</strong>
+                            <span>Denúncias carregadas</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="denuncia-indicador indicador-pendente">
+
+                        <div class="indicador-topo">
+                            <span class="indicador-icone">
+                                <i class="fa-regular fa-envelope"></i>
+                            </span>
+
+                            <span class="indicador-identificacao">
+                                ATENÇÃO
+                            </span>
+                        </div>
+
+                        <div class="indicador-dados">
+                            <strong id="countUnread">—</strong>
+                            <span>Denúncias não lidas</span>
+                        </div>
+
+                        <div class="indicador-rodape">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            Aguardando visualização
+                        </div>
+
+                    </article>
+
+
+                    <article class="denuncia-indicador indicador-lido">
+
+                        <div class="indicador-topo">
+                            <span class="indicador-icone">
+                                <i class="fa-solid fa-check-double"></i>
+                            </span>
+
+                            <span class="indicador-identificacao">
+                                ACOMPANHAMENTO
+                            </span>
+                        </div>
+
+                        <div class="indicador-dados">
+                            <strong id="countRead">—</strong>
+                            <span>Denúncias lidas</span>
+                        </div>
+
+                        <div class="indicador-rodape">
+                            <i class="fa-solid fa-check"></i>
+                            Visualizadas pela administração
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- ====================================================
+                 CENTRAL DE OCORRÊNCIAS
+                 ==================================================== -->
+
+            <section class="denuncias-central">
+
+                <div class="denuncias-central-cabecalho">
+
+                    <div class="denuncias-central-titulo">
+
+                        <span class="denuncias-section-kicker">
+                            GERENCIAMENTO
+                        </span>
+
+                        <h2>Ocorrências recebidas</h2>
+
+                        <p>
+                            Consulte os registros enviados pelos usuários
+                            e acesse os detalhes de cada ocorrência.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="denuncias-atualizar"
+                        id="refreshButton"
+                    >
+                        <i class="fa-solid fa-rotate"></i>
+                        <span>Atualizar registros</span>
+                    </button>
+
+                </div>
+
+
+                <!-- ÁREA DE PESQUISA E FILTROS -->
+
+                <div class="denuncias-filtros-area">
+
+                    <div class="denuncias-filtros-intro">
+
+                        <div class="denuncias-filtros-icone">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+
+                        <div>
+                            <strong>Localizar ocorrência</strong>
+                            <span>Utilize os filtros para encontrar um registro.</span>
+                        </div>
+
+                    </div>
+
+
+                    <form
+                        class="denuncias-filtros"
+                        id="searchForm"
+                        role="search"
+                    >
+
+                        <div class="denuncias-busca">
+
+                            <label for="searchInput">
+                                Pesquisar por denúncia
+                            </label>
+
+                            <div class="denuncias-busca-campo">
+
+                                <i class="fa-solid fa-magnifying-glass"></i>
+
+                                <input
+                                    type="search"
+                                    id="searchInput"
+                                    placeholder="ID, usuário, motivo ou descrição..."
+                                >
+
+                                <button
+                                    type="submit"
+                                    aria-label="Pesquisar denúncias"
+                                >
+                                    Buscar
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="denuncias-filtro-leitura">
+
+                            <label for="readFilter">
+                                Situação de leitura
+                            </label>
+
+                            <div class="denuncias-select-wrapper">
+
+                                <i class="fa-regular fa-envelope"></i>
+
+                                <select id="readFilter">
+                                    <option value="all">Todas as ocorrências</option>
+                                    <option value="unread">Não lidas</option>
+                                    <option value="read">Já visualizadas</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- STATUS DA PÁGINA -->
+
+                <div
+                    class="denuncias-status"
+                    id="pageStatus"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+
+                <!-- =================================================
+                     LISTAGEM DE OCORRÊNCIAS
+                     ================================================= -->
+
+                <div class="denuncias-listagem">
+
+                    <div class="denuncias-listagem-cabecalho">
+
+                        <div>
+
+                            <h3>Denúncias da comunidade</h3>
+                        </div>
+
+                        <span class="denuncias-listagem-detalhe">
+                            Selecione uma ocorrência para visualizar
+                        </span>
+
+                    </div>
+
+
+                    <!--
+                        O ID reportsList foi mantido para o JavaScript.
+
+                        IMPORTANTE:
+                        O script.js atual provavelmente cria linhas <tr>
+                        dentro deste elemento. Por isso, o tbody foi
+                        preservado para evitar quebrar a renderização.
+                    -->
+
+                    <div
+                        class="denuncias-listagem-conteudo"
+                        role="region"
+                        aria-label="Denúncias recebidas"
+                        tabindex="0"
+                    >
+
+                        <table class="reports-table">
+
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Usuário denunciado</th>
+                                    <th>Motivo</th>
+                                    <th>Data</th>
+                                    <th>Leitura</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+
+                            <tbody
+                                id="reportsList"
+                                aria-busy="true"
+                            ></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+           
+
+    <!-- ============================================================
+         MODAL DE DETALHES DA DENÚNCIA
+         ============================================================ -->
+
+    <dialog
+        id="detailsDialog"
+        aria-labelledby="detailsTitle"
+    >
+
+        <div class="dr-cabecalho">
+
+            <div>
+                <span class="dr-kicker">REGISTRO DE OCORRÊNCIA</span>
+
+                <h2 id="detailsTitle">
+                    Detalhes da denúncia
+                </h2>
+            </div>
+
+            <button
+                type="button"
+                class="dr-fechar"
+                data-close="detailsDialog"
+                aria-label="Fechar detalhes"
+            >
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+
+        </div>
+
+
+        <p
+            id="detailsStatus"
+            role="status"
+            aria-live="polite"
+        ></p>
+
+
+        <div class="dr-conteudo">
+
+            <section class="dr-secao">
+
+                <h3>
+                    <i class="fa-regular fa-rectangle-list"></i>
+                    Informações do registro
+                </h3>
+
+                <dl
+                    id="detailsData"
+                    class="dr-dados"
+                ></dl>
+
+            </section>
+
+
+            <section class="dr-secao">
+
+                <h3>
+                    <i class="fa-regular fa-file-lines"></i>
+                    Descrição do ocorrido
+                </h3>
+
+                <p id="reportDescription"></p>
+
+            </section>
+
+
+            <section class="dr-secao">
+
+                <h3>
+                    <i class="fa-regular fa-images"></i>
+                    Evidências anexadas
+                </h3>
+
+                <p
+                    id="imagesStatus"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+                <div id="evidenceGrid"></div>
+
+            </section>
+
+        </div>
+
+
+        <div class="dr-rodape">
+
+            <span
+                id="readNotice"
+                role="status"
+                aria-live="polite"
+            ></span>
+
+            <button
+                type="button"
+                id="markReadButton"
+            >
+                <i class="fa-solid fa-check"></i>
+                Marcar como lida
+            </button>
+
+        </div>
+
+
+        <!-- AMPLIAÇÃO DE IMAGEM -->
+
+        <div id="imagePreview" hidden>
+
+            <button
+                type="button"
+                id="closePreview"
+            >
+                <i class="fa-solid fa-xmark"></i>
+                Fechar ampliação
+            </button>
+
+            <img
+                id="previewImage"
+                alt="Evidência ampliada"
+            >
+
+        </div>
+
+    </dialog>
+
+
+    <!-- ============================================================
+         MODAL DE SAÍDA
+         ============================================================ -->
+
+    <dialog
+        class="confirm-dialog"
+        id="logoutDialog"
+        aria-labelledby="logoutTitle"
+    >
+
+        <div class="confirm-content">
+
+            <div class="confirm-icon">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </div>
+
+            <h2 id="logoutTitle">Deseja sair?</h2>
+
+            <p>
+                Você precisará entrar novamente para acessar
+                o painel administrativo.
+            </p>
+
+            <p
+                class="form-status"
+                id="logoutStatus"
+                role="status"
+            ></p>
+
+            <div class="confirm-actions">
+
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    data-close="logoutDialog"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="button"
+                    class="button button-danger"
+                    id="logoutConfirm"
+                >
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Sair
+                </button>
+
+            </div>
+
+        </div>
+
+    </dialog>
+
+
+    <!-- ============================================================
+         VLIBRAS
+         ============================================================ -->
+
+    <div vw class="enabled">
+
+        <div
+            vw-access-button
+            class="active"
+        ></div>
+
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+
+    </div>
+
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <script>
+        if (window.VLibras) {
+            new window.VLibras.Widget(
+                "https://vlibras.gov.br/app"
+            );
+        }
+    </script>
+
+
+    <!-- ============================================================
+         JAVASCRIPTS
+         ============================================================ -->
+
+    <script src="src/javascript/script.js"></script>
+    <script src="src/javascript/notificacoes.js"></script>
+
+
+    <!-- APARÊNCIA -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const btn = document.getElementById("btn-aparencia");
+            const options = document.getElementById("opcoes-aparencia");
+
+            if (!btn || !options) return;
+
+            btn.addEventListener("click", event => {
+
+                event.stopPropagation();
+
+                const open = options.hidden;
+
+                options.hidden = !open;
+
+                btn.setAttribute(
+                    "aria-expanded",
+                    String(open)
+                );
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>

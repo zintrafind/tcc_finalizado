@@ -1,0 +1,1774 @@
+
+/* ============================================================
+   PEÇA POR PEÇA — CENTRAL DE OCORRÊNCIAS
+   ============================================================ */
+
+.denuncias-content {
+    width: 100%;
+    min-height: 100vh;
+    padding: 108px 32px 42px;
+    background: var(--bg);
+    color: var(--text);
+}
+
+
+/* ============================================================
+   INTRODUÇÃO DA PÁGINA
+   ============================================================ */
+
+.denuncias-intro {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    min-height: 190px;
+    margin-bottom: 30px;
+    padding: 32px 36px;
+
+    overflow: hidden;
+    border: 1px solid #d9eaf5;
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            115deg,
+            #ffffff 0%,
+            #f4faff 58%,
+            #e5f4ff 100%
+        );
+
+    box-shadow: 0 6px 24px rgba(0, 83, 134, 0.055);
+}
+
+.denuncias-intro::before {
+    content: "";
+    position: absolute;
+    top: -125px;
+    right: 110px;
+
+    width: 260px;
+    height: 260px;
+
+    border: 35px solid rgba(0, 153, 255, 0.045);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.denuncias-intro::after {
+    content: "";
+    position: absolute;
+    right: -55px;
+    bottom: -115px;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+    background: rgba(0, 153, 255, 0.075);
+    pointer-events: none;
+}
+
+.denuncias-intro-texto {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+}
+
+.denuncias-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 12px;
+
+    color: #0085ce;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+}
+
+.denuncias-eyebrow i {
+    font-size: 12px;
+}
+
+.denuncias-intro h1 {
+    margin: 0;
+
+    color: #064d78;
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.7px;
+}
+
+.denuncias-intro-texto p {
+    max-width: 590px;
+    margin: 12px 0 0;
+
+    color: #637d91;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+
+/* ============================================================
+   IDENTIFICAÇÃO DA ÁREA
+   ============================================================ */
+
+.denuncias-intro-acoes {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    flex-shrink: 0;
+
+    padding: 15px 19px;
+
+    border: 1px solid rgba(0, 115, 180, 0.10);
+    border-radius: 13px;
+
+    background: rgba(255, 255, 255, 0.78);
+}
+
+.denuncias-intro-icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    background: #e4f4ff;
+    color: #0075b9;
+    font-size: 19px;
+}
+
+.denuncias-intro-acoes > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.denuncias-intro-acoes span {
+    color: #7890a2;
+    font-size: 9px;
+}
+
+.denuncias-intro-acoes strong {
+    color: #164e70;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   SEÇÕES — TÍTULOS
+   ============================================================ */
+
+.denuncias-resumo {
+    margin-bottom: 29px;
+}
+
+.denuncias-resumo-heading,
+.denuncias-central-cabecalho {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.denuncias-resumo-heading {
+    margin-bottom: 16px;
+}
+
+.denuncias-section-kicker {
+    display: block;
+    margin-bottom: 5px;
+
+    color: #0789ce;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+}
+
+.denuncias-resumo-heading h2,
+.denuncias-central-titulo h2 {
+    margin: 0;
+
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.denuncias-resumo-legenda {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.denuncias-resumo-legenda i {
+    color: #0789ce;
+}
+
+
+/* ============================================================
+   INDICADORES
+   ============================================================ */
+
+.denuncias-indicadores {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.denuncia-indicador {
+    position: relative;
+    min-width: 0;
+    min-height: 145px;
+
+    padding: 19px 20px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    background: var(--surface);
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.denuncia-indicador:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 25px rgba(0, 67, 105, 0.09);
+}
+
+.indicador-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.indicador-icone {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    font-size: 17px;
+}
+
+.indicador-identificacao {
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.9px;
+}
+
+.indicador-dados {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    margin-top: 13px;
+}
+
+.indicador-dados strong {
+    color: var(--text);
+    font-size: 29px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.indicador-dados span {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.indicador-rodape {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-top: 11px;
+
+    color: var(--muted);
+    font-size: 8px;
+}
+
+.indicador-total .indicador-icone {
+    background: #e7f3ff;
+    color: #0876b9;
+}
+
+.indicador-pendente .indicador-icone {
+    background: #fff3df;
+    color: #bc8424;
+}
+
+.indicador-pendente .indicador-rodape i {
+    color: #d49a35;
+}
+
+.indicador-lido .indicador-icone {
+    background: #e5f7ee;
+    color: #25835a;
+}
+
+.indicador-lido .indicador-rodape i {
+    color: #25835a;
+}
+
+
+/* ============================================================
+   CENTRAL DE OCORRÊNCIAS
+   ============================================================ */
+
+.denuncias-central {
+    width: 100%;
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: 17px;
+
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.denuncias-central-cabecalho {
+    align-items: center;
+    padding: 24px 25px 20px;
+}
+
+.denuncias-central-titulo {
+    min-width: 0;
+}
+
+.denuncias-central-titulo p {
+    margin: 8px 0 0;
+
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   BOTÃO ATUALIZAR
+   ============================================================ */
+
+.denuncias-atualizar {
+    min-height: 39px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    flex-shrink: 0;
+
+    padding: 9px 14px;
+
+    border: 1px solid #cce4f5;
+    border-radius: 9px;
+
+    background: #f0f8ff;
+    color: #00649e;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.denuncias-atualizar:hover {
+    transform: translateY(-1px);
+    border-color: #8bcaf0;
+    background: #e2f3ff;
+}
+
+.denuncias-atualizar:active i {
+    animation: denuncia-rotacao 0.7s ease;
+}
+
+@keyframes denuncia-rotacao {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ============================================================
+   ÁREA DOS FILTROS
+   ============================================================ */
+
+.denuncias-filtros-area {
+    margin: 0 25px;
+
+    padding: 17px 18px 19px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--soft);
+}
+
+.denuncias-filtros-intro {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 16px;
+}
+
+.denuncias-filtros-icone {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+    background: #e3f3ff;
+    color: #0879bb;
+    font-size: 13px;
+}
+
+.denuncias-filtros-intro > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.denuncias-filtros-intro strong {
+    color: var(--text);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.denuncias-filtros-intro span {
+    color: var(--muted);
+    font-size: 8px;
+}
+
+
+/* ============================================================
+   FORMULÁRIO DOS FILTROS
+   ============================================================ */
+
+.denuncias-filtros {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(210px, 245px);
+    align-items: end;
+    gap: 15px;
+}
+
+.denuncias-busca,
+.denuncias-filtro-leitura {
+    min-width: 0;
+}
+
+.denuncias-busca label,
+.denuncias-filtro-leitura label {
+    display: block;
+    margin-bottom: 7px;
+
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   CAMPO DE BUSCA
+   ============================================================ */
+
+.denuncias-busca-campo {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 42px;
+}
+
+.denuncias-busca-campo > i {
+    position: absolute;
+    left: 13px;
+
+    color: #8ba3b5;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.denuncias-busca-campo input {
+    width: 100%;
+    height: 100%;
+
+    padding: 0 95px 0 36px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    outline: none;
+    background: var(--surface);
+    color: var(--text);
+
+    font-family: "Poppins", sans-serif;
+    font-size: 9px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.denuncias-busca-campo input::placeholder {
+    color: #98aab8;
+}
+
+.denuncias-busca-campo input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.10);
+}
+
+.denuncias-busca-campo button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+
+    height: 34px;
+    min-width: 69px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 10px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #006da9;
+    color: #fff;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.denuncias-busca-campo button:hover {
+    background: #005386;
+}
+
+
+/* ============================================================
+   SELECT DE LEITURA
+   ============================================================ */
+
+.denuncias-select-wrapper {
+    position: relative;
+    height: 42px;
+}
+
+.denuncias-select-wrapper > i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+
+    transform: translateY(-50%);
+
+    color: #829bad;
+    font-size: 11px;
+    pointer-events: none;
+}
+
+.denuncias-select-wrapper select {
+    width: 100%;
+    height: 100%;
+
+    padding: 0 30px 0 34px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    outline: none;
+    background: var(--surface);
+    color: var(--text);
+
+    font-family: "Poppins", sans-serif;
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+.denuncias-select-wrapper select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.10);
+}
+
+
+/* ============================================================
+   MENSAGEM DE STATUS
+   ============================================================ */
+
+.denuncias-status {
+    min-height: 20px;
+    margin: 0 25px;
+
+    color: var(--muted);
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.denuncias-status:empty {
+    display: none;
+}
+
+
+/* ============================================================
+   LISTAGEM
+   ============================================================ */
+
+.denuncias-listagem {
+    padding: 20px 25px 25px;
+}
+
+.denuncias-listagem-cabecalho {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-bottom: 14px;
+}
+
+.denuncias-listagem-kicker {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #0789ce;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.denuncias-listagem-cabecalho h3 {
+    margin: 0;
+
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.denuncias-listagem-detalhe {
+    color: var(--muted);
+    font-size: 8px;
+}
+
+
+/* ============================================================
+   TABELA DE REGISTROS
+   Mantida para compatibilidade com script.js
+   ============================================================ */
+
+.denuncias-listagem-conteudo {
+    width: 100%;
+    overflow-x: auto;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+}
+
+.denuncias-listagem-conteudo:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.denuncias-content .reports-table {
+    width: 100%;
+    min-width: 800px;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    background: var(--surface);
+}
+
+.denuncias-content .reports-table thead {
+    background: var(--soft);
+}
+
+.denuncias-content .reports-table th {
+    padding: 14px 15px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.55px;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.denuncias-content .reports-table td {
+    padding: 14px 15px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--text);
+    font-size: 9px;
+    vertical-align: middle;
+}
+
+.denuncias-content .reports-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.denuncias-content .reports-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.denuncias-content .reports-table tbody tr:hover {
+    background: rgba(0, 153, 255, 0.045);
+}
+
+.denuncias-content .reports-table tbody tr.unread-row {
+    background: rgba(0, 153, 255, 0.035);
+}
+
+.denuncias-content .reports-table tbody tr.unread-row td:first-child {
+    box-shadow: inset 3px 0 0 #0099ff;
+}
+
+
+/* ============================================================
+   ELEMENTOS GERADOS PELO JAVASCRIPT
+   ============================================================ */
+
+.denuncias-content .report-id {
+    color: var(--blue);
+    font-weight: 700;
+}
+
+.denuncias-content .report-user {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.denuncias-content .report-reason {
+    max-width: 260px;
+    overflow-wrap: anywhere;
+}
+
+.denuncias-content .report-date {
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.denuncias-content .read-badge {
+    min-width: 65px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.denuncias-content .badge-read {
+    background: #e8f7ef;
+    color: #247a57;
+}
+
+.denuncias-content .badge-unread {
+    background: #fff3dc;
+    color: #a87519;
+}
+
+.denuncias-content .row-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.denuncias-content .reports-table td[colspan] {
+    padding: 35px 20px;
+
+    color: var(--muted);
+    font-size: 10px;
+    text-align: center;
+}
+
+
+/* ============================================================
+   BOTÕES DA LISTAGEM
+   ============================================================ */
+
+.denuncias-content .reports-table button {
+    min-height: 30px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    padding: 6px 9px;
+
+    border: 1px solid #cce4f5;
+    border-radius: 7px;
+
+    background: #f0f8ff;
+    color: #00649e;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.denuncias-content .reports-table button:hover {
+    border-color: #9acdeb;
+    background: #e0f2ff;
+}
+
+
+/* ============================================================
+   RODAPÉ DA PÁGINA
+   ============================================================ */
+
+.denuncias-footer {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-top: 22px;
+    padding: 16px 19px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--surface);
+}
+
+.denuncias-footer-icone {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+    background: #e8f5ff;
+    color: #0879bb;
+    font-size: 15px;
+}
+
+.denuncias-footer > div:nth-child(2) {
+    min-width: 0;
+}
+
+.denuncias-footer strong {
+    display: block;
+
+    color: var(--text);
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.denuncias-footer p {
+    margin: 4px 0 0;
+
+    color: var(--muted);
+    font-size: 8px;
+}
+
+.denuncias-footer-marca {
+    margin-left: auto;
+
+    color: #8da5b7;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   MODAL DE DETALHES
+   ============================================================ */
+
+#detailsDialog {
+    position: fixed;
+
+    width: min(720px, calc(100vw - 30px));
+    max-width: 720px;
+    max-height: calc(100vh - 40px);
+
+    margin: auto;
+    padding: 0;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: 17px;
+
+    background: var(--surface);
+    color: var(--text);
+
+    box-shadow: 0 25px 75px rgba(0, 35, 55, 0.24);
+}
+
+#detailsDialog::backdrop {
+    background: rgba(7, 22, 33, 0.62);
+    backdrop-filter: blur(3px);
+}
+
+.dr-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 20px 23px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.dr-kicker {
+    display: block;
+    margin-bottom: 5px;
+
+    color: #0789ce;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.dr-cabecalho h2 {
+    margin: 0;
+
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.dr-fechar {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 9px;
+
+    background: var(--soft);
+    color: var(--muted);
+
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.dr-fechar:hover {
+    background: var(--hover);
+    color: var(--text);
+}
+
+#detailsStatus {
+    margin: 0;
+    padding: 0 23px;
+
+    color: var(--muted);
+    font-size: 9px;
+}
+
+#detailsStatus:empty {
+    display: none;
+}
+
+.dr-conteudo {
+    max-height: calc(100vh - 220px);
+
+    padding: 21px 23px;
+    overflow-y: auto;
+}
+
+.dr-secao {
+    margin-bottom: 22px;
+}
+
+.dr-secao:last-child {
+    margin-bottom: 0;
+}
+
+.dr-secao h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin: 0 0 11px;
+
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.dr-secao h3 i {
+    color: #0789ce;
+}
+
+.dr-dados {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+
+    margin: 0;
+}
+
+.dr-dados > div {
+    min-width: 0;
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: var(--soft);
+}
+
+.dr-dados dt {
+    margin-bottom: 5px;
+
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.dr-dados dd {
+    margin: 0;
+
+    color: var(--text);
+    font-size: 9px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+#reportDescription {
+    margin: 0;
+    padding: 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: var(--soft);
+    color: var(--muted);
+
+    font-size: 9px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+#imagesStatus {
+    margin: 0 0 10px;
+
+    color: var(--muted);
+    font-size: 9px;
+}
+
+#evidenceGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+#evidenceGrid img {
+    display: block;
+
+    width: 100%;
+    height: 125px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: var(--soft);
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.dr-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    padding: 15px 23px;
+
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+}
+
+#readNotice {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+#markReadButton {
+    min-height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 8px 13px;
+
+    border: 1px solid #006da9;
+    border-radius: 8px;
+
+    background: #006da9;
+    color: #fff;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#markReadButton:hover {
+    background: #005386;
+}
+
+
+/* ============================================================
+   AMPLIAÇÃO DE IMAGEM
+   ============================================================ */
+
+#imagePreview {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+
+    padding: 20px;
+
+    background: rgba(5, 17, 27, 0.96);
+}
+
+#imagePreview[hidden] {
+    display: none !important;
+}
+
+#closePreview {
+    align-self: flex-end;
+
+    padding: 9px 13px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.10);
+    color: #fff;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 9px;
+    cursor: pointer;
+}
+
+#closePreview:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#previewImage {
+    display: block;
+
+    max-width: 100%;
+    max-height: calc(100% - 45px);
+
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+
+/* ============================================================
+   MODAL DE LOGOUT
+   ============================================================ */
+
+.confirm-dialog {
+    width: min(420px, calc(100vw - 30px));
+    max-width: 420px;
+
+    margin: auto;
+    padding: 0;
+
+    border: 1px solid var(--border);
+    border-radius: 17px;
+
+    background: var(--surface);
+    color: var(--text);
+
+    box-shadow: 0 25px 75px rgba(0, 35, 55, 0.25);
+}
+
+.confirm-dialog::backdrop {
+    background: rgba(7, 22, 33, 0.62);
+    backdrop-filter: blur(3px);
+}
+
+.confirm-content {
+    padding: 29px 25px;
+    text-align: center;
+}
+
+.confirm-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 17px;
+
+    border-radius: 17px;
+    background: #fff0ed;
+    color: #c9564c;
+
+    font-size: 21px;
+}
+
+.confirm-content h2 {
+    margin: 0;
+
+    color: var(--text);
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.confirm-content > p:not(.form-status) {
+    max-width: 320px;
+    margin: 10px auto 0;
+
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.confirm-content .form-status {
+    min-height: 17px;
+    margin: 12px 0 0;
+
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.confirm-actions {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+
+    margin-top: 22px;
+}
+
+.confirm-actions .button {
+    min-height: 38px;
+
+    padding: 9px 14px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.confirm-actions .button-secondary {
+    border-color: var(--border);
+    background: var(--surface);
+    color: var(--text);
+}
+
+.confirm-actions .button-secondary:hover {
+    background: var(--hover);
+}
+
+.confirm-actions .button-danger {
+    border-color: #c9564c;
+    background: #c9564c;
+    color: #fff;
+}
+
+.confirm-actions .button-danger:hover {
+    background: #ad4038;
+}
+
+
+/* ============================================================
+   TEMA ESCURO
+   ============================================================ */
+
+html[data-tema="escuro"] .denuncias-intro {
+    border-color: #30495e;
+
+    background:
+        linear-gradient(
+            115deg,
+            #192d3e 0%,
+            #1c3549 58%,
+            #203e53 100%
+        );
+}
+
+html[data-tema="escuro"] .denuncias-intro::before {
+    border-color: rgba(112, 196, 255, 0.055);
+}
+
+html[data-tema="escuro"] .denuncias-intro::after {
+    background: rgba(0, 153, 255, 0.08);
+}
+
+html[data-tema="escuro"] .denuncias-intro h1 {
+    color: #e1f1ff;
+}
+
+html[data-tema="escuro"] .denuncias-intro-texto p {
+    color: #afc5d8;
+}
+
+html[data-tema="escuro"] .denuncias-eyebrow {
+    color: #75caff;
+}
+
+html[data-tema="escuro"] .denuncias-intro-acoes {
+    border-color: rgba(112, 196, 255, 0.12);
+    background: rgba(17, 43, 62, 0.8);
+}
+
+html[data-tema="escuro"] .denuncias-intro-icon {
+    background: #24455e;
+    color: #8bd1ff;
+}
+
+html[data-tema="escuro"] .denuncias-intro-acoes span {
+    color: #9db6c9;
+}
+
+html[data-tema="escuro"] .denuncias-intro-acoes strong {
+    color: #e0efff;
+}
+
+html[data-tema="escuro"] .denuncias-section-kicker,
+html[data-tema="escuro"] .denuncias-listagem-kicker {
+    color: #70c7ff;
+}
+
+html[data-tema="escuro"] .indicador-total .indicador-icone {
+    background: #24445d;
+    color: #8bd1ff;
+}
+
+html[data-tema="escuro"] .indicador-pendente .indicador-icone {
+    background: rgba(212, 154, 53, 0.15);
+    color: #ffd078;
+}
+
+html[data-tema="escuro"] .indicador-lido .indicador-icone {
+    background: rgba(84, 190, 135, 0.14);
+    color: #8be0ae;
+}
+
+html[data-tema="escuro"] .indicador-pendente .indicador-rodape i {
+    color: #ffd078;
+}
+
+html[data-tema="escuro"] .indicador-lido .indicador-rodape i {
+    color: #8be0ae;
+}
+
+html[data-tema="escuro"] .denuncias-atualizar {
+    border-color: #36566e;
+    background: #203b50;
+    color: #a7dcff;
+}
+
+html[data-tema="escuro"] .denuncias-atualizar:hover {
+    border-color: #4e7998;
+    background: #294b63;
+}
+
+html[data-tema="escuro"] .denuncias-filtros-icone {
+    background: #24445d;
+    color: #8bd1ff;
+}
+
+html[data-tema="escuro"] .denuncias-busca-campo button,
+html[data-tema="escuro"] #markReadButton {
+    background: #087dbb;
+    border-color: #087dbb;
+}
+
+html[data-tema="escuro"] .denuncias-busca-campo button:hover,
+html[data-tema="escuro"] #markReadButton:hover {
+    background: #0799e5;
+}
+
+html[data-tema="escuro"] .denuncias-content .reports-table tbody tr:hover {
+    background: #203a4e;
+}
+
+html[data-tema="escuro"] .denuncias-content .reports-table tbody tr.unread-row {
+    background: #1b3549;
+}
+
+html[data-tema="escuro"] .denuncias-content .badge-read {
+    background: rgba(84, 190, 135, 0.14);
+    color: #8be0ae;
+}
+
+html[data-tema="escuro"] .denuncias-content .badge-unread {
+    background: rgba(255, 190, 80, 0.13);
+    color: #ffd078;
+}
+
+html[data-tema="escuro"] .denuncias-content .reports-table button {
+    border-color: #365b76;
+    background: #203e55;
+    color: #a7dcff;
+}
+
+html[data-tema="escuro"] .denuncias-content .reports-table button:hover {
+    border-color: #4d7898;
+    background: #294e68;
+}
+
+html[data-tema="escuro"] .denuncias-footer-icone {
+    background: #24445d;
+    color: #8bd1ff;
+}
+
+html[data-tema="escuro"] .dr-kicker {
+    color: #70c7ff;
+}
+
+html[data-tema="escuro"] .dr-secao h3 i {
+    color: #70c7ff;
+}
+
+html[data-tema="escuro"] .confirm-icon {
+    background: rgba(201, 86, 76, 0.14);
+    color: #ffaaa0;
+}
+
+html[data-tema="escuro"] .confirm-actions .button-danger {
+    background: #a9433b;
+    border-color: #a9433b;
+}
+
+
+/* ============================================================
+   ACESSIBILIDADE E ESTADOS
+   ============================================================ */
+
+.denuncias-content button:focus-visible,
+#detailsDialog button:focus-visible,
+.confirm-dialog button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.denuncias-content button:disabled,
+#detailsDialog button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .denuncias-content *,
+    #detailsDialog *,
+    .confirm-dialog * {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE — TABLETS
+   ============================================================ */
+
+@media (max-width: 1050px) {
+
+    .denuncias-content {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .denuncias-intro-acoes {
+        padding: 13px;
+    }
+
+    .denuncias-indicadores {
+        gap: 12px;
+    }
+
+    .denuncia-indicador {
+        padding: 16px;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE — TABLETS PEQUENOS
+   ============================================================ */
+
+@media (max-width: 800px) {
+
+    .denuncias-content {
+        padding: 100px 19px 32px;
+    }
+
+    .denuncias-intro {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+
+        padding: 27px;
+    }
+
+    .denuncias-intro-acoes {
+        width: fit-content;
+    }
+
+    .denuncias-indicadores {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .indicador-lido {
+        grid-column: 1 / -1;
+    }
+
+    .denuncias-filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .denuncias-resumo-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE — CELULARES
+   ============================================================ */
+
+@media (max-width: 560px) {
+
+    .denuncias-content {
+        padding: 92px 14px 25px;
+    }
+
+    .denuncias-intro {
+        min-height: auto;
+        padding: 23px 20px;
+        border-radius: 15px;
+    }
+
+    .denuncias-intro h1 {
+        font-size: 27px;
+    }
+
+    .denuncias-intro-texto p {
+        font-size: 10px;
+    }
+
+    .denuncias-intro-acoes {
+        width: 100%;
+    }
+
+    .denuncias-indicadores {
+        grid-template-columns: 1fr;
+    }
+
+    .indicador-lido {
+        grid-column: auto;
+    }
+
+    .denuncia-indicador {
+        min-height: 125px;
+    }
+
+    .denuncias-central-cabecalho {
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding: 20px 17px;
+    }
+
+    .denuncias-atualizar {
+        width: 100%;
+    }
+
+    .denuncias-filtros-area {
+        margin: 0 14px;
+        padding: 14px;
+    }
+
+    .denuncias-listagem {
+        padding: 18px 14px 20px;
+    }
+
+    .denuncias-listagem-cabecalho {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .denuncias-listagem-detalhe {
+        line-height: 1.6;
+    }
+
+    .denuncias-footer {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 14px;
+    }
+
+    .denuncias-footer-marca {
+        width: 100%;
+        margin-left: 51px;
+    }
+
+    .dr-dados {
+        grid-template-columns: 1fr;
+    }
+
+    #evidenceGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dr-cabecalho,
+    .dr-conteudo {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .dr-rodape {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 14px 16px;
+    }
+
+    #markReadButton {
+        width: 100%;
+    }
+
+    .confirm-actions {
+        flex-direction: column-reverse;
+    }
+
+    .confirm-actions .button {
+        width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   CELULARES ESTREITOS
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+    .denuncias-content {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .denuncias-intro h1 {
+        font-size: 24px;
+    }
+
+    .denuncias-intro {
+        padding: 20px 16px;
+    }
+
+    .denuncias-filtros-area {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .denuncias-busca-campo input {
+        padding-right: 78px;
+    }
+
+    .denuncias-busca-campo button {
+        min-width: 58px;
+        font-size: 8px;
+    }
+
+    #evidenceGrid {
+        grid-template-columns: 1fr;
+    }
+
+}

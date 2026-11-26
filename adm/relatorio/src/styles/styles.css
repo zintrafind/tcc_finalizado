@@ -1,0 +1,139 @@
+@import url('sidebar.css');
+@import url('home.css');
+@import url('profile-menu.css');
+@import url('relatorios.css');
+
+
+:root {
+    --bg: #f6f9fc;
+    --surface: #ffffff;
+    --soft: #f7fafc;
+
+    --text: #163b56;
+    --muted: #71879a;
+
+    --border: #e3edf5;
+
+    --blue: #005386;
+    --accent: #0099ff;
+
+    --hover: #eaf6ff;
+
+    --shadow:
+        0 4px 18px
+        rgba(0, 83, 134, 0.045);
+
+    color-scheme: light;
+}
+
+
+html[data-tema="escuro"] {
+    --bg: #101f2c;
+    --surface: #192d3e;
+    --soft: #142635;
+
+    --text: #e0efff;
+    --muted: #afc5d8;
+
+    --border: #30495e;
+
+    --blue: #8bd1ff;
+    --accent: #70c4ff;
+
+    --hover: #243f54;
+
+    --shadow:
+        0 5px 18px
+        rgba(0, 0, 0, 0.12);
+
+    color-scheme: dark;
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        "Poppins",
+        sans-serif;
+}
+
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+a {
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+
+[hidden] {
+    display: none !important;
+}
+
+
+button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline:
+        3px solid
+        rgba(0, 153, 255, 0.25);
+
+    outline-offset: 2px;
+}
+
+
+body.modal-open {
+    overflow: hidden;
+}

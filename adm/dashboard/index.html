@@ -1,0 +1,1219 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <!-- PREFERÊNCIAS GLOBAIS -->
+    <script src="../assets/preferencias.js"></script>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <!-- PREFERÊNCIAS ANTES DO CSS -->
+    <script>
+        (function () {
+            try {
+                const tema =
+                    localStorage.getItem("adminTema") === "escuro"
+                        ? "escuro"
+                        : "claro";
+
+                const texto =
+                    localStorage.getItem("adminTexto") === "ampliado"
+                        ? "ampliado"
+                        : "padrao";
+
+                const contraste =
+                    localStorage.getItem("adminContraste") === "true";
+
+                const movimento =
+                    localStorage.getItem("adminReduzirAnimacoes") === "true";
+
+                document.documentElement.dataset.tema = tema;
+                document.documentElement.dataset.texto = texto;
+                document.documentElement.dataset.contraste = String(contraste);
+                document.documentElement.dataset.movimento = String(movimento);
+
+            } catch (erro) {
+                document.documentElement.dataset.tema = "claro";
+                document.documentElement.dataset.texto = "padrao";
+                document.documentElement.dataset.contraste = "false";
+                document.documentElement.dataset.movimento = "false";
+            }
+        })();
+    </script>
+
+    <title>Peça por Peça | Dashboard</title>
+
+    <!-- FAVICON -->
+    <link
+        rel="icon"
+        type="image/x-icon"
+        href="src/images/favicon.ico"
+    >
+
+    <!-- POPPINS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="src/styles/styles.css">
+
+    <link rel="stylesheet" href="src/styles/dashboard-dados.css">
+
+    <link rel="stylesheet" href="src/styles/notificacoes.css">
+
+    <link rel="stylesheet" href="../assets/preferencias.css">
+
+    <!-- TEMA -->
+    <script>
+        (() => {
+            const tema = localStorage.getItem("adminTema");
+
+            if (tema === "escuro") {
+                document.documentElement.dataset.tema = "escuro";
+            }
+        })();
+    </script>
+
+</head>
+
+<body>
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <!-- LOGO -->
+
+        <div class="logo-details">
+
+            <span class="image">
+
+                <img
+                    src="src/images/logo.png"
+                    alt="Peça por Peça"
+                    class="logo-clara"
+                >
+
+                <img
+                    src="src/images/logo-negativa.png"
+                    alt=""
+                    class="logo-escura"
+                    aria-hidden="true"
+                >
+
+            </span>
+
+            <div class="sidebar-brand">
+
+                <strong>Peça por Peça</strong>
+
+                <span>Administração</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVEGAÇÃO -->
+
+        <nav
+            class="sidebar-navigation"
+            aria-label="Menu administrativo"
+        >
+
+            <ul class="nav-links">
+
+                <!-- INÍCIO -->
+
+                <li>
+                    <a
+                        href="../inicio/index.html"
+                        aria-label="Início"
+                    >
+                        <i class="fa-solid fa-house" aria-hidden="true"></i>
+
+                        <span class="nav-text">Início</span>
+                    </a>
+                </li>
+
+
+                <!-- DASHBOARD -->
+
+                <li>
+                    <a
+                        href="../dashboard/index.html"
+                        class="pagina-ativa"
+                        aria-current="page"
+                        aria-label="Dashboard"
+                    >
+                        <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
+
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+
+
+                <!-- USUÁRIOS -->
+
+                <li>
+                    <a
+                        href="../usuarios-cadastrados/index.html"
+                        aria-label="Usuários"
+                    >
+                        <i class="fa-solid fa-users" aria-hidden="true"></i>
+
+                        <span class="nav-text">Usuários</span>
+                    </a>
+                </li>
+
+
+                <!-- ANÚNCIOS -->
+
+                <li>
+                    <a
+                        href="../anuncios-publicados/index.html"
+                        aria-label="Anúncios"
+                    >
+                        <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+
+                        <span class="nav-text">Anúncios</span>
+                    </a>
+                </li>
+
+
+                <!-- DENÚNCIAS -->
+
+                <li>
+                    <a
+                        href="../denuncia/index.html"
+                        aria-label="Denúncias"
+                    >
+                        <i class="fa-solid fa-flag" aria-hidden="true"></i>
+
+                        <span class="nav-text">Denúncias</span>
+                    </a>
+                </li>
+
+
+                <!-- HISTÓRICO -->
+
+                <li>
+                    <a
+                        href="../historico/index.html"
+                        aria-label="Histórico"
+                    >
+                        <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
+
+                        <span class="nav-text">Histórico</span>
+                    </a>
+                </li>
+
+
+                <!-- RELATÓRIOS -->
+
+                <li>
+                    <a
+                        href="../relatorio/index.html"
+                        aria-label="Relatórios"
+                    >
+                        <i class="fa-regular fa-file-lines" aria-hidden="true"></i>
+
+                        <span class="nav-text">Relatórios</span>
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- PARTE INFERIOR -->
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../configuracoes/index.html"
+                    class="sidebar-bottom-link"
+                    aria-label="Configurações"
+                >
+                    <i class="fa-solid fa-gear" aria-hidden="true"></i>
+
+                    <span class="nav-text">Configurações</span>
+                </a>
+
+
+                <button
+                    type="button"
+                    class="sidebar-bottom-link sidebar-logout"
+                    id="btn-sair-sidebar"
+                    aria-label="Sair"
+                >
+                    <i
+                        class="fa-solid fa-arrow-right-from-bracket"
+                        aria-hidden="true"
+                    ></i>
+
+                    <span class="nav-text">Sair</span>
+                </button>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ============================================================
+         ÁREA PRINCIPAL
+         ============================================================ -->
+
+    <section class="home">
+
+        <!-- ========================================================
+             TOPBAR
+             ======================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="topbar-sidebar-toggle"
+                    id="sidebarToggle"
+                    aria-label="Recolher menu lateral"
+                    aria-expanded="true"
+                >
+                    <i
+                        class="fa-solid fa-chevron-left"
+                        id="sidebarToggleIcon"
+                        aria-hidden="true"
+                    ></i>
+                </button>
+
+                <span class="topbar-label">
+                    Dashboard
+                </span>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <!-- NOTIFICAÇÕES -->
+
+                <div
+                    class="notificacoes-container"
+                    id="notificacoes-container"
+                >
+
+                    <button
+                        class="icon-button notificacoes-botao"
+                        type="button"
+                        id="btn-notificacoes"
+                        aria-label="Notificações"
+                        aria-expanded="false"
+                        aria-controls="painel-notificacoes"
+                    >
+
+                        <i class="fa-regular fa-bell" aria-hidden="true"></i>
+
+                        <span
+                            class="notificacoes-contador"
+                            id="notificacoes-contador"
+                            aria-hidden="true"
+                            hidden
+                        >0</span>
+
+                    </button>
+
+
+                    <div
+                        class="notificacoes-painel"
+                        id="painel-notificacoes"
+                        role="region"
+                        aria-labelledby="notificacoes-titulo"
+                        hidden
+                    >
+
+                        <div class="notificacoes-cabecalho">
+
+                            <div>
+                                <h2 id="notificacoes-titulo">
+                                    Notificações
+                                </h2>
+
+                                <p>Denúncias de usuários</p>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="notificacoes-fechar"
+                                id="btn-fechar-notificacoes"
+                                aria-label="Fechar notificações"
+                            >
+                                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                            </button>
+
+                        </div>
+
+
+                        <p
+                            class="notificacoes-status"
+                            id="notificacoes-status"
+                            role="status"
+                        >
+                            Carregando notificações...
+                        </p>
+
+
+                        <div
+                            class="notificacoes-lista"
+                            id="notificacoes-lista"
+                            aria-busy="false"
+                        ></div>
+
+
+                        <div class="notificacoes-rodape">
+
+                            <span>
+                                Até 20 notificações, com as não lidas primeiro.
+                            </span>
+
+                            <button
+                                type="button"
+                                id="btn-atualizar-notificacoes"
+                            >
+                                Atualizar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PERFIL -->
+
+                <div class="profile-menu-container">
+
+                    <button
+                        type="button"
+                        class="profile-details"
+                        id="btn-menu-perfil"
+                        aria-expanded="false"
+                        aria-controls="menu-perfil"
+                    >
+
+                        <span class="profile-avatar" aria-hidden="true">
+                            <i class="fa-regular fa-user"></i>
+                        </span>
+
+                        <span class="profile-user-info">
+
+                            <strong
+                                id="nome-admin-topo"
+                                class="admin-name"
+                            >
+                                Administrador
+                            </strong>
+
+                            <small>Administrador</small>
+
+                        </span>
+
+                        <i
+                            class="fa-solid fa-angle-down profile-chevron"
+                            aria-hidden="true"
+                        ></i>
+
+                    </button>
+
+
+                    <!-- DROPDOWN -->
+
+                    <div
+                        class="profile-dropdown"
+                        id="menu-perfil"
+                        hidden
+                    >
+
+                        <div class="profile-dropdown-header">
+
+                            <span class="profile-dropdown-icon">
+                                <i class="fa-regular fa-user" aria-hidden="true"></i>
+                            </span>
+
+                            <div>
+                                <strong>Minha conta</strong>
+                                <span>Painel administrativo</span>
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="../perfil/index.html"
+                            class="profile-menu-item"
+                        >
+                            <i class="fa-regular fa-user" aria-hidden="true"></i>
+                            <span>Perfil</span>
+                        </a>
+
+
+                        <a
+                            href="../configuracoes/index.html"
+                            class="profile-menu-item"
+                        >
+                            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                            <span>Configurações</span>
+                        </a>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item"
+                            id="btn-aparencia"
+                            aria-expanded="false"
+                            aria-controls="opcoes-aparencia"
+                        >
+                            <i class="fa-regular fa-moon" aria-hidden="true"></i>
+
+                            <span>Aparência</span>
+
+                            <i
+                                class="fa-solid fa-angle-down menu-seta"
+                                aria-hidden="true"
+                            ></i>
+                        </button>
+
+
+                        <div
+                            id="opcoes-aparencia"
+                            class="appearance-options"
+                            hidden
+                        >
+                            <label for="tema-admin">Tema do painel</label>
+
+                            <select id="tema-admin">
+                                <option value="claro">Claro</option>
+                                <option value="escuro">Escuro</option>
+                            </select>
+                        </div>
+
+
+                        <div class="profile-menu-divider"></div>
+
+
+                        <button
+                            type="button"
+                            class="profile-menu-item profile-menu-logout"
+                            id="btn-sair-perfil"
+                        >
+                            <i
+                                class="fa-solid fa-arrow-right-from-bracket"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>Sair</span>
+                        </button>
+
+
+                        <p id="perfil-menu-status" role="status"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================================================
+             CONTEÚDO PRINCIPAL — NOVO DASHBOARD
+             ======================================================== -->
+
+        <main class="dashboard-content dashboard-content-reformulado">
+
+
+            <!-- APRESENTAÇÃO -->
+
+            <section class="dash-intro">
+
+                <div class="dash-intro-texto">
+
+
+                    <h1>
+                        Central de acompanhamento
+                    </h1>
+
+                    <p>
+                        Acompanhe o desenvolvimento da plataforma,
+                        consulte os indicadores e observe a movimentação
+                        geral do sistema.
+                    </p>
+
+                </div>
+
+
+                <div class="dash-intro-acoes">
+
+
+
+                    <button
+                        type="button"
+                        id="atualizarDashboard"
+                    >
+                        <i
+                            class="fa-solid fa-rotate"
+                            aria-hidden="true"
+                        ></i>
+
+                        Atualizar informações
+                    </button>
+
+
+                    <span
+                        id="dashboardStatus"
+                        role="status"
+                    ></span>
+
+                </div>
+
+            </section>
+
+
+            <!-- INDICADORES -->
+
+            <section class="dash-indicadores">
+
+                <div class="dash-section-title">
+
+                    <div>
+
+
+                        <h2>
+                            Panorama da plataforma
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dash-indicadores-grid">
+
+
+                    <!-- USUÁRIOS -->
+
+                    <article class="dash-indicador dash-indicador-usuarios">
+
+                        <div class="dash-indicador-topo">
+
+                            <span>Comunidade</span>
+
+                            <i class="fa-solid fa-users" aria-hidden="true"></i>
+
+                        </div>
+
+                        <strong id="totalUsuarios">...</strong>
+
+                        <p>Usuários cadastrados</p>
+
+                    </article>
+
+
+                    <!-- ANÚNCIOS -->
+
+                    <article class="dash-indicador dash-indicador-anuncios">
+
+                        <div class="dash-indicador-topo">
+
+                            <span>Catálogo</span>
+
+                            <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+
+                        </div>
+
+                        <strong id="totalAnuncios">...</strong>
+
+                        <p>Anúncios publicados</p>
+
+                    </article>
+
+
+                    <!-- USUÁRIOS ATIVOS -->
+
+                    <article class="dash-indicador dash-indicador-ativos">
+
+                        <div class="dash-indicador-topo">
+
+                            <span>Participação</span>
+
+                            <i class="fa-solid fa-user-check" aria-hidden="true"></i>
+
+                        </div>
+
+                        <strong id="usuariosAtivos">...</strong>
+
+                        <p>Usuários ativos</p>
+
+                    </article>
+
+
+                    <!-- ANÚNCIOS DISPONÍVEIS -->
+
+                    <article class="dash-indicador dash-indicador-disponiveis">
+
+                        <div class="dash-indicador-topo">
+
+                            <span>Disponibilidade</span>
+
+                            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+
+                        </div>
+
+                        <strong id="anunciosDisponiveis">...</strong>
+
+                        <p>Anúncios disponíveis</p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- CRESCIMENTO -->
+
+            <section class="dash-crescimento">
+
+                <div class="dash-section-title">
+
+                    <div>
+
+
+                        <h2>
+                            Crescimento da comunidade
+                        </h2>
+
+                    </div>
+
+                    <span class="dash-periodo">
+                        Últimos seis meses
+                    </span>
+
+                </div>
+
+
+                <article class="dash-grafico-principal">
+
+                    <div class="dash-grafico-heading">
+
+                        <div>
+
+                            <span class="dash-grafico-label">
+                                CADASTRAMENTOS
+                            </span>
+
+                            <h3>
+                                Novos usuários na plataforma
+                            </h3>
+
+                            <p>
+                                Acompanhe a evolução dos cadastros
+                                ao longo dos meses.
+                            </p>
+
+                        </div>
+
+
+                        <div class="dash-grafico-icon">
+
+                            <i
+                                class="fa-solid fa-arrow-trend-up"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dash-grafico-area dash-grafico-area-grande">
+
+                        <canvas
+                            id="graficoUsuarios"
+                            role="img"
+                            aria-label="Gráfico de novos usuários cadastrados por mês"
+                        ></canvas>
+
+                    </div>
+
+
+                    <div
+                        id="legendaUsuarios"
+                        class="dashboard-chart-legend"
+                        aria-live="polite"
+                    ></div>
+
+                </article>
+
+            </section>
+
+
+            <!-- DISTRIBUIÇÃO -->
+
+            <section class="dash-distribuicao">
+
+                <div class="dash-section-title">
+
+                    <div>
+
+                        <h2>
+                            Composição dos anúncios
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="dash-graficos-secundarios">
+
+
+                    <!-- CATEGORIAS -->
+
+                    <article class="dash-grafico-card">
+
+                        <div class="dash-grafico-heading">
+
+                            <div>
+
+                                <span class="dash-grafico-label">
+                                    CLASSIFICAÇÃO
+                                </span>
+
+                                <h3>
+                                    Categorias de peças
+                                </h3>
+
+                                <p>
+                                    Quantidade de anúncios em cada categoria.
+                                </p>
+
+                            </div>
+
+
+                            <div class="dash-grafico-icon">
+
+                                <i
+                                    class="fa-solid fa-layer-group"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="dash-grafico-area">
+
+                            <canvas
+                                id="graficoCategorias"
+                                role="img"
+                                aria-label="Distribuição dos anúncios por categoria"
+                            ></canvas>
+
+                        </div>
+
+
+                        <div
+                            id="legendaCategorias"
+                            class="dashboard-chart-legend"
+                            aria-live="polite"
+                        ></div>
+
+                    </article>
+
+
+                    <!-- STATUS -->
+
+                    <article class="dash-grafico-card">
+
+                        <div class="dash-grafico-heading">
+
+                            <div>
+
+                                <span class="dash-grafico-label">
+                                    SITUAÇÃO
+                                </span>
+
+                                <h3>
+                                    Disponibilidade dos itens
+                                </h3>
+
+                                <p>
+                                    Situação atual dos anúncios publicados.
+                                </p>
+
+                            </div>
+
+
+                            <div class="dash-grafico-icon">
+
+                                <i
+                                    class="fa-solid fa-chart-pie"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="dash-grafico-area">
+
+                            <canvas
+                                id="graficoStatus"
+                                role="img"
+                                aria-label="Distribuição dos anúncios por status"
+                            ></canvas>
+
+                        </div>
+
+
+                        <div
+                            id="legendaStatus"
+                            class="dashboard-chart-legend"
+                            aria-live="polite"
+                        ></div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+
+
+            <!--
+                ELEMENTOS ANTIGOS MANTIDOS OCULTOS PARA COMPATIBILIDADE
+                COM O JAVASCRIPT ORIGINAL.
+            -->
+
+            <section hidden aria-hidden="true">
+
+                <div id="atividadesRecentes"></div>
+
+                <div id="denunciasRecentes"></div>
+
+            </section>
+
+
+        </main>
+
+    </section>
+
+
+    <!-- ============================================================
+         MODAL — DETALHES DA DENÚNCIA
+         ============================================================ -->
+
+    <dialog
+        id="modal-denuncia"
+        class="modal-denuncia"
+        aria-labelledby="modal-denuncia-titulo"
+    >
+
+        <div class="modal-denuncia-cabecalho">
+
+            <h2 id="modal-denuncia-titulo">
+                Detalhes da denúncia
+            </h2>
+
+            <button
+                type="button"
+                id="btn-fechar-denuncia"
+                class="modal-denuncia-fechar"
+                aria-label="Fechar detalhes da denúncia"
+            >
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+
+        </div>
+
+
+        <p
+            id="modal-denuncia-status"
+            class="modal-denuncia-status"
+            role="status"
+        ></p>
+
+
+        <div
+            id="modal-denuncia-conteudo"
+            class="modal-denuncia-conteudo"
+            hidden
+        >
+
+            <dl class="modal-denuncia-dados">
+
+                <div>
+                    <dt>Número da denúncia</dt>
+                    <dd id="denuncia-numero"></dd>
+                </div>
+
+                <div>
+                    <dt>Usuário denunciado</dt>
+                    <dd id="denuncia-usuario"></dd>
+                </div>
+
+                <div>
+                    <dt>Data</dt>
+                    <dd id="denuncia-data"></dd>
+                </div>
+
+                <div>
+                    <dt>Status da denúncia</dt>
+                    <dd id="denuncia-status"></dd>
+                </div>
+
+                <div>
+                    <dt>Motivo</dt>
+                    <dd id="denuncia-motivo"></dd>
+                </div>
+
+            </dl>
+
+
+            <!-- DESCRIÇÃO -->
+
+            <div class="modal-denuncia-secao">
+
+                <h3>Descrição do ocorrido</h3>
+
+                <p
+                    id="denuncia-descricao"
+                    class="modal-denuncia-descricao"
+                ></p>
+
+            </div>
+
+
+            <!-- IMAGENS -->
+
+            <div class="modal-denuncia-secao">
+
+                <h3>Imagens anexadas</h3>
+
+                <p
+                    id="denuncia-imagens-status"
+                    role="status"
+                ></p>
+
+                <div
+                    id="denuncia-imagens"
+                    class="modal-denuncia-imagens"
+                ></div>
+
+            </div>
+
+
+            <!-- AMPLIAÇÃO -->
+
+            <div
+                id="denuncia-ampliacao"
+                class="modal-denuncia-ampliacao"
+                hidden
+            >
+
+                <button
+                    type="button"
+                    id="btn-fechar-ampliacao"
+                    class="modal-denuncia-fechar-ampliacao"
+                >
+                    Fechar imagem ampliada
+                </button>
+
+                <img
+                    id="denuncia-imagem-ampliada"
+                    alt="Evidência da denúncia ampliada"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- RODAPÉ -->
+
+        <div class="modal-denuncia-rodape">
+
+            <span
+                id="denuncia-leitura"
+                role="status"
+            ></span>
+
+            <button
+                type="button"
+                id="btn-denuncia-marcar-lida"
+                hidden
+            >
+                Marcar como lida
+            </button>
+
+        </div>
+
+    </dialog>
+
+
+    <!-- ============================================================
+         MODAL — CONFIRMAR SAÍDA
+         ============================================================ -->
+
+    <div
+        class="logout-modal"
+        id="modal-confirmar-sair"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="titulo-confirmar-sair"
+        hidden
+    >
+
+        <div class="logout-modal-card">
+
+            <button
+                type="button"
+                class="logout-modal-close"
+                id="btn-fechar-modal-saida"
+                aria-label="Fechar"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+
+            <div class="logout-modal-icon">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </div>
+
+
+            <h2 id="titulo-confirmar-sair">
+                Deseja sair?
+            </h2>
+
+
+            <p>
+                Você precisará entrar novamente para acessar
+                o painel administrativo.
+            </p>
+
+
+            <div class="logout-modal-actions">
+
+                <button
+                    type="button"
+                    class="logout-modal-button logout-modal-cancel"
+                    id="btn-cancelar-saida"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="logout-modal-button logout-modal-confirm"
+                    id="btn-confirmar-saida"
+                >
+
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                    Sair
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         VLIBRAS
+         ============================================================ -->
+
+    <div vw class="enabled">
+
+        <div vw-access-button class="active"></div>
+
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+
+    </div>
+
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <script>
+        if (window.VLibras) {
+            new window.VLibras.Widget(
+                "https://vlibras.gov.br/app"
+            );
+        }
+    </script>
+
+
+    <!-- ============================================================
+         BIBLIOTECAS
+         ============================================================ -->
+
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+
+
+    <!-- ============================================================
+         JAVASCRIPT DO SISTEMA
+         ============================================================ -->
+
+    <script src="src/javascript/script.js"></script>
+
+    <script src="src/javascript/profile-menu.js"></script>
+
+    <script src="src/javascript/notificacoes.js"></script>
+
+
+</body>
+</html>

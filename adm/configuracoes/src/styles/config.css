@@ -1,0 +1,910 @@
+/* ============================================================
+   PÁGINA DE CONFIGURAÇÕES
+   ============================================================ */
+
+.config-page {
+    --config-bg: #f6f9fc;
+    --config-card: #ffffff;
+
+    --config-title: #163b56;
+    --config-text: #26354b;
+    --config-muted: #71879a;
+
+    --config-border: #e3edf5;
+
+    --config-soft: #eaf6ff;
+
+    --config-accent: #0099ff;
+    --config-accent-dark: #005386;
+
+    --config-danger: #b4473e;
+    --config-danger-bg: #fff1ef;
+
+    --config-shadow:
+        0 4px 16px rgba(0, 83, 134, 0.045);
+
+    --config-font: 13px;
+    --config-small: 11px;
+
+    --config-heading: 34px;
+    --config-card-heading: 19px;
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 110px 32px 42px;
+
+    background: var(--config-bg);
+
+    color: var(--config-text);
+
+    font-size: var(--config-font);
+}
+
+
+.config-container {
+    width: 100%;
+    max-width: 1180px;
+
+    margin: 0 auto;
+}
+
+
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
+
+.config-heading {
+    margin-bottom: 26px;
+}
+
+
+.config-heading::before {
+    content: "Preferências";
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--config-accent);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+.config-page .config-heading h1 {
+    margin: 0;
+
+    color: var(--config-title);
+
+    font-size: var(--config-heading);
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+
+.config-page .config-heading p {
+    max-width: 650px;
+
+    margin: 8px 0 0;
+
+    color: var(--config-muted);
+
+    font-size: var(--config-font);
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.config-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    align-items: stretch;
+
+    gap: 22px;
+}
+
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+.config-card {
+    min-width: 0;
+
+    padding: 27px;
+
+    border: 1px solid var(--config-border);
+    border-radius: 18px;
+
+    background: var(--config-card);
+
+    box-shadow: var(--config-shadow);
+}
+
+
+.config-page .config-card h2 {
+    margin: 0 0 6px;
+
+    color: var(--config-title);
+
+    font-size: var(--config-card-heading);
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+.config-page .config-description {
+    margin: 0 0 23px;
+
+    color: var(--config-muted);
+
+    font-size: var(--config-font);
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   CONTA
+   ============================================================ */
+
+.config-account {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    min-height: 86px;
+
+    margin-bottom: 20px;
+
+    padding: 16px;
+
+    border: 1px solid var(--config-border);
+    border-radius: 12px;
+
+    background: var(--config-bg);
+}
+
+
+.config-account-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 42px;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    background: var(--config-soft);
+
+    color: var(--config-accent-dark);
+
+    font-size: 17px;
+}
+
+
+.config-account strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--config-text);
+
+    font-size: var(--config-font);
+    font-weight: 700;
+}
+
+
+.config-account div > span {
+    display: block;
+
+    color: var(--config-muted);
+
+    font-size: var(--config-small);
+
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   APARÊNCIA
+   ============================================================ */
+
+.config-field {
+    min-width: 0;
+
+    margin: 0 0 22px;
+    padding: 0;
+
+    border: 0;
+}
+
+
+.config-field:last-child {
+    margin-bottom: 0;
+}
+
+
+.config-field legend {
+    float: none;
+
+    width: auto;
+
+    margin-bottom: 10px;
+    padding: 0;
+
+    color: var(--config-text);
+
+    font-size: var(--config-font);
+    font-weight: 600;
+}
+
+
+.config-options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 0;
+}
+
+
+.config-option {
+    position: relative;
+
+    min-width: 0;
+
+    cursor: pointer;
+}
+
+
+.config-option input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    margin: 0;
+    padding: 0;
+
+    opacity: 0;
+}
+
+
+.config-option > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 52px;
+
+    padding: 12px;
+
+    border: 1px solid var(--config-border);
+
+    background: var(--config-card);
+
+    color: var(--config-muted);
+
+    font-size: var(--config-font);
+    font-weight: 500;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.config-option:first-child > span {
+    border-radius: 10px 0 0 10px;
+}
+
+
+.config-option:last-child > span {
+    border-radius: 0 10px 10px 0;
+}
+
+
+.config-option input:checked + span {
+    position: relative;
+
+    z-index: 1;
+
+    border-color: var(--config-accent);
+
+    background: var(--config-soft);
+
+    color: var(--config-accent-dark);
+}
+
+
+.config-option input:focus-visible + span {
+    position: relative;
+
+    z-index: 2;
+
+    outline:
+        3px solid
+        rgba(0, 153, 255, 0.28);
+
+    outline-offset: 3px;
+}
+
+
+.config-option i {
+    font-size: 18px;
+}
+
+
+.config-letter {
+    font-size: 20px;
+
+    line-height: 1;
+}
+
+
+.config-letter-large {
+    font-size: 25px;
+}
+
+
+/* ============================================================
+   ACESSIBILIDADE
+   ============================================================ */
+
+.config-switch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    padding: 17px 0;
+}
+
+
+.config-switch-row + .config-switch-row {
+    border-top: 1px solid var(--config-border);
+}
+
+
+.config-switch-row label {
+    color: var(--config-text);
+
+    font-size: var(--config-font);
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.config-switch-row small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--config-muted);
+
+    font-size: var(--config-small);
+    font-weight: 400;
+
+    line-height: 1.6;
+}
+
+
+.config-switch {
+    appearance: none;
+    -webkit-appearance: none;
+
+    position: relative;
+
+    flex: 0 0 50px;
+
+    width: 50px;
+    height: 28px;
+
+    margin: 0;
+    padding: 0;
+
+    border: 1px solid var(--config-border);
+    border-radius: 20px;
+
+    background: #dbe5ec;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.config-switch::before {
+    content: "";
+
+    position: absolute;
+
+    top: 3px;
+    left: 3px;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.2);
+
+    transition: transform 0.2s ease;
+}
+
+
+.config-switch:checked {
+    border-color: var(--config-accent);
+
+    background: var(--config-accent);
+}
+
+
+.config-switch:checked::before {
+    transform: translateX(22px);
+}
+
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+
+.config-page .config-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-height: 43px;
+
+    padding: 10px 16px;
+
+    border: 1px solid var(--config-border);
+    border-radius: 10px;
+
+    background: var(--config-card);
+
+    color: var(--config-text);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    line-height: 1.5;
+
+    text-align: center;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.config-page .config-btn:hover {
+    background: var(--config-soft);
+
+    transform: translateY(-1px);
+}
+
+
+.config-page .config-btn-primary {
+    border-color: var(--config-accent-dark);
+
+    background: var(--config-accent-dark);
+
+    color: #ffffff;
+}
+
+
+.config-page .config-btn-primary:hover {
+    border-color: #006ba9;
+
+    background: #006ba9;
+}
+
+
+.config-page .config-btn-soft {
+    border-color: #bfe3fa;
+
+    background: var(--config-soft);
+
+    color: var(--config-accent-dark);
+}
+
+
+.config-page .config-btn-danger {
+    border-color: #f0d0cc;
+
+    background: var(--config-danger-bg);
+
+    color: var(--config-danger);
+}
+
+
+.config-page .config-btn-danger:hover {
+    border-color: var(--config-danger);
+
+    background: var(--config-danger-bg);
+}
+
+
+.config-btn-wide {
+    width: 100%;
+}
+
+
+.config-page .config-btn:disabled {
+    opacity: 0.65;
+
+    cursor: wait;
+
+    transform: none;
+}
+
+
+/* ============================================================
+   RODAPÉ
+   ============================================================ */
+
+.config-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    gap: 16px;
+
+    margin-top: 28px;
+}
+
+
+.config-page .config-status {
+    margin: 0;
+
+    color: var(--config-muted);
+
+    font-size: var(--config-font);
+
+    line-height: 1.6;
+}
+
+
+.config-page .config-status.error {
+    color: var(--config-danger);
+}
+
+
+.config-footer .config-status {
+    flex: 1 1 240px;
+}
+
+
+.config-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+
+.config-dialog {
+    width:
+        min(
+            440px,
+            calc(100vw - 32px)
+        );
+
+    margin: auto;
+    padding: 28px;
+
+    border: 1px solid var(--config-border);
+    border-radius: 16px;
+
+    background: var(--config-card);
+
+    color: var(--config-text);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+
+.config-dialog::backdrop {
+    background:
+        rgba(7, 22, 33, 0.56);
+
+    backdrop-filter: blur(2px);
+}
+
+
+.config-dialog h2 {
+    margin: 0 0 12px;
+
+    color: var(--config-title);
+
+    font-size: var(--config-card-heading);
+
+    line-height: 1.4;
+}
+
+
+.config-dialog > p {
+    margin: 0 0 18px;
+
+    color: var(--config-muted);
+
+    font-size: var(--config-font);
+
+    line-height: 1.7;
+}
+
+
+.config-dialog .config-actions {
+    margin-top: 22px;
+}
+
+
+/* ============================================================
+   TEXTO AMPLIADO
+   ============================================================ */
+
+.config-page[data-texto="ampliado"] {
+    --config-font: 15px;
+    --config-small: 13px;
+
+    --config-heading: 37px;
+    --config-card-heading: 21px;
+}
+
+
+/* ============================================================
+   CONTRASTE
+   ============================================================ */
+
+.config-page[data-contraste="true"] {
+    --config-text: #000000;
+    --config-muted: #252525;
+    --config-title: #00395f;
+    --config-border: #333333;
+
+    --config-accent: #0065a8;
+    --config-accent-dark: #003f69;
+}
+
+
+html[data-tema="escuro"]
+.config-page[data-contraste="true"] {
+    --config-bg: #000000;
+    --config-card: #080808;
+
+    --config-text: #ffffff;
+    --config-muted: #ffffff;
+    --config-title: #ffffff;
+
+    --config-border: #ffffff;
+    --config-soft: #101010;
+
+    --config-accent: #a6d9ff;
+    --config-accent-dark: #a6d9ff;
+}
+
+
+/* ============================================================
+   REDUZIR MOVIMENTO
+   ============================================================ */
+
+.config-page[data-movimento="true"] *,
+.config-page[data-movimento="true"] *::before,
+.config-page[data-movimento="true"] *::after {
+    animation: none !important;
+    transition: none !important;
+
+    scroll-behavior: auto !important;
+}
+
+
+/* ============================================================
+   TEMA ESCURO
+   ============================================================ */
+
+html[data-tema="escuro"] .config-page {
+    --config-bg: #101f2c;
+    --config-card: #192d3e;
+
+    --config-title: #e0efff;
+    --config-text: #e0efff;
+    --config-muted: #afc5d8;
+
+    --config-border: #30495e;
+    --config-soft: #243f54;
+
+    --config-accent: #70c4ff;
+    --config-accent-dark: #8bd1ff;
+
+    --config-danger: #ffaaa0;
+
+    --config-danger-bg:
+        rgba(201, 86, 76, 0.12);
+
+    --config-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.10);
+}
+
+
+html[data-tema="escuro"] .config-account {
+    background: #142635;
+}
+
+
+html[data-tema="escuro"] .config-switch {
+    background: #405669;
+}
+
+
+html[data-tema="escuro"] .config-switch:checked {
+    border-color: #119dff;
+
+    background: #119dff;
+}
+
+
+html[data-tema="escuro"]
+.config-page
+.config-btn-primary {
+    border-color: #119dff;
+
+    background: #119dff;
+
+    color: #ffffff;
+}
+
+
+html[data-tema="escuro"]
+.config-page
+.config-btn-primary:hover {
+    border-color: #35adff;
+
+    background: #35adff;
+}
+
+
+html[data-tema="escuro"]
+.config-page
+.config-btn-soft {
+    border-color: #3d617a;
+
+    background: #243f54;
+
+    color: #8bd1ff;
+}
+
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+    .config-page {
+        padding-right: 22px;
+        padding-left: 22px;
+    }
+
+
+    .config-card {
+        padding: 22px;
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .config-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .config-page {
+        padding: 100px 16px 28px;
+    }
+
+
+    .config-card {
+        padding: 20px;
+    }
+
+
+    .config-footer {
+        align-items: stretch;
+    }
+
+
+    .config-footer .config-actions {
+        width: 100%;
+    }
+
+
+    .config-footer .config-btn {
+        flex: 1;
+    }
+
+}
+
+
+@media (max-width: 420px) {
+
+    .config-options {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+    }
+
+
+    .config-option:first-child > span,
+    .config-option:last-child > span {
+        border-radius: 10px;
+    }
+
+
+    .config-actions {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .config-page *,
+    .config-page *::before,
+    .config-page *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+}

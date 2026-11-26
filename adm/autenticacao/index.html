@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Peça por Peça | Login Admin</title>
+
+    <link
+        rel="icon"
+        type="image/x-icon"
+        href="src/images/favicon.ico"
+    />
+
+    <link
+        rel="stylesheet"
+        href="src/styles/styles.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    />
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================================================
+         POP-UP
+    ============================================================ -->
+
+    <div
+        id="customPopup"
+        class="custom-popup"
+    >
+
+        <div class="popup-content">
+
+            <h3 id="popupTitle">
+                Aviso
+            </h3>
+
+            <p id="popupMessage">
+                Mensagem aqui...
+            </p>
+
+            <button
+                class="popup-btn"
+                type="button"
+                onclick="fecharPopup()"
+            >
+                OK
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ============================================================
+         CONTAINER
+    ============================================================ -->
+
+    <div class="container">
+
+
+        <!-- ========================================================
+             LOGIN
+        ========================================================= -->
+
+        <div class="form-box login">
+
+            <form
+                id="formLogin"
+                autocomplete="on"
+            >
+
+
+                <!-- E-MAIL -->
+
+                <div class="input-box">
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        name="email"
+                        placeholder="Email do Administrador"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                </div>
+
+
+                <!-- SENHA -->
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        name="password"
+                        placeholder="Senha do Administrador"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <i class="fa-solid fa-lock"></i>
+
+                </div>
+
+
+                <!-- LEMBRAR-ME -->
+
+                <div class="remember-container">
+
+                    <input
+                        type="checkbox"
+                        id="rememberMe"
+                    >
+
+                    <label for="rememberMe">
+                        Lembrar-me (Manter conectado)
+                    </label>
+
+                </div>
+
+
+                <!-- BOTÃO -->
+
+                <button
+                    type="submit"
+                    class="btn"
+                    id="btnLogin"
+                >
+                    Login
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+
+        <!-- ========================================================
+             PAINEL AZUL
+        ========================================================= -->
+
+        <div class="toggle-box">
+
+            <div class="toggle-panel toggle-left">
+
+                <h1 class="subtitle">
+                    Bem-Vindo de volta!
+                </h1>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ============================================================
+         JAVASCRIPT
+    ============================================================ -->
+
+    <script>
+
+        const API_URL =
+            "http://127.0.0.1:8000/api";
+
+
+        /* ============================================================
+           POP-UP
+        ============================================================ */
+
+        function mostrarPopup(
+            titulo,
+            mensagem,
+            callback = null
+        ) {
+
+            document.getElementById(
+                "popupTitle"
+            ).innerText = titulo;
+
+
+            document.getElementById(
+                "popupMessage"
+            ).innerText = mensagem;
+
+
+            document.getElementById(
+                "customPopup"
+            ).style.display = "flex";
+
+
+            window.popupCallback =
+                callback;
+
+        }
+
+
+        function fecharPopup() {
+
+            document.getElementById(
+                "customPopup"
+            ).style.display = "none";
+
+
+            if (window.popupCallback) {
+
+                const callback =
+                    window.popupCallback;
+
+
+                window.popupCallback =
+                    null;
+
+
+                callback();
+
+            }
+
+        }
+
+
+
+        /* ============================================================
+           CARREGAR E-MAIL SALVO
+        ============================================================ */
+
+        function carregarLoginSalvo() {
+
+            const lembrarAdmin =
+                localStorage.getItem(
+                    "lembrarAdmin"
+                );
+
+
+            const adminEmail =
+                localStorage.getItem(
+                    "adminEmail"
+                );
+
+
+            if (
+                lembrarAdmin === "true" &&
+                adminEmail
+            ) {
+
+                document.getElementById(
+                    "loginEmail"
+                ).value = adminEmail;
+
+
+                document.getElementById(
+                    "rememberMe"
+                ).checked = true;
+
+            }
+
+        }
+
+
+
+        /* ============================================================
+           SALVAR SESSÃO
+        ============================================================ */
+
+        function salvarSessao(
+            token,
+            email,
+            lembrar
+        ) {
+
+
+            /* Limpa possíveis tokens antigos */
+
+            localStorage.removeItem(
+                "adminToken"
+            );
+
+            sessionStorage.removeItem(
+                "adminToken"
+            );
+
+
+
+            /* ========================================================
+               LEMBRAR-ME MARCADO
+            ======================================================== */
+
+            if (lembrar) {
+
+
+                localStorage.setItem(
+                    "adminToken",
+                    token
+                );
+
+
+                localStorage.setItem(
+                    "adminEmail",
+                    email
+                );
+
+
+                localStorage.setItem(
+                    "lembrarAdmin",
+                    "true"
+                );
+
+
+            }
+
+
+            /* ========================================================
+               LEMBRAR-ME DESMARCADO
+            ======================================================== */
+
+            else {
+
+
+                sessionStorage.setItem(
+                    "adminToken",
+                    token
+                );
+
+
+                localStorage.removeItem(
+                    "adminEmail"
+                );
+
+
+                localStorage.removeItem(
+                    "lembrarAdmin"
+                );
+
+            }
+
+        }
+
+
+
+        /* ============================================================
+           CARREGAMENTO DO BOTÃO
+        ============================================================ */
+
+        function alterarBotaoLogin(
+            carregando
+        ) {
+
+            const botao =
+                document.getElementById(
+                    "btnLogin"
+                );
+
+
+            if (carregando) {
+
+                botao.disabled =
+                    true;
+
+
+                botao.innerHTML = `
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    Entrando...
+                `;
+
+            }
+
+            else {
+
+                botao.disabled =
+                    false;
+
+
+                botao.innerHTML =
+                    "Login";
+
+            }
+
+        }
+
+
+
+        /* ============================================================
+           LOGIN
+        ============================================================ */
+
+        document
+            .getElementById(
+                "formLogin"
+            )
+            .addEventListener(
+                "submit",
+                async function (event) {
+
+
+                    event.preventDefault();
+
+
+                    const email =
+                        document
+                            .getElementById(
+                                "loginEmail"
+                            )
+                            .value
+                            .trim();
+
+
+                    const password =
+                        document
+                            .getElementById(
+                                "loginPassword"
+                            )
+                            .value;
+
+
+                    const remember =
+                        document
+                            .getElementById(
+                                "rememberMe"
+                            )
+                            .checked;
+
+
+
+                    if (
+                        !email ||
+                        !password
+                    ) {
+
+                        mostrarPopup(
+                            "Atenção",
+                            "Preencha o e-mail e a senha."
+                        );
+
+
+                        return;
+
+                    }
+
+
+
+                    alterarBotaoLogin(
+                        true
+                    );
+
+
+
+                    try {
+
+
+                        /* =================================================
+                           ENVIA LOGIN PARA API
+                        ================================================= */
+
+                        const response =
+                            await fetch(
+                                `${API_URL}/login`,
+                                {
+
+                                    method:
+                                        "POST",
+
+
+                                    headers: {
+
+                                        "Content-Type":
+                                            "application/json",
+
+                                        "Accept":
+                                            "application/json"
+
+                                    },
+
+
+                                    body:
+                                        JSON.stringify({
+
+                                            email:
+                                                email,
+
+                                            password:
+                                                password
+
+                                        })
+
+                                }
+                            );
+
+
+
+                        let data;
+
+
+                        try {
+
+                            data =
+                                await response.json();
+
+                        }
+
+                        catch {
+
+                            data = {};
+
+                        }
+
+
+
+                        /* =================================================
+                           ERRO NO LOGIN
+                        ================================================= */
+
+                        if (!response.ok) {
+
+
+                            mostrarPopup(
+                                "Erro",
+                                data.message ||
+                                "E-mail ou senha incorretos."
+                            );
+
+
+                            return;
+
+                        }
+
+
+
+                        /* =================================================
+                           VERIFICA USUÁRIO
+                        ================================================= */
+
+                        if (!data.usuario) {
+
+
+                            mostrarPopup(
+                                "Erro",
+                                "A API não retornou os dados do usuário."
+                            );
+
+
+                            return;
+
+                        }
+
+
+
+                        /* =================================================
+                           VERIFICA SE É ADMINISTRADOR
+                        ================================================= */
+
+                        if (
+                            data.usuario.tp_usuario !==
+                            "A"
+                        ) {
+
+
+                            localStorage.removeItem(
+                                "adminToken"
+                            );
+
+
+                            sessionStorage.removeItem(
+                                "adminToken"
+                            );
+
+
+                            mostrarPopup(
+                                "Acesso Negado",
+                                "Esta conta não possui privilégios de Administrador."
+                            );
+
+
+                            return;
+
+                        }
+
+
+
+                        /* =================================================
+                           VERIFICA TOKEN
+                        ================================================= */
+
+                        if (!data.token) {
+
+
+                            mostrarPopup(
+                                "Erro",
+                                "O servidor não retornou o token de autenticação."
+                            );
+
+
+                            return;
+
+                        }
+
+
+
+                        /* =================================================
+                           SALVA LOGIN
+                        ================================================= */
+
+                        salvarSessao(
+                            data.token,
+                            email,
+                            remember
+                        );
+
+
+
+                        /* =================================================
+                           SALVA DADOS DO ADMIN
+                        ================================================= */
+
+                        if (
+                            data.usuario.id_usuario
+                        ) {
+
+                            localStorage.setItem(
+                                "adminId",
+                                String(
+                                    data.usuario.id_usuario
+                                )
+                            );
+
+                        }
+
+
+
+                        if (
+                            data.usuario.nm_usuario
+                        ) {
+
+                            localStorage.setItem(
+                                "adminNome",
+                                data.usuario.nm_usuario
+                            );
+
+                        }
+
+
+
+                        /* =================================================
+                           SUCESSO
+                        ================================================= */
+
+                        mostrarPopup(
+
+                            "Sucesso!",
+
+                            "Login de Administrador efetuado com sucesso!",
+
+                            function () {
+
+
+                                window.location.href =
+                                    "../anuncios-publicados/index.html";
+
+
+                            }
+
+                        );
+
+
+                    }
+
+
+
+                    /* =====================================================
+                       ERRO DE CONEXÃO
+                    ===================================================== */
+
+                    catch (error) {
+
+
+                        console.error(
+                            "Erro na conexão:",
+                            error
+                        );
+
+
+                        mostrarPopup(
+
+                            "Erro de Conexão",
+
+                            "Não foi possível conectar com a API do Laravel. Verifique se o servidor está rodando."
+
+                        );
+
+                    }
+
+
+
+                    finally {
+
+
+                        alterarBotaoLogin(
+                            false
+                        );
+
+                    }
+
+
+                }
+
+            );
+
+
+
+        /* ============================================================
+           QUANDO A PÁGINA CARREGAR
+        ============================================================ */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                carregarLoginSalvo();
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1028 @@
+/* ============================================================
+   NOTIFICAÇÕES
+   ============================================================ */
+
+.notificacoes-container {
+    position: relative;
+
+    flex-shrink: 0;
+}
+
+
+/* ============================================================
+   BOTÃO DO SININHO
+   ============================================================ */
+
+.notificacoes-botao {
+    position: relative;
+}
+
+
+/* ============================================================
+   CONTADOR
+   ============================================================ */
+
+.notificacoes-contador {
+    position: absolute;
+
+    top: 2px;
+    right: 1px;
+
+    min-width: 17px;
+    height: 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        0
+        5px;
+
+    border:
+        2px solid
+        #ffffff;
+
+    border-radius: 20px;
+
+    background: #d9534f;
+
+    color: #ffffff;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+/* ============================================================
+   PAINEL
+   ============================================================ */
+
+.notificacoes-painel {
+    position: absolute;
+
+    top: calc(100% + 12px);
+    right: 0;
+
+    width: 390px;
+    max-width: calc(100vw - 30px);
+    max-height: 560px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        #e0eaf2;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 18px 48px rgba(0, 42, 68, 0.18);
+
+    z-index: 1600;
+}
+
+
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
+
+.notificacoes-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding:
+        17px
+        18px;
+
+    border-bottom:
+        1px solid
+        #edf2f7;
+}
+
+
+.notificacoes-cabecalho h2 {
+    color: #163b56;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+.notificacoes-cabecalho p {
+    margin-top: 2px;
+
+    color: #8194a3;
+
+    font-size: 9px;
+}
+
+
+.notificacoes-fechar {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #7d91a1;
+
+    font-size: 14px;
+}
+
+
+.notificacoes-fechar:hover {
+    background: #f1f7fb;
+
+    color: #005386;
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.notificacoes-status {
+    margin: 0;
+
+    padding:
+        12px
+        18px;
+
+    color: #8194a3;
+
+    font-size: 10px;
+
+    border-bottom:
+        1px solid
+        #edf2f7;
+}
+
+
+.notificacoes-status:empty {
+    display: none;
+}
+
+
+/* ============================================================
+   LISTA
+   ============================================================ */
+
+.notificacoes-lista {
+    flex: 1;
+
+    min-height: 80px;
+    max-height: 385px;
+
+    overflow-y: auto;
+}
+
+
+/* ============================================================
+   ITEM
+   ============================================================ */
+
+.notificacao-item {
+    display: flex;
+
+    gap: 12px;
+
+    padding:
+        14px
+        16px;
+
+    border-bottom:
+        1px solid
+        #edf3f7;
+
+    background: #ffffff;
+
+    transition:
+        background-color 0.2s ease;
+}
+
+
+.notificacao-item:last-child {
+    border-bottom: none;
+}
+
+
+.notificacao-item:hover {
+    background: #f8fbfd;
+}
+
+
+.notificacao-item.nao-lida {
+    background: #f1f9ff;
+}
+
+
+/* ============================================================
+   ÍCONE
+   ============================================================ */
+
+.notificacao-icone {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background: #fff0ee;
+
+    color: #cf5148;
+
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   CONTEÚDO
+   ============================================================ */
+
+.notificacao-conteudo {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.notificacao-titulo {
+    display: block;
+
+    color: #163b56;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+.notificacao-usuario,
+.notificacao-motivo,
+.notificacao-descricao {
+    margin-top: 3px;
+
+    color: #71879a;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+
+.notificacao-data {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #9aabb8;
+
+    font-size: 8px;
+}
+
+
+/* ============================================================
+   AÇÕES DA NOTIFICAÇÃO
+   ============================================================ */
+
+.notificacao-ver-detalhes,
+.notificacao-marcar-lida {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 29px;
+
+    margin-top: 8px;
+
+    padding:
+        6px
+        9px;
+
+    border-radius: 8px;
+
+    font-size: 8px;
+    font-weight: 600;
+}
+
+
+.notificacao-ver-detalhes {
+    margin-right: 5px;
+
+    border:
+        1px solid
+        #c9e3f4;
+
+    background: #eef8ff;
+
+    color: #005386;
+}
+
+
+.notificacao-ver-detalhes:hover {
+    background: #dff2ff;
+}
+
+
+.notificacao-marcar-lida {
+    border:
+        1px solid
+        #dce7ef;
+
+    background: #ffffff;
+
+    color: #657c8d;
+}
+
+
+.notificacao-marcar-lida:hover {
+    background: #f3f8fb;
+}
+
+
+.notificacao-lida {
+    color: #2f9d66;
+
+    font-size: 8px;
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   RODAPÉ
+   ============================================================ */
+
+.notificacoes-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding:
+        12px
+        16px;
+
+    border-top:
+        1px solid
+        #edf2f7;
+
+    background: #fafcfd;
+}
+
+
+.notificacoes-rodape span {
+    color: #91a2af;
+
+    font-size: 8px;
+
+    line-height: 1.4;
+}
+
+
+#btn-atualizar-notificacoes {
+    flex-shrink: 0;
+
+    padding:
+        7px
+        10px;
+
+    border:
+        1px solid
+        #d7e6f0;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #005386;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+#btn-atualizar-notificacoes:hover {
+    background: #eaf6ff;
+}
+
+
+/* ============================================================
+   MODAL DA DENÚNCIA
+   ============================================================ */
+
+.modal-denuncia {
+    width:
+        min(
+            720px,
+            calc(100% - 30px)
+        );
+
+    max-height: 88vh;
+
+    margin: auto;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border: none;
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    color: #163b56;
+
+    box-shadow:
+        0 25px 75px rgba(0, 32, 52, 0.28);
+}
+
+
+.modal-denuncia::backdrop {
+    background:
+        rgba(12, 28, 40, 0.58);
+
+    backdrop-filter: blur(3px);
+}
+
+
+/* ============================================================
+   CABEÇALHO DO MODAL
+   ============================================================ */
+
+.modal-denuncia-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding:
+        20px
+        22px;
+
+    border-bottom:
+        1px solid
+        #e7eef4;
+}
+
+
+.modal-denuncia-cabecalho h2 {
+    color: #163b56;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.modal-denuncia-fechar {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #7e91a0;
+
+    font-size: 15px;
+}
+
+
+.modal-denuncia-fechar:hover {
+    background: #f1f7fb;
+
+    color: #005386;
+}
+
+
+/* ============================================================
+   STATUS DO MODAL
+   ============================================================ */
+
+.modal-denuncia-status {
+    margin: 0;
+
+    padding:
+        13px
+        22px;
+
+    color: #71879a;
+
+    font-size: 10px;
+}
+
+
+.modal-denuncia-status:empty {
+    display: none;
+}
+
+
+/* ============================================================
+   CONTEÚDO DO MODAL
+   ============================================================ */
+
+.modal-denuncia-conteudo {
+    max-height:
+        calc(
+            88vh - 135px
+        );
+
+    overflow-y: auto;
+
+    padding:
+        21px
+        22px;
+}
+
+
+/* ============================================================
+   DADOS
+   ============================================================ */
+
+.modal-denuncia-dados {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 12px;
+
+    margin: 0;
+}
+
+
+.modal-denuncia-dados > div {
+    padding: 13px;
+
+    border:
+        1px solid
+        #e7eef4;
+
+    border-radius: 11px;
+
+    background: #f8fbfd;
+}
+
+
+.modal-denuncia-dados dt {
+    margin-bottom: 4px;
+
+    color: #8194a3;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.35px;
+
+    text-transform: uppercase;
+}
+
+
+.modal-denuncia-dados dd {
+    margin: 0;
+
+    color: #163b56;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   SEÇÕES
+   ============================================================ */
+
+.modal-denuncia-secao {
+    margin-top: 22px;
+}
+
+
+.modal-denuncia-secao h3 {
+    margin-bottom: 9px;
+
+    color: #163b56;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.modal-denuncia-descricao {
+    padding: 14px;
+
+    border:
+        1px solid
+        #e7eef4;
+
+    border-radius: 11px;
+
+    background: #f8fbfd;
+
+    color: #526b7f;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: anywhere;
+}
+
+
+#denuncia-imagens-status {
+    color: #8194a3;
+
+    font-size: 9px;
+}
+
+
+/* ============================================================
+   IMAGENS
+   ============================================================ */
+
+.modal-denuncia-imagens {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 10px;
+
+    margin-top: 10px;
+}
+
+
+.denuncia-imagem-botao {
+    min-height: 110px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        #dce8f0;
+
+    border-radius: 11px;
+
+    background: #f3f8fb;
+}
+
+
+.denuncia-imagem-botao img {
+    width: 100%;
+    height: 130px;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.denuncia-imagem-botao:hover img {
+    transform: scale(1.04);
+}
+
+
+/* ============================================================
+   AMPLIAÇÃO
+   ============================================================ */
+
+.modal-denuncia-ampliacao {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 20px 20px;
+
+    background:
+        rgba(5, 15, 23, 0.88);
+
+    z-index: 4000;
+}
+
+
+.modal-denuncia-ampliacao img {
+    max-width: 90vw;
+    max-height: 82vh;
+
+    border-radius: 12px;
+
+    object-fit: contain;
+}
+
+
+.modal-denuncia-fechar-ampliacao {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    padding:
+        8px
+        12px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #163b56;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   RODAPÉ DO MODAL
+   ============================================================ */
+
+.modal-denuncia-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding:
+        15px
+        22px;
+
+    border-top:
+        1px solid
+        #e7eef4;
+
+    background: #fafcfd;
+}
+
+
+#denuncia-leitura {
+    color: #71879a;
+
+    font-size: 9px;
+}
+
+
+#btn-denuncia-marcar-lida {
+    padding:
+        8px
+        12px;
+
+    border:
+        1px solid
+        #0099ff;
+
+    border-radius: 9px;
+
+    background: #0099ff;
+
+    color: #ffffff;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+#btn-denuncia-marcar-lida:hover {
+    background: #007fd4;
+
+    border-color: #007fd4;
+}
+
+
+/* ============================================================
+   TEMA ESCURO
+   ============================================================ */
+
+html[data-tema="escuro"] .notificacoes-contador {
+    border-color: #101f2c;
+}
+
+
+html[data-tema="escuro"] .notificacoes-painel,
+html[data-tema="escuro"] .modal-denuncia {
+    background: #192d3e;
+
+    border-color: #30495e;
+
+    color: #e0efff;
+}
+
+
+html[data-tema="escuro"] .notificacoes-cabecalho,
+html[data-tema="escuro"] .notificacoes-status,
+html[data-tema="escuro"] .notificacao-item,
+html[data-tema="escuro"] .notificacoes-rodape,
+html[data-tema="escuro"] .modal-denuncia-cabecalho,
+html[data-tema="escuro"] .modal-denuncia-rodape {
+    border-color: #30495e;
+}
+
+
+html[data-tema="escuro"] .notificacoes-cabecalho h2,
+html[data-tema="escuro"] .notificacao-titulo,
+html[data-tema="escuro"] .modal-denuncia-cabecalho h2,
+html[data-tema="escuro"] .modal-denuncia-secao h3,
+html[data-tema="escuro"] .modal-denuncia-dados dd {
+    color: #e0efff;
+}
+
+
+html[data-tema="escuro"] .notificacoes-cabecalho p,
+html[data-tema="escuro"] .notificacoes-status,
+html[data-tema="escuro"] .notificacao-usuario,
+html[data-tema="escuro"] .notificacao-motivo,
+html[data-tema="escuro"] .notificacao-descricao,
+html[data-tema="escuro"] .notificacao-data,
+html[data-tema="escuro"] .modal-denuncia-status,
+html[data-tema="escuro"] #denuncia-leitura {
+    color: #afc5d8;
+}
+
+
+html[data-tema="escuro"] .notificacao-item {
+    background: #192d3e;
+}
+
+
+html[data-tema="escuro"] .notificacao-item:hover {
+    background: #203a4e;
+}
+
+
+html[data-tema="escuro"] .notificacao-item.nao-lida {
+    background: #1c394d;
+}
+
+
+html[data-tema="escuro"] .notificacao-icone {
+    background:
+        rgba(221, 87, 79, 0.14);
+
+    color: #ff9e96;
+}
+
+
+html[data-tema="escuro"] .notificacao-ver-detalhes {
+    background: #243f54;
+
+    border-color: #3c5d74;
+
+    color: #8bd1ff;
+}
+
+
+html[data-tema="escuro"] .notificacao-marcar-lida,
+html[data-tema="escuro"] #btn-atualizar-notificacoes {
+    background: #192d3e;
+
+    border-color: #405e74;
+
+    color: #bfd1df;
+}
+
+
+html[data-tema="escuro"] .notificacoes-rodape,
+html[data-tema="escuro"] .modal-denuncia-rodape {
+    background: #142635;
+}
+
+
+html[data-tema="escuro"] .modal-denuncia-dados > div,
+html[data-tema="escuro"] .modal-denuncia-descricao {
+    background: #142635;
+
+    border-color: #30495e;
+}
+
+
+html[data-tema="escuro"] .modal-denuncia-dados dt {
+    color: #9fb4c4;
+}
+
+
+html[data-tema="escuro"] .modal-denuncia-descricao {
+    color: #bfd1df;
+}
+
+
+html[data-tema="escuro"] .denuncia-imagem-botao {
+    background: #142635;
+
+    border-color: #3b586d;
+}
+
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+    .notificacoes-painel {
+        position: fixed;
+
+        top: 76px;
+        right: 14px;
+
+        width:
+            min(
+                390px,
+                calc(100vw - 28px)
+            );
+
+        max-height:
+            calc(
+                100vh - 90px
+            );
+    }
+
+
+    .modal-denuncia-dados {
+        grid-template-columns: 1fr;
+    }
+
+
+    .modal-denuncia-imagens {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .modal-denuncia-imagens {
+        grid-template-columns: 1fr;
+    }
+
+
+    .modal-denuncia-rodape {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    #btn-denuncia-marcar-lida {
+        width: 100%;
+    }
+
+}
+
